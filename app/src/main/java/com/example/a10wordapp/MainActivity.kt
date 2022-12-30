@@ -2,9 +2,7 @@ package com.example.a10wordapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import android.content.Intent
 
 class MainActivity : AppCompatActivity(){
@@ -13,10 +11,16 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnStart: Button = findViewById(R.id.button)
+        val learnButton: Button = findViewById(R.id.learnButton)
+        val addButton: Button = findViewById(R.id.addButton)
+        val allButton: Button = findViewById(R.id.allButton)
 
-        btnStart.setOnClickListener {
-            val intent = Intent(this,SubActivity::class.java)
+        learnButton.setOnClickListener {
+            val intent = Intent(this,SecondActivity::class.java)
+            startActivity(intent)
+        }
+        addButton.setOnClickListener {
+            val intent = Intent(this,SecondActivity::class.java)
             startActivity(intent)
         }
     }

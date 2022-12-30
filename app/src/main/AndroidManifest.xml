@@ -25,7 +25,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".SubActivity" >
+        <activity android:name=".SecondActivity" >
+        </activity>
+        </activity>
+        <activity android:name=".ThirdActivity" >
+        </activity>
+        </activity>
+        <activity android:name=".ForthActivity" >
         </activity>
     </application>
 
