@@ -6,9 +6,6 @@ plugins {
 android {
     namespace 'com.example.a10wordapp'
     compileSdk 32
-    buildFeatures {
-        viewBinding true
-    }
 
     defaultConfig {
         applicationId "com.example.a10wordapp"
@@ -32,6 +29,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 

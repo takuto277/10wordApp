@@ -27,9 +27,7 @@
         </activity>
         <activity android:name=".SecondActivity" >
         </activity>
-        </activity>
         <activity android:name=".ThirdActivity" >
-        </activity>
         </activity>
         <activity android:name=".ForthActivity" >
         </activity>
