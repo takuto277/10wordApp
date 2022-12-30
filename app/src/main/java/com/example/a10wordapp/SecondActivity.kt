@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.core.view.isVisible
 import com.example.a10wordapp.databinding.ActivitySecondBinding
+import android.content.Context
+import android.widget.Toast
 
 
 
@@ -26,10 +28,17 @@ class SecondActivity : AppCompatActivity() {
         binding.translateText.isVisible = false
 
         binding.rightButton.setOnClickListener {
-            ++arrayFigure
-            binding.wordText.text = array[arrayFigure]
+            binding.translateText.isVisible = false
+            if (arrayFigure==array.count()-1){
+                Toast.makeText(applicationContext, "問題終了！", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                ++arrayFigure
+                binding.wordText.text = array[arrayFigure]
+            }
         }
         binding.wrongButton.setOnClickListener {
+            binding.translateText.isVisible = false
             arrayFigure = 0
             binding.wordText.text = array[arrayFigure]
         }
