@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.a10wordapp.databinding.ActivitySecondBinding
 import com.example.a10wordapp.databinding.ActivityThirdBinding
-import com.example.a10wordapp.ViewModel
-import androidx.activity.viewModels
+//import com.example.a10wordapp.ViewModel
+//import androidx.activity.viewModels
 
 class ThirdActivity : AppCompatActivity() {
 
-    private val viewModel: ViewModel by viewModels()
+  //  private val viewModel: ViewModel by viewModels()
     private lateinit var binding: ActivityThirdBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +32,7 @@ class ThirdActivity : AppCompatActivity() {
     }
 
     private fun addNewItem(id: Int, english: String, japanese: String){
-        viewModel.addNewItem(id, english, japanese)
+  //      viewModel.addNewItem(id, english, japanese)
 
     }
 }

@@ -51,11 +51,11 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     // ViewModel
-    implementation "androidx.activity:activity-ktx:1.1.0" // Activityから使う時
+  //  implementation "androidx.activity:activity-ktx:1.1.0" // Activityから使う時
 
     // room
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
+//    implementation "androidx.room:room-runtime:$room_version"
+//    kapt "androidx.room:room-compiler:$room_version"
+//    implementation "androidx.room:room-ktx:$room_version"
 
 }
