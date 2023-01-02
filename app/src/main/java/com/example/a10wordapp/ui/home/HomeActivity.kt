@@ -4,9 +4,9 @@ package com.example.a10wordapp.ui.home
 import android.os.Bundle
 import android.content.Intent
 import com.example.a10wordapp.databinding.ActivityHomeBinding
-import com.example.a10wordapp.ui.ForthActivity
+import com.example.a10wordapp.ui.list.ListActivity
 import com.example.a10wordapp.ui.quiz.QuizActivity
-import com.example.a10wordapp.ui.ThirdActivity
+import com.example.a10wordapp.ui.add.AddActivity
 import com.example.a10wordapp.ui.base.BaseActivity
 
 class HomeActivity : BaseActivity(){
@@ -20,11 +20,11 @@ class HomeActivity : BaseActivity(){
             startActivity(intent)
         }
         binding.addButton.setOnClickListener {
-            val intent = Intent(this, ThirdActivity::class.java)
+            val intent = Intent(this, AddActivity::class.java)
             startActivity(intent)
         }
         binding.allButton.setOnClickListener {
-            val intent = Intent(this, ForthActivity::class.java)
+            val intent = Intent(this, ListActivity::class.java)
             startActivity(intent)
         }
     }

@@ -27,9 +27,9 @@
         </activity>
         <activity android:name=".ui.quiz.QuizActivity" >
         </activity>
-        <activity android:name=".ui.ThirdActivity" >
+        <activity android:name=".ui.add.AddActivity" >
         </activity>
-        <activity android:name=".ui.ForthActivity" >
+        <activity android:name=".ui.list.ListActivity" >
         </activity>
     </application>
 
