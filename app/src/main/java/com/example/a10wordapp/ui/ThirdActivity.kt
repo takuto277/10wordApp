@@ -1,9 +1,9 @@
-package com.example.a10wordapp
+package com.example.a10wordapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.a10wordapp.databinding.ActivitySecondBinding
+import com.example.a10wordapp.R
 import com.example.a10wordapp.databinding.ActivityThirdBinding
 //import com.example.a10wordapp.ViewModel
 //import androidx.activity.viewModels

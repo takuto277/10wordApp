@@ -13,7 +13,7 @@
         android:theme="@style/Theme.10wordApp"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +25,11 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".SecondActivity" >
+        <activity android:name=".ui.SecondActivity" >
         </activity>
-        <activity android:name=".ThirdActivity" >
+        <activity android:name=".ui.ThirdActivity" >
         </activity>
-        <activity android:name=".ForthActivity" >
+        <activity android:name=".ui.ForthActivity" >
         </activity>
     </application>
 

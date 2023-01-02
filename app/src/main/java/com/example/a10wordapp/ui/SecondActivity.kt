@@ -1,11 +1,9 @@
-package com.example.a10wordapp
+package com.example.a10wordapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import androidx.core.view.isVisible
 import com.example.a10wordapp.databinding.ActivitySecondBinding
-import android.content.Context
 import android.widget.Toast
 
 
