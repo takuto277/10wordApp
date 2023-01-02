@@ -51,7 +51,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     // ViewModel
-  //  implementation "androidx.activity:activity-ktx:1.1.0" // Activityから使う時
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    implementation "androidx.activity:activity-ktx:1.2.0-rc01" // Activityから使う時
 
     // room
 //    implementation "androidx.room:room-runtime:$room_version"

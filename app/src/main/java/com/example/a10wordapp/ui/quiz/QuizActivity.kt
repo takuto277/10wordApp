@@ -1,26 +1,21 @@
-package com.example.a10wordapp.ui
+package com.example.a10wordapp.ui.quiz
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
-import com.example.a10wordapp.databinding.ActivitySecondBinding
 import android.widget.Toast
+import com.example.a10wordapp.databinding.ActivityQuizBinding
+import com.example.a10wordapp.ui.base.BaseActivity
+import androidx.activity.viewModels
 
 
-
-class SecondActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySecondBinding
+class QuizActivity :  BaseActivity() {
+    private val viewModel: QuizViewModel by viewModels()
+    private lateinit var binding: ActivityQuizBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val array = arrayOf("one", "two", "three", "four", "five")
         var arrayFigure = 0
-
-        binding = ActivitySecondBinding.inflate(layoutInflater)
-
-        val view = binding.root
-
-        setContentView(view)
 
         binding.wordText.text = array[arrayFigure]
         binding.translateText.isVisible = false
@@ -50,6 +45,11 @@ class SecondActivity : AppCompatActivity() {
             binding.btnBack.setOnClickListener {
                 finish()
             }
-
         }
+
+    override fun initViewBinding() {
+        binding = ActivityQuizBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
     }
+}
