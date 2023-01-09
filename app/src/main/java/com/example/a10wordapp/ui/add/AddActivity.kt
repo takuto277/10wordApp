@@ -16,11 +16,16 @@ class AddActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.saveAction.setOnClickListener {
-            addNewItem(1, "aa", "bb")
+
+        binding.saveButton.setOnClickListener {
+            val id = binding.id.text.toString().toInt()
+            val english = binding.english.text.toString()
+            val japanese = binding.japanese.text.toString()
+            addNewItem(id, english, japanese)
+            finish()
         }
 
-        binding.buckAction.setOnClickListener {
+        binding.backButton.setOnClickListener{
             finish()
         }
     }

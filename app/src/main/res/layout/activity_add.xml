@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:width="300dp"
         android:hint="ID"
+        android:inputType="number"
         android:layout_marginStart="195dp"
         android:layout_marginTop="51dp"
         android:layout_marginEnd="196dp"
