@@ -7,6 +7,7 @@ import com.example.a10wordapp.R
 import com.example.a10wordapp.databinding.ActivityListBinding
 import com.example.a10wordapp.ui.base.BaseActivity
 import android.widget.ListView
+import android.widget.Toast
 
 class ListActivity : BaseActivity(){
     private lateinit var binding: ActivityListBinding
@@ -20,12 +21,18 @@ class ListActivity : BaseActivity(){
 
         listView.adapter = adapter
 
+        listView.setOnItemClickListener{ adapter, view, position, id ->
+            val message = "「${(array[position])}」をクリックしました。"
+            Toast.makeText(this@ListActivity, message, Toast.LENGTH_SHORT).show()
+        }
+
         binding.btnBack.setOnClickListener{
             finish()
         }
     }
 
     override fun initViewBinding() {
+        // TODO: ListViewにはbindingが使えない→ボタンの配置ができない
         binding = ActivityListBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
