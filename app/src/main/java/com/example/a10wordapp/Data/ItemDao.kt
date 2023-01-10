@@ -16,12 +16,12 @@ import kotlinx.coroutines.flow.Flow
 interface ItemDao {
 
     @Query("SELECT * FROM item")
-    fun getAll(): List<Item>
+    suspend fun getAll(): List<Item>
 
     @Insert
-    fun insert(item: Item)
+    suspend fun insert(item: Item)
 
     @Delete
-    fun delete(item: Item)
+    suspend fun delete(item: Item)
 
 }

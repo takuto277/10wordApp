@@ -2,16 +2,20 @@ package com.example.a10wordapp.ui.add
 
 import android.os.Bundle
 import android.widget.Button
+import androidx.activity.viewModels
 import com.example.a10wordapp.R
 import com.example.a10wordapp.databinding.ActivityAddBinding
 import com.example.a10wordapp.ui.base.BaseActivity
+import com.example.a10wordapp.ui.add.AddViewModel
+import com.example.a10wordapp.Data.ItemRoomDatabase
+import com.example.a10wordapp.Data.Item
 
 //import com.example.a10wordapp.ViewModel
 //import androidx.activity.viewModels
 
 class AddActivity : BaseActivity() {
 
-  //  private val viewModel: ViewModel by viewModels()
+    private val viewModel: AddViewModel by viewModels()
     private lateinit var binding: ActivityAddBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +35,8 @@ class AddActivity : BaseActivity() {
     }
 
     private fun addNewItem(id: Int, english: String, japanese: String){
-  //      viewModel.addNewItem(id, english, japanese)
+        viewModel.NewItem(this,
+            id, english, japanese)
 
     }
 
