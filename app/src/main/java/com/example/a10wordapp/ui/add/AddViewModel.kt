@@ -9,16 +9,16 @@ import kotlinx.coroutines.runBlocking
 
 class AddViewModel: BaseViewModel() {
     fun NewItem(context: Context, id:Int, english:String, japanese:String){
-        val hoge = ItemRoomDatabase.getDatabase(context)
+        val getDatabase = ItemRoomDatabase.getDatabase(context)
         val item = Item(id, english, japanese)
-        val huga = hoge.itemDao()
+        val itemDao = getDatabase.itemDao()
         runBlocking {
-            huga.insert(item)
+            itemDao.insert(item)
         }
 
         var list: List<Item>
         runBlocking {
-            list = huga.getAll()
+            list = itemDao.getAll()
         }
         println("papa,${list}")
     }
