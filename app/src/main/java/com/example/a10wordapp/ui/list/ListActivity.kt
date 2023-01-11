@@ -23,7 +23,6 @@ class ListActivity : BaseActivity(){
         var array: Array<String> = arrayOf()
         val list = viewModel.getList(this)
         println("papa${list}")
-        val hoge = list[0].english
         println("papa${list.count()}")
         for(i in 0 until list.count()){
             array += list[i].english

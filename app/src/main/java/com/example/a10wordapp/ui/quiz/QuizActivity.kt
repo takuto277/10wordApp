@@ -13,27 +13,29 @@ class QuizActivity :  BaseActivity() {
     private lateinit var binding: ActivityQuizBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val array = arrayOf("one", "two", "three", "four", "five")
+        val list = viewModel.getList(this)
         var arrayFigure = 0
 
-        binding.wordText.text = array[arrayFigure]
+        binding.wordText.text = list[arrayFigure].english
+        binding.translateText.text = list[arrayFigure].japanese
         binding.translateText.isVisible = false
 
         binding.rightButton.setOnClickListener {
             binding.translateText.isVisible = false
-            if (arrayFigure==array.count()-1){
+            if (arrayFigure==list.count()-1){
                 Toast.makeText(applicationContext, "問題終了！", Toast.LENGTH_SHORT).show()
                 finish()
             } else {
                 ++arrayFigure
-                binding.wordText.text = array[arrayFigure]
+                binding.wordText.text = list[arrayFigure].english
+                binding.translateText.text = list[arrayFigure].japanese
             }
         }
         binding.wrongButton.setOnClickListener {
             binding.translateText.isVisible = false
             arrayFigure = 0
-            binding.wordText.text = array[arrayFigure]
+            binding.wordText.text = list[arrayFigure].english
+            binding.translateText.text = list[arrayFigure].japanese
         }
         binding.hiddenButton.setOnClickListener {
             if (binding.translateText.isVisible) {
