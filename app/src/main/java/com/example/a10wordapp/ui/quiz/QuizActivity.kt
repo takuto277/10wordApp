@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.example.a10wordapp.databinding.ActivityQuizBinding
 import com.example.a10wordapp.ui.base.BaseActivity
 import androidx.activity.viewModels
+import com.example.a10wordapp.Data.Item
 
 
 class QuizActivity :  BaseActivity() {
@@ -15,9 +16,7 @@ class QuizActivity :  BaseActivity() {
         super.onCreate(savedInstanceState)
         val list = viewModel.getList(this)
         var arrayFigure = 0
-
-        binding.wordText.text = list[arrayFigure].english
-        binding.translateText.text = list[arrayFigure].japanese
+        getlayout(list, arrayFigure)
         binding.translateText.isVisible = false
 
         binding.rightButton.setOnClickListener {
@@ -27,15 +26,13 @@ class QuizActivity :  BaseActivity() {
                 finish()
             } else {
                 ++arrayFigure
-                binding.wordText.text = list[arrayFigure].english
-                binding.translateText.text = list[arrayFigure].japanese
+                getlayout(list, arrayFigure)
             }
         }
         binding.wrongButton.setOnClickListener {
             binding.translateText.isVisible = false
             arrayFigure = 0
-            binding.wordText.text = list[arrayFigure].english
-            binding.translateText.text = list[arrayFigure].japanese
+            getlayout(list, arrayFigure)
         }
         binding.hiddenButton.setOnClickListener {
             if (binding.translateText.isVisible) {
@@ -53,5 +50,10 @@ class QuizActivity :  BaseActivity() {
         binding = ActivityQuizBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+    }
+
+    private fun getlayout(list: List<Item>, arrayFigure: Int) {
+        binding.wordText.text = list[arrayFigure].english
+        binding.translateText.text = list[arrayFigure].japanese
     }
 }
