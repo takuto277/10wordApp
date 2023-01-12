@@ -1,26 +1,27 @@
 package com.example.a10wordapp.ui.delete
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.databinding.ActivityDeleteBinding
 import com.example.a10wordapp.ui.base.BaseActivity
-import com.example.a10wordapp.ui.delete.adapter.Adapter
+import com.example.a10wordapp.ui.delete.adapter.RecyclerAdapter
+import com.example.a10wordapp.ui.delete.adapter.TestList
 
 class DeleteActivity : BaseActivity() {
+    private lateinit var recyclerView: RecyclerView
     private lateinit var binding: ActivityDeleteBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val recyclerView = binding.recyclerView
+
+        recyclerView = binding.recyclerView
         recyclerView.setHasFixedSize(true)
 
         val rLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = rLayoutManager
-
-        recyclerView.adapter = Adapter()
+        val data: List<TestList> = List(20) { TestList()}
+        recyclerView.adapter = RecyclerAdapter(data)
     }
 
     override fun initViewBinding() {

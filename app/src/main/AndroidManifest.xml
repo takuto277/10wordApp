@@ -13,14 +13,7 @@
         android:theme="@style/Theme.10wordApp"
         tools:targetApi="31">
         <activity
-            android:name=".MyAdapter"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.delete.adapter.Adapter"
+            android:name=".ViewHolderItem.kt"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
