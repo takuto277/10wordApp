@@ -1,5 +1,6 @@
 package com.example.a10wordapp.ui.list
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import com.example.a10wordapp.databinding.ActivityListBinding
@@ -17,8 +18,10 @@ ListActivity : AppCompatActivity(){
         val listView = ListView(this)
         setContentView(listView)
         var array: Array<String> = arrayOf()
-        val list = viewModel.getList(this)
-        println("papa${list}")
+        println("papapa")
+        val list = viewModel.hoge(this)
+
+        println("papapa${list}")
         println("papa${list.count()}")
         for(i in 0 until list.count()){
             array += list[i].english
