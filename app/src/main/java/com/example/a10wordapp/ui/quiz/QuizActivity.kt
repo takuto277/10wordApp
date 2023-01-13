@@ -4,16 +4,19 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import android.widget.Toast
 import com.example.a10wordapp.databinding.ActivityQuizBinding
-import com.example.a10wordapp.ui.base.BaseActivity
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.a10wordapp.Data.Item
 
 
-class QuizActivity :  BaseActivity() {
+class QuizActivity :  AppCompatActivity() {
     private val viewModel: QuizViewModel by viewModels()
     private lateinit var binding: ActivityQuizBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityQuizBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val list = viewModel.getList(this)
         var arrayFigure = 0
         getlayout(list, arrayFigure)
@@ -45,12 +48,6 @@ class QuizActivity :  BaseActivity() {
                 finish()
             }
         }
-
-    override fun initViewBinding() {
-        binding = ActivityQuizBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-    }
 
     private fun getlayout(list: List<Item>, arrayFigure: Int) {
         binding.wordText.text = list[arrayFigure].english

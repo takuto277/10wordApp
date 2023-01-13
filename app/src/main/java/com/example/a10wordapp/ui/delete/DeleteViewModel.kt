@@ -1,6 +1,6 @@
 package com.example.a10wordapp.ui.delete
 
-import com.example.a10wordapp.ui.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 
-class DeleteViewModel: BaseViewModel() {
+class DeleteViewModel: ViewModel() {
 }

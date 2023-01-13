@@ -1,7 +1,7 @@
 package com.example.a10wordapp.ui.home
 
-import com.example.a10wordapp.ui.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 
-open class HomeViewModel : BaseViewModel() {
+open class HomeViewModel : ViewModel(){
 
 }
