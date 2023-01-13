@@ -6,7 +6,7 @@ import android.widget.Toast
 import com.example.a10wordapp.databinding.ActivityQuizBinding
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.a10wordapp.Data.Item
+import com.example.a10wordapp.Data.ItemEntiry
 
 
 class QuizActivity :  AppCompatActivity() {
@@ -49,7 +49,7 @@ class QuizActivity :  AppCompatActivity() {
             }
         }
 
-    private fun getlayout(list: List<Item>, arrayFigure: Int) {
+    private fun getlayout(list: List<ItemEntiry>, arrayFigure: Int) {
         binding.wordText.text = list[arrayFigure].english
         binding.translateText.text = list[arrayFigure].japanese
     }

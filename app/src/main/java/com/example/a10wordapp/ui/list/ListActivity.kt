@@ -1,20 +1,12 @@
 package com.example.a10wordapp.ui.list
 
-import android.content.Context
 import android.os.Bundle
-import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ListAdapter
-import com.example.a10wordapp.R
 import com.example.a10wordapp.databinding.ActivityListBinding
 import android.widget.ListView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.a10wordapp.Data.Item
-import com.example.a10wordapp.Data.ItemRoomDatabase
-import kotlinx.coroutines.runBlocking
 
 class
 ListActivity : AppCompatActivity(){

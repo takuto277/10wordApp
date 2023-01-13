@@ -1,14 +1,9 @@
 package com.example.a10wordapp.ui.add
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.a10wordapp.R
 import com.example.a10wordapp.databinding.ActivityAddBinding
-import com.example.a10wordapp.ui.add.AddViewModel
-import com.example.a10wordapp.Data.ItemRoomDatabase
-import com.example.a10wordapp.Data.Item
 
 class AddActivity : AppCompatActivity() {
 
@@ -34,7 +29,7 @@ class AddActivity : AppCompatActivity() {
     }
 
     private fun addNewItem(id: Int, english: String, japanese: String){
-        viewModel.NewItem(this,
+        viewModel.newItem(this,
             id, english, japanese)
     }
 }

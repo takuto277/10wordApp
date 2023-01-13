@@ -2,21 +2,20 @@ package com.example.a10wordapp.ui.add
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.example.a10wordapp.ui.add.AddActivity
 import com.example.a10wordapp.Data.ItemRoomDatabase
-import com.example.a10wordapp.Data.Item
+import com.example.a10wordapp.Data.ItemEntiry
 import kotlinx.coroutines.runBlocking
 
 class AddViewModel: ViewModel() {
-    fun NewItem(context: Context, id:Int, english:String, japanese:String){
+    fun newItem(context: Context, id:Int, english:String, japanese:String){
         val getDatabase = ItemRoomDatabase.getDatabase(context)
-        val item = Item(id, english, japanese)
+        val itemEntiry = ItemEntiry(id, english, japanese)
         val itemDao = getDatabase.itemDao()
         runBlocking {
-            itemDao.insert(item)
+            itemDao.insert(itemEntiry)
         }
 
-        var list: List<Item>
+        var list: List<ItemEntiry>
         runBlocking {
             list = itemDao.getAll()
         }
