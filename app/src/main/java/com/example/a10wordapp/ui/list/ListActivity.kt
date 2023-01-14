@@ -15,21 +15,16 @@ ListActivity : AppCompatActivity(){
     private lateinit var binding: ActivityListBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val listView = ListView(this)
-        setContentView(listView)
-        var array: Array<String> = arrayOf()
-        println("papapa")
-        val list = viewModel.hoge(this)
 
-        println("papapa${list}")
-        println("papa${list.count()}")
+        val listView: ListView = viewModel.getListView(this)
+        setContentView(listView)
+
+        var array: Array<String> = arrayOf()
+        val list = viewModel.getList(this)
         for(i in 0 until list.count()){
             array += list[i].english
         }
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,array)
-
-        listView.adapter = adapter
+        viewModel.getAdapter(listView, this, array)
 
         listView.setOnItemClickListener{ adapter, view, position, id ->
             val message = "「${(array[position])}」をクリックしました。"

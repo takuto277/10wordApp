@@ -1,18 +1,28 @@
 package com.example.a10wordapp.ui.list
 
 import android.content.Context
+import android.widget.ListView
 import androidx.lifecycle.ViewModel
 import com.example.a10wordapp.Data.ItemEntiry
-import com.example.a10wordapp.Data.ItemRoomDatabase
 import com.example.a10wordapp.Repository.getListRepository
-import kotlinx.coroutines.runBlocking
+import com.example.a10wordapp.Repository.GetListViewRepository
 
 open class ListViewModel: ViewModel() {
-    fun hoge(context: Context): List<ItemEntiry> {
-        val getListRepository = getListRepository(ItemRoomDatabase.getDatabase(context))
-        var list = getListRepository.getList(context)
+    fun getList(context: Context): List<ItemEntiry> {
+        var list = getListRepository().getList(context)
         return list
         //TODO:返り値を使わずにobserveを実装する予定
+    }
+
+    fun getListView(context: Context): ListView{
+        var listView = GetListViewRepository().getListView(context)
+
+        return  listView
+    }
+
+    fun getAdapter(listView: ListView, context: Context, array: Array<String>) {
+        val adapter = GetListViewRepository().getAdapter(context, array)
+        listView.adapter = adapter
     }
 
 }
