@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.example.a10wordapp.databinding.ActivityQuizBinding
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.example.a10wordapp.Data.ItemEntiry
 
 
@@ -17,25 +18,26 @@ class QuizActivity :  AppCompatActivity() {
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val list = viewModel.getList(this)
         var arrayFigure = 0
-        getlayout(list, arrayFigure)
-        binding.translateText.isVisible = false
+
+        // リストを取得する
+        viewModel.getList(this)
+
+        viewModel.listLiveData.observe(this, Observer {
+            viewModel.setUp(binding, arrayFigure)
+        })
 
         binding.rightButton.setOnClickListener {
-            binding.translateText.isVisible = false
-            if (arrayFigure==list.count()-1){
-                Toast.makeText(applicationContext, "問題終了！", Toast.LENGTH_SHORT).show()
-                finish()
-            } else {
-                ++arrayFigure
-                getlayout(list, arrayFigure)
-            }
+            viewModel.rightAction(binding, arrayFigure)
+            viewModel.chackFinish(arrayFigure)
         }
+
         binding.wrongButton.setOnClickListener {
             binding.translateText.isVisible = false
+            val itemList = viewModel.listLiveData.value ?: return@setOnClickListener
+
             arrayFigure = 0
-            getlayout(list, arrayFigure)
+            getlayout(itemList, arrayFigure)
         }
         binding.hiddenButton.setOnClickListener {
             if (binding.translateText.isVisible) {
@@ -47,10 +49,19 @@ class QuizActivity :  AppCompatActivity() {
             binding.btnBack.setOnClickListener {
                 finish()
             }
+        viewModel.arrayFigureLiveData.observe(this, Observer {
+            arrayFigure = viewModel.arrayFigureLiveData.value ?: return@Observer
+        })
+
+        viewModel.checkFinishLiveData.observe(this, Observer {
+            Toast.makeText(this, "問題終了！", Toast.LENGTH_SHORT).show()
+        //    finish()
+        })
         }
 
     private fun getlayout(list: List<ItemEntiry>, arrayFigure: Int) {
         binding.wordText.text = list[arrayFigure].english
         binding.translateText.text = list[arrayFigure].japanese
     }
+
 }
