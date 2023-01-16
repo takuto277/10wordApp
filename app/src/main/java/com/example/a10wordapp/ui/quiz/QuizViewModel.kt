@@ -6,7 +6,8 @@ import com.example.a10wordapp.Data.ItemEntiry
 import com.example.a10wordapp.Data.ItemRoomDatabase
 import kotlinx.coroutines.runBlocking
 
-open class QuizViewModel : ViewModel(){
+open class
+QuizViewModel : ViewModel(){
     fun getList(context: Context): List<ItemEntiry>{
         val getDatabase = ItemRoomDatabase.getDatabase(context)
         val itemDao = getDatabase.itemDao()
