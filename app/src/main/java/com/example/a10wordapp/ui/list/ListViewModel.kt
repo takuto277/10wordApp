@@ -12,28 +12,29 @@ import com.example.a10wordapp.Repository.RoomRepository
 
 open class ListViewModel: ViewModel() {
 
+    private val mutableLiveDataListView = MutableLiveData<ListView>()
+     val listViewLiveData : LiveData<ListView> get() = mutableLiveDataListView
+
     private val mutableLiveDataList = MutableLiveData<List<ItemEntiry>>()
-    val listLiveData: LiveData<List<ItemEntiry>> = mutableLiveDataList
+    val listLiveData: LiveData<List<ItemEntiry>> get() = mutableLiveDataList
+
+    private val mutableLiveDataArray = MutableLiveData<Array<String>>()
+    val arrayLiveData: LiveData<Array<String>> get() = mutableLiveDataArray
+
+    fun getListView(context: Context){
+        mutableLiveDataListView.value = GetListViewRepository().getListView(context)
+    }
 
     fun getList(context: Context){
         mutableLiveDataList.value = RoomRepository().getList(context)
-        //TODO:返り値を使わずにobserveを実装する予定
     }
 
-    fun getListView(context: Context): ListView{
-        var listView = GetListViewRepository().getListView(context)
-
-        return  listView
+    fun getArrayList(list: List<ItemEntiry>){
+        mutableLiveDataArray.value = AddArrayRepository().addArray(list)
     }
 
     fun getAdapter(listView: ListView, context: Context, array: Array<String>) {
         val adapter = GetListViewRepository().getAdapter(context, array)
         listView.adapter = adapter
     }
-
-    fun getArrayList(list: List<ItemEntiry>?): Array<String> {
-        val array = AddArrayRepository().addArray(list)
-        return array
-    }
-
 }

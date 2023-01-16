@@ -12,6 +12,5 @@ class GetListViewRepository {
 
     fun getAdapter(context: Context,array: Array<String>): ArrayAdapter<String> {
         return ArrayAdapter(context, R.layout.simple_list_item_1,array)
-
     }
 }
