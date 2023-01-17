@@ -6,9 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.a10wordapp.Data.ItemEntiry
-import com.example.a10wordapp.Repository.AddArrayRepository
-import com.example.a10wordapp.Repository.GetListViewRepository
-import com.example.a10wordapp.Repository.DataRepository
+import com.example.a10wordapp.repository.AddArrayRepository
+import com.example.a10wordapp.repository.GetListViewRepository
+import com.example.a10wordapp.repository.DataRepository
 
 class ListViewModel : ViewModel() {
 

@@ -1,4 +1,4 @@
-package com.example.a10wordapp.Repository
+package com.example.a10wordapp.repository
 
 import com.example.a10wordapp.Data.ItemEntiry
 

@@ -1,4 +1,4 @@
-package com.example.a10wordapp.Repository
+package com.example.a10wordapp.repository
 
 import android.R
 import android.content.Context

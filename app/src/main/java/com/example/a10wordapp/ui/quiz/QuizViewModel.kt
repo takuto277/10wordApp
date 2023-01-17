@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.a10wordapp.Data.ItemEntiry
-import com.example.a10wordapp.Repository.QuizRepository
-import com.example.a10wordapp.Repository.DataRepository
+import com.example.a10wordapp.repository.QuizRepository
+import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.databinding.ActivityQuizBinding
 
 class QuizViewModel(private val dataRepository: DataRepository,
