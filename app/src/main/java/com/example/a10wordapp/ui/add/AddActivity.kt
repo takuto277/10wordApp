@@ -16,11 +16,14 @@ class AddActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.saveButton.setOnClickListener {
-            viewModel.saveItem(this, binding)
+            val id = binding.id.text.toString().toInt()
+            val english = binding.english.text.toString()
+            val japanese = binding.japanese.text.toString()
+            viewModel.saveButtonTapped(this, id, english, japanese)
             finish()
         }
 
-        binding.backButton.setOnClickListener{
+        binding.backButton.setOnClickListener {
             finish()
         }
     }

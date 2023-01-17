@@ -7,10 +7,7 @@ import com.example.a10wordapp.Repository.RoomRepository
 import com.example.a10wordapp.databinding.ActivityAddBinding
 
 class AddViewModel: ViewModel() {
-    fun saveItem(context: Context, binding: ActivityAddBinding) {
-        val id = AddRepository().id(binding)
-        val english = AddRepository().englsih(binding)
-        val japanese = AddRepository().englsih(binding)
+    fun saveButtonTapped(context: Context, id:Int, english: String, japanese: String) {
         RoomRepository().addNewItem(context, id, english, japanese)
     }
 }

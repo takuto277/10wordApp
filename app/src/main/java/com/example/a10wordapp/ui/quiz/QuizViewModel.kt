@@ -14,28 +14,28 @@ import kotlinx.coroutines.runBlocking
 open class
 QuizViewModel : ViewModel(){
 
-    private val mutableLiveDataList = MutableLiveData<List<ItemEntiry>>()
-    val listLiveData: LiveData<List<ItemEntiry>> get() = mutableLiveDataList
+    private val _list = MutableLiveData<List<ItemEntiry>>()
+    val list: LiveData<List<ItemEntiry>> get() = _list
 
-    private val mutableLiveDataArrayFigure = MutableLiveData<Int>()
-    val arrayFigureLiveData: LiveData<Int> get() = mutableLiveDataArrayFigure
+    private val _arrayFigure = MutableLiveData<Int>()
+    val arrayFigure: LiveData<Int> get() = _arrayFigure
 
-    private val mutableLiveDataCheckFinish = MutableLiveData<Boolean>()
-    val checkFinishLiveData: LiveData<Boolean> get() = mutableLiveDataCheckFinish
+    private val _checkFinish = MutableLiveData<Boolean>()
+    val checkFinish: LiveData<Boolean> get() = _checkFinish
 
     fun getList(context: Context){
-        mutableLiveDataList.value = RoomRepository().getList(context)
+        _list.value = RoomRepository().getList(context)
     }
 
     fun setUp(binding: ActivityQuizBinding, arrayFigure: Int) {
-        val itemList = listLiveData.value ?: return
+        val itemList = list.value ?: return
         QuizRepository().getLayout(binding, itemList, arrayFigure)
         QuizRepository().resetVisible(binding)
     }
 
     fun rightAction(binding: ActivityQuizBinding, arrayFigure: Int) {
-        val itemList = listLiveData.value ?: return
-        mutableLiveDataArrayFigure.value = QuizRepository().rightAction(itemList, arrayFigure)
+        val itemList = list.value ?: return
+        _arrayFigure.value = QuizRepository().rightAction(itemList, arrayFigure)
         //TODO: arrayFigureを更新してないから、UIが変化しない。
         // Observerで変更してからgetLayoutを呼ぶべき。眠いから明日やる。
         QuizRepository().getLayout(binding, itemList, arrayFigure)
@@ -43,7 +43,7 @@ QuizViewModel : ViewModel(){
     }
 
     fun chackFinish(arrayFigure: Int) {
-        val itemList = listLiveData.value ?: return
-        mutableLiveDataCheckFinish.value = QuizRepository().checkFinish(itemList, arrayFigure)
+        val itemList = list.value ?: return
+        _checkFinish.value = QuizRepository().checkFinish(itemList, arrayFigure)
     }
 }

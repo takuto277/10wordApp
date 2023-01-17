@@ -23,21 +23,31 @@ class QuizActivity :  AppCompatActivity() {
         // リストを取得する
         viewModel.getList(this)
 
-        viewModel.listLiveData.observe(this, Observer {
-            viewModel.setUp(binding, arrayFigure)
+        viewModel.list.observe(this, Observer {
+            val itemList = viewModel.list.value ?: return@Observer
+            getlayout(itemList, arrayFigure)
+            binding.translateText.isVisible = false
         })
 
-        binding.rightButton.setOnClickListener {
-            viewModel.rightAction(binding, arrayFigure)
-            viewModel.chackFinish(arrayFigure)
+        binding.currentButton.setOnClickListener {
+            val itemList = viewModel.list.value ?: return@setOnClickListener
+            if (arrayFigure==itemList.count()-1) {
+                finish()
+                Toast.makeText(this, "問題終了！", Toast.LENGTH_SHORT).show()
+            } else {
+                ++arrayFigure
+            }
+
+            getlayout(itemList, arrayFigure)
+            binding.translateText.isVisible = false
         }
 
         binding.wrongButton.setOnClickListener {
-            binding.translateText.isVisible = false
-            val itemList = viewModel.listLiveData.value ?: return@setOnClickListener
+            val itemList = viewModel.list.value ?: return@setOnClickListener
 
             arrayFigure = 0
             getlayout(itemList, arrayFigure)
+            binding.translateText.isVisible = false
         }
         binding.hiddenButton.setOnClickListener {
             if (binding.translateText.isVisible) {
@@ -49,12 +59,12 @@ class QuizActivity :  AppCompatActivity() {
             binding.btnBack.setOnClickListener {
                 finish()
             }
-        viewModel.arrayFigureLiveData.observe(this, Observer {
-            arrayFigure = viewModel.arrayFigureLiveData.value ?: return@Observer
+        viewModel.arrayFigure.observe(this, Observer {
+            arrayFigure = viewModel.arrayFigure.value ?: return@Observer
         })
 
-        viewModel.checkFinishLiveData.observe(this, Observer {
-            Toast.makeText(this, "問題終了！", Toast.LENGTH_SHORT).show()
+        viewModel.checkFinish.observe(this, Observer {
+
         //    finish()
         })
         }
