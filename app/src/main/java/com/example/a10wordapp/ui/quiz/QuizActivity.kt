@@ -9,8 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.a10wordapp.Data.ItemEntiry
 
-
-class QuizActivity :  AppCompatActivity() {
+class QuizActivity : AppCompatActivity() {
     private val viewModel: QuizViewModel by viewModels()
     private lateinit var binding: ActivityQuizBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +30,7 @@ class QuizActivity :  AppCompatActivity() {
 
         binding.currentButton.setOnClickListener {
             val itemList = viewModel.list.value ?: return@setOnClickListener
-            if (arrayFigure==itemList.count()-1) {
+            if (arrayFigure == itemList.count() - 1) {
                 finish()
                 Toast.makeText(this, "問題終了！", Toast.LENGTH_SHORT).show()
             } else {
@@ -56,22 +55,18 @@ class QuizActivity :  AppCompatActivity() {
                 binding.translateText.isVisible = true
             }
         }
-            binding.btnBack.setOnClickListener {
-                finish()
-            }
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
+
         viewModel.arrayFigure.observe(this, Observer {
             arrayFigure = viewModel.arrayFigure.value ?: return@Observer
         })
-
-        viewModel.checkFinish.observe(this, Observer {
-
-        //    finish()
-        })
-        }
+    }
 
     private fun getlayout(list: List<ItemEntiry>, arrayFigure: Int) {
         binding.wordText.text = list[arrayFigure].english
         binding.translateText.text = list[arrayFigure].japanese
     }
-
 }
+

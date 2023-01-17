@@ -10,7 +10,7 @@ import com.example.a10wordapp.ui.quiz.QuizActivity
 import com.example.a10wordapp.ui.add.AddActivity
 import com.example.a10wordapp.ui.delete.DeleteActivity
 
-class HomeActivity : AppCompatActivity(){
+class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

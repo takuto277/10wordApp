@@ -16,7 +16,7 @@ class ListActivity : AppCompatActivity() {
         val listView = viewModel.listViewLiveData.value ?: return
         setContentView(listView)
 
-         // リストを取得する
+        // リストを取得する
         viewModel.getList(this)
 
         listView.setOnItemClickListener { adapter, view, position, id ->
@@ -27,6 +27,7 @@ class ListActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+
         viewModel.listLiveData.observe(this, Observer {
             val itemList = viewModel.listLiveData.value ?: return@Observer
             viewModel.getArrayList(itemList)

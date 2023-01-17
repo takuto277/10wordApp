@@ -5,14 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.a10wordapp.Data.ItemEntiry
-import com.example.a10wordapp.Data.ItemRoomDatabase
 import com.example.a10wordapp.Repository.QuizRepository
-import com.example.a10wordapp.Repository.RoomRepository
+import com.example.a10wordapp.Repository.DataRepository
 import com.example.a10wordapp.databinding.ActivityQuizBinding
-import kotlinx.coroutines.runBlocking
 
-open class
-QuizViewModel : ViewModel(){
+class QuizViewModel(private val dataRepository: DataRepository,
+                    private val quizRepository: QuizRepository)
+    : ViewModel() {
 
     private val _list = MutableLiveData<List<ItemEntiry>>()
     val list: LiveData<List<ItemEntiry>> get() = _list
@@ -23,27 +22,27 @@ QuizViewModel : ViewModel(){
     private val _checkFinish = MutableLiveData<Boolean>()
     val checkFinish: LiveData<Boolean> get() = _checkFinish
 
-    fun getList(context: Context){
-        _list.value = RoomRepository().getList(context)
+    fun getList(context: Context) {
+        _list.value = dataRepository.getList(context)
     }
 
     fun setUp(binding: ActivityQuizBinding, arrayFigure: Int) {
         val itemList = list.value ?: return
-        QuizRepository().getLayout(binding, itemList, arrayFigure)
-        QuizRepository().resetVisible(binding)
+        quizRepository.getLayout(binding, itemList, arrayFigure)
+        quizRepository.resetVisible(binding)
     }
 
     fun rightAction(binding: ActivityQuizBinding, arrayFigure: Int) {
         val itemList = list.value ?: return
-        _arrayFigure.value = QuizRepository().rightAction(itemList, arrayFigure)
+        _arrayFigure.value = quizRepository.rightAction(itemList, arrayFigure)
         //TODO: arrayFigureを更新してないから、UIが変化しない。
         // Observerで変更してからgetLayoutを呼ぶべき。眠いから明日やる。
-        QuizRepository().getLayout(binding, itemList, arrayFigure)
-        QuizRepository().resetVisible(binding)
+        quizRepository.getLayout(binding, itemList, arrayFigure)
+        quizRepository.resetVisible(binding)
     }
 
     fun chackFinish(arrayFigure: Int) {
         val itemList = list.value ?: return
-        _checkFinish.value = QuizRepository().checkFinish(itemList, arrayFigure)
+        _checkFinish.value = quizRepository.checkFinish(itemList, arrayFigure)
     }
 }

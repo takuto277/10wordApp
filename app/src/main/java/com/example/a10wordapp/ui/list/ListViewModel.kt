@@ -8,12 +8,12 @@ import androidx.lifecycle.ViewModel
 import com.example.a10wordapp.Data.ItemEntiry
 import com.example.a10wordapp.Repository.AddArrayRepository
 import com.example.a10wordapp.Repository.GetListViewRepository
-import com.example.a10wordapp.Repository.RoomRepository
+import com.example.a10wordapp.Repository.DataRepository
 
-open class ListViewModel: ViewModel() {
+class ListViewModel : ViewModel() {
 
     private val mutableLiveDataListView = MutableLiveData<ListView>()
-     val listViewLiveData : LiveData<ListView> get() = mutableLiveDataListView
+    val listViewLiveData: LiveData<ListView> get() = mutableLiveDataListView
 
     private val mutableLiveDataList = MutableLiveData<List<ItemEntiry>>()
     val listLiveData: LiveData<List<ItemEntiry>> get() = mutableLiveDataList
@@ -21,15 +21,15 @@ open class ListViewModel: ViewModel() {
     private val mutableLiveDataArray = MutableLiveData<Array<String>>()
     val arrayLiveData: LiveData<Array<String>> get() = mutableLiveDataArray
 
-    fun getListView(context: Context){
+    fun getListView(context: Context) {
         mutableLiveDataListView.value = GetListViewRepository().getListView(context)
     }
 
-    fun getList(context: Context){
-        mutableLiveDataList.value = RoomRepository().getList(context)
+    fun getList(context: Context) {
+        mutableLiveDataList.value = DataRepository().getList(context)
     }
 
-    fun getArrayList(list: List<ItemEntiry>){
+    fun getArrayList(list: List<ItemEntiry>) {
         mutableLiveDataArray.value = AddArrayRepository().addArray(list)
     }
 
