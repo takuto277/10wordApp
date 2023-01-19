@@ -9,6 +9,7 @@ import com.example.a10wordapp.data.ItemEntiry
 import com.example.a10wordapp.repository.AddArrayRepository
 import com.example.a10wordapp.repository.GetListViewRepository
 import com.example.a10wordapp.repository.DataRepository
+import com.example.a10wordapp.repository.QuizRepository
 
 class ListViewModel : ViewModel() {
 

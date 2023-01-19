@@ -5,6 +5,9 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.example.a10wordapp.ViewModelFactory
+import com.example.a10wordapp.repository.DataRepository
+import com.example.a10wordapp.repository.QuizRepository
 
 class ListActivity : AppCompatActivity() {
     private val viewModel: ListViewModel by viewModels()

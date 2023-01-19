@@ -7,13 +7,20 @@ import com.example.a10wordapp.databinding.ActivityQuizBinding
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.a10wordapp.ViewModelFactory
 import com.example.a10wordapp.data.ItemEntiry
+import com.example.a10wordapp.repository.DataRepository
+import com.example.a10wordapp.repository.QuizRepository
 
 class QuizActivity : AppCompatActivity() {
-    private val viewModel: QuizViewModel by viewModels()
+    private val viewModel: QuizViewModel by viewModels {ViewModelFactory(DataRepository(),QuizRepository())}
     private lateinit var binding: ActivityQuizBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

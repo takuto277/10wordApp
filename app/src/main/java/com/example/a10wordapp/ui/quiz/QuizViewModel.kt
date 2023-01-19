@@ -9,8 +9,9 @@ import com.example.a10wordapp.repository.QuizRepository
 import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.databinding.ActivityQuizBinding
 
-class QuizViewModel(private val dataRepository: DataRepository,
-                    private val quizRepository: QuizRepository)
+class QuizViewModel(private val dataRepository: DataRepository ,
+                    private val quizRepository: QuizRepository
+                    )
     : ViewModel() {
 
     private val _list = MutableLiveData<List<ItemEntiry>>()
