@@ -7,7 +7,7 @@ import com.example.a10wordapp.databinding.ActivityQuizBinding
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.example.a10wordapp.Data.ItemEntiry
+import com.example.a10wordapp.data.ItemEntiry
 
 class QuizActivity : AppCompatActivity() {
     private val viewModel: QuizViewModel by viewModels()

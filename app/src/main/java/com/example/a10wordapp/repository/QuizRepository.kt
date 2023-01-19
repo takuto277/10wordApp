@@ -1,7 +1,7 @@
 package com.example.a10wordapp.repository
 
 import androidx.core.view.isVisible
-import com.example.a10wordapp.Data.ItemEntiry
+import com.example.a10wordapp.data.ItemEntiry
 import com.example.a10wordapp.databinding.ActivityQuizBinding
 
 class QuizRepository {

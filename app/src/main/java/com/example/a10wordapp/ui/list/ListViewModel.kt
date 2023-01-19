@@ -5,7 +5,7 @@ import android.widget.ListView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.a10wordapp.Data.ItemEntiry
+import com.example.a10wordapp.data.ItemEntiry
 import com.example.a10wordapp.repository.AddArrayRepository
 import com.example.a10wordapp.repository.GetListViewRepository
 import com.example.a10wordapp.repository.DataRepository

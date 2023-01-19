@@ -1,8 +1,8 @@
 package com.example.a10wordapp.repository
 
 import android.content.Context
-import com.example.a10wordapp.Data.ItemEntiry
-import com.example.a10wordapp.Data.ItemRoomDatabase
+import com.example.a10wordapp.data.ItemEntiry
+import com.example.a10wordapp.data.ItemRoomDatabase
 import kotlinx.coroutines.runBlocking
 
 class DataRepository() {

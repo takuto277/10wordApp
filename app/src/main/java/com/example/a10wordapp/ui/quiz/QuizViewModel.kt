@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.a10wordapp.Data.ItemEntiry
+import com.example.a10wordapp.data.ItemEntiry
 import com.example.a10wordapp.repository.QuizRepository
 import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.databinding.ActivityQuizBinding

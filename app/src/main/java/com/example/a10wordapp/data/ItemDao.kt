@@ -1,4 +1,4 @@
-package com.example.a10wordapp.Data
+package com.example.a10wordapp.data
 
 import androidx.room.Dao
 import androidx.room.Delete
