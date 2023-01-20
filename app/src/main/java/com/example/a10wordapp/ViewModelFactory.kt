@@ -31,7 +31,7 @@ class ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
                 isAssignableFrom(ListViewModel::class.java) ->
                     ListViewModel(DataRepository(), GetListViewRepository(), AddArrayRepository())
                 isAssignableFrom(DeleteViewModel::class.java) ->
-                    DeleteViewModel()
+                    DeleteViewModel(DataRepository())
                 isAssignableFrom(AddViewModel::class.java) ->
                     AddViewModel(DataRepository())
                 isAssignableFrom(HomeViewModel::class.java) ->
