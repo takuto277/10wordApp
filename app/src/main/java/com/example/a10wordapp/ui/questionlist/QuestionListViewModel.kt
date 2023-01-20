@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.a10wordapp.data.ItemEntiry
+import com.example.a10wordapp.domain.entity.QuestionListItem
 import com.example.a10wordapp.repository.AddArrayRepository
 import com.example.a10wordapp.repository.GetListViewRepository
 import com.example.a10wordapp.repository.DataRepository
@@ -15,6 +16,17 @@ class QuestionListViewModel(
     private val getListViewRepository: GetListViewRepository,
     private val addArrayRepository: AddArrayRepository
 ) : ViewModel() {
+
+    private val _questionListItem = MutableLiveData<Array<QuestionListItem>>()
+    val questionListItem: LiveData<Array<QuestionListItem>> get() = _questionListItem
+
+    fun fetchContent() {
+        // TODO
+        _questionListItem.value = arrayOf(
+            QuestionListItem("Axe"),
+            QuestionListItem("Box")
+        )
+    }
 
     private val mutableLiveDataListView = MutableLiveData<ListView>()
     val listViewLiveData: LiveData<ListView> get() = mutableLiveDataListView
