@@ -1,4 +1,4 @@
-package com.example.a10wordapp.ui.list
+package com.example.a10wordapp.ui.questionlist
 
 import android.os.Bundle
 import android.widget.Toast
@@ -6,11 +6,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.a10wordapp.ViewModelFactory
-import com.example.a10wordapp.repository.DataRepository
-import com.example.a10wordapp.repository.QuizRepository
 
-class ListActivity : AppCompatActivity() {
-    private val viewModel: ListViewModel by viewModels{ViewModelFactory()}
+class QuestionListActivity : AppCompatActivity() {
+    private val viewModel: QuestionListViewModel by viewModels{ViewModelFactory()}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +23,7 @@ class ListActivity : AppCompatActivity() {
         listView.setOnItemClickListener { adapter, view, position, id ->
             val itemArray = viewModel.arrayLiveData.value ?: return@setOnItemClickListener
             Toast.makeText(
-                this@ListActivity,
+                this@QuestionListActivity,
                 "「${(itemArray[position])}」をクリックしました。",
                 Toast.LENGTH_SHORT
             ).show()

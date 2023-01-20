@@ -10,10 +10,9 @@ import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.repository.GetListViewRepository
 import com.example.a10wordapp.repository.QuizRepository
 import com.example.a10wordapp.ui.add.AddViewModel
-import com.example.a10wordapp.ui.delete.DeleteActivity
 import com.example.a10wordapp.ui.delete.DeleteViewModel
 import com.example.a10wordapp.ui.home.HomeViewModel
-import com.example.a10wordapp.ui.list.ListViewModel
+import com.example.a10wordapp.ui.questionlist.QuestionListViewModel
 import com.example.a10wordapp.ui.quiz.QuizViewModel
 
 class ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
@@ -28,8 +27,8 @@ class ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
             when {
                 isAssignableFrom(QuizViewModel::class.java) ->
                     QuizViewModel(DataRepository(), QuizRepository())
-                isAssignableFrom(ListViewModel::class.java) ->
-                    ListViewModel(DataRepository(), GetListViewRepository(), AddArrayRepository())
+                isAssignableFrom(QuestionListViewModel::class.java) ->
+                    QuestionListViewModel(DataRepository(), GetListViewRepository(), AddArrayRepository())
                 isAssignableFrom(DeleteViewModel::class.java) ->
                     DeleteViewModel()
                 isAssignableFrom(AddViewModel::class.java) ->

@@ -41,7 +41,7 @@
         </activity>
         <activity android:name=".ui.quiz.QuizActivity" />
         <activity android:name=".ui.add.AddActivity" />
-        <activity android:name=".ui.list.ListActivity" />
+        <activity android:name=".ui.questionlist.QuestionListActivity" />
     </application>
 
 </manifest>

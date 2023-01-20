@@ -1,4 +1,4 @@
-package com.example.a10wordapp.ui.list
+package com.example.a10wordapp.ui.questionlist
 
 import android.content.Context
 import android.widget.ListView
@@ -10,7 +10,7 @@ import com.example.a10wordapp.repository.AddArrayRepository
 import com.example.a10wordapp.repository.GetListViewRepository
 import com.example.a10wordapp.repository.DataRepository
 
-class ListViewModel(
+class QuestionListViewModel(
     private val dataRepository: DataRepository,
     private val getListViewRepository: GetListViewRepository,
     private val addArrayRepository: AddArrayRepository
