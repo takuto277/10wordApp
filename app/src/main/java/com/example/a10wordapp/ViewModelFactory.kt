@@ -27,7 +27,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
                 isAssignableFrom(QuestionListViewModel::class.java) ->
                     QuestionListViewModel(DataRepository(context))
                 isAssignableFrom(DeleteViewModel::class.java) ->
-                    DeleteViewModel()
+                    DeleteViewModel(DataRepository(context))
                 isAssignableFrom(AddViewModel::class.java) ->
                     AddViewModel(DataRepository(context))
                 isAssignableFrom(HomeViewModel::class.java) ->

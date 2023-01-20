@@ -16,25 +16,25 @@ import com.example.a10wordapp.repository.QuizRepository
 class QuizActivity : AppCompatActivity() {
     private val viewModel: QuizViewModel by viewModels{ViewModelFactory(applicationContext)}
     private lateinit var binding: ActivityQuizBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var arrayFigure = 0
 
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var arrayFigure = 0
-
         // リストを取得する
         viewModel.getList(this)
+        val itemList = viewModel.list.value ?: return
 
         viewModel.list.observe(this, Observer {
-            val itemList = viewModel.list.value ?: return@Observer
             getlayout(itemList, arrayFigure)
             binding.translateText.isVisible = false
         })
 
         binding.currentButton.setOnClickListener {
-            val itemList = viewModel.list.value ?: return@setOnClickListener
             if (arrayFigure == itemList.count() - 1) {
                 finish()
                 Toast.makeText(this, "問題終了！", Toast.LENGTH_SHORT).show()
@@ -47,22 +47,18 @@ class QuizActivity : AppCompatActivity() {
         }
 
         binding.wrongButton.setOnClickListener {
-            val itemList = viewModel.list.value ?: return@setOnClickListener
-
             arrayFigure = 0
             getlayout(itemList, arrayFigure)
             binding.translateText.isVisible = false
         }
+
         binding.hiddenButton.setOnClickListener {
             binding.translateText.isVisible = !binding.translateText.isVisible
         }
+
         binding.btnBack.setOnClickListener {
             finish()
         }
-
-        viewModel.arrayFigure.observe(this, Observer {
-            arrayFigure = viewModel.arrayFigure.value ?: return@Observer
-        })
     }
 
     private fun getlayout(list: List<ItemEntiry>, arrayFigure: Int) {
