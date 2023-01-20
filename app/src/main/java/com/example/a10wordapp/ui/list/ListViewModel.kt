@@ -9,9 +9,12 @@ import com.example.a10wordapp.data.ItemEntiry
 import com.example.a10wordapp.repository.AddArrayRepository
 import com.example.a10wordapp.repository.GetListViewRepository
 import com.example.a10wordapp.repository.DataRepository
-import com.example.a10wordapp.repository.QuizRepository
 
-class ListViewModel : ViewModel() {
+class ListViewModel(
+    private val dataRepository: DataRepository,
+    private val getListViewRepository: GetListViewRepository,
+    private val addArrayRepository: AddArrayRepository
+) : ViewModel() {
 
     private val mutableLiveDataListView = MutableLiveData<ListView>()
     val listViewLiveData: LiveData<ListView> get() = mutableLiveDataListView
@@ -23,19 +26,19 @@ class ListViewModel : ViewModel() {
     val arrayLiveData: LiveData<Array<String>> get() = mutableLiveDataArray
 
     fun getListView(context: Context) {
-        mutableLiveDataListView.value = GetListViewRepository().getListView(context)
+        mutableLiveDataListView.value = getListViewRepository.getListView(context)
     }
 
     fun getList(context: Context) {
-        mutableLiveDataList.value = DataRepository().getList(context)
+        mutableLiveDataList.value = dataRepository.getList(context)
     }
 
     fun getArrayList(list: List<ItemEntiry>) {
-        mutableLiveDataArray.value = AddArrayRepository().addArray(list)
+        mutableLiveDataArray.value = addArrayRepository.addArray(list)
     }
 
     fun getAdapter(listView: ListView, context: Context, array: Array<String>) {
-        val adapter = GetListViewRepository().getAdapter(context, array)
+        val adapter = getListViewRepository.getAdapter(context, array)
         listView.adapter = adapter
     }
 }

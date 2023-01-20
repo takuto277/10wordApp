@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.example.a10wordapp.repository.DataRepository
 
-class AddViewModel: ViewModel() {
+class AddViewModel(
+    private val dataRepository: DataRepository
+): ViewModel() {
     fun saveButtonTapped(context: Context, id:Int, english: String, japanese: String) {
-        DataRepository().addNewItem(context, id, english, japanese)
+        dataRepository.addNewItem(context, id, english, japanese)
     }
 }

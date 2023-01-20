@@ -10,7 +10,7 @@ import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.repository.QuizRepository
 
 class ListActivity : AppCompatActivity() {
-    private val viewModel: ListViewModel by viewModels()
+    private val viewModel: ListViewModel by viewModels{ViewModelFactory()}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

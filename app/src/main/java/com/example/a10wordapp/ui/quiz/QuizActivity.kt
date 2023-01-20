@@ -14,12 +14,10 @@ import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.repository.QuizRepository
 
 class QuizActivity : AppCompatActivity() {
-    private val viewModel: QuizViewModel by viewModels {ViewModelFactory(DataRepository(),QuizRepository())}
+    private val viewModel: QuizViewModel by viewModels{ViewModelFactory()}
     private lateinit var binding: ActivityQuizBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
 
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -56,11 +54,7 @@ class QuizActivity : AppCompatActivity() {
             binding.translateText.isVisible = false
         }
         binding.hiddenButton.setOnClickListener {
-            if (binding.translateText.isVisible) {
-                binding.translateText.isVisible = false
-            } else {
-                binding.translateText.isVisible = true
-            }
+            binding.translateText.isVisible = !binding.translateText.isVisible
         }
         binding.btnBack.setOnClickListener {
             finish()

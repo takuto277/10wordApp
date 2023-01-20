@@ -5,7 +5,9 @@ import android.app.Application
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.a10wordapp.repository.AddArrayRepository
 import com.example.a10wordapp.repository.DataRepository
+import com.example.a10wordapp.repository.GetListViewRepository
 import com.example.a10wordapp.repository.QuizRepository
 import com.example.a10wordapp.ui.add.AddViewModel
 import com.example.a10wordapp.ui.delete.DeleteActivity
@@ -14,11 +16,7 @@ import com.example.a10wordapp.ui.home.HomeViewModel
 import com.example.a10wordapp.ui.list.ListViewModel
 import com.example.a10wordapp.ui.quiz.QuizViewModel
 
-class ViewModelFactory (
-    private val dataRepository: DataRepository,
-    private val quizRepository: QuizRepository
-
-    ) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
 //        @Suppress("unchecked_cast")
 //        override fun <T : ViewModel> create(modelClass: Class<T>) =
 //            QuizViewModel(dataRepository,quizRepository) as T
@@ -29,13 +27,13 @@ class ViewModelFactory (
         with(modelClass) {
             when {
                 isAssignableFrom(QuizViewModel::class.java) ->
-                    QuizViewModel(dataRepository, quizRepository)
+                    QuizViewModel(DataRepository(), QuizRepository())
                 isAssignableFrom(ListViewModel::class.java) ->
-                    ListViewModel()
+                    ListViewModel(DataRepository(), GetListViewRepository(), AddArrayRepository())
                 isAssignableFrom(DeleteViewModel::class.java) ->
                     DeleteViewModel()
                 isAssignableFrom(AddViewModel::class.java) ->
-                    AddViewModel()
+                    AddViewModel(DataRepository())
                 isAssignableFrom(HomeViewModel::class.java) ->
                     HomeViewModel()
                 else ->
