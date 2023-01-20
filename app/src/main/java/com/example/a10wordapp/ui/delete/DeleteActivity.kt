@@ -13,7 +13,7 @@ import com.example.a10wordapp.ui.delete.adapter.TestList
 class DeleteActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: ActivityDeleteBinding
-    private val viewMode:DeleteViewModel by viewModels{ViewModelFactory()}
+    private val viewMode:DeleteViewModel by viewModels{ViewModelFactory(applicationContext)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -8,6 +8,6 @@ class AddViewModel(
     private val dataRepository: DataRepository
 ): ViewModel() {
     fun saveButtonTapped(context: Context, id:Int, english: String, japanese: String) {
-        dataRepository.addNewItem(context, id, english, japanese)
+        dataRepository.addNewItem(id, english, japanese)
     }
 }

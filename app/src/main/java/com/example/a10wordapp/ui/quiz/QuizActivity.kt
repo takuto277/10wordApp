@@ -14,7 +14,7 @@ import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.repository.QuizRepository
 
 class QuizActivity : AppCompatActivity() {
-    private val viewModel: QuizViewModel by viewModels{ViewModelFactory()}
+    private val viewModel: QuizViewModel by viewModels{ViewModelFactory(applicationContext)}
     private lateinit var binding: ActivityQuizBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

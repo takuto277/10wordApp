@@ -24,7 +24,7 @@ class QuizViewModel(private val dataRepository: DataRepository ,
     val checkFinish: LiveData<Boolean> get() = _checkFinish
 
     fun getList(context: Context) {
-        _list.value = dataRepository.getList(context)
+        _list.value = dataRepository.getList()
     }
 
     fun setUp(binding: ActivityQuizBinding, arrayFigure: Int) {

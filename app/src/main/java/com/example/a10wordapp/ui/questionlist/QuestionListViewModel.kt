@@ -12,45 +12,15 @@ import com.example.a10wordapp.repository.GetListViewRepository
 import com.example.a10wordapp.repository.DataRepository
 
 class QuestionListViewModel(
-    private val dataRepository: DataRepository,
-    private val getListViewRepository: GetListViewRepository,
-    private val addArrayRepository: AddArrayRepository
+    private val dataRepository: DataRepository
 ) : ViewModel() {
 
     private val _questionListItem = MutableLiveData<Array<QuestionListItem>>()
     val questionListItem: LiveData<Array<QuestionListItem>> get() = _questionListItem
 
     fun fetchContent() {
-        // TODO
-        _questionListItem.value = arrayOf(
-            QuestionListItem("Axe"),
-            QuestionListItem("Box")
-        )
-    }
-
-    private val mutableLiveDataListView = MutableLiveData<ListView>()
-    val listViewLiveData: LiveData<ListView> get() = mutableLiveDataListView
-
-    private val mutableLiveDataList = MutableLiveData<List<ItemEntiry>>()
-    val listLiveData: LiveData<List<ItemEntiry>> get() = mutableLiveDataList
-
-    private val mutableLiveDataArray = MutableLiveData<Array<String>>()
-    val arrayLiveData: LiveData<Array<String>> get() = mutableLiveDataArray
-
-    fun getListView(context: Context) {
-        mutableLiveDataListView.value = getListViewRepository.getListView(context)
-    }
-
-    fun getList(context: Context) {
-        mutableLiveDataList.value = dataRepository.getList(context)
-    }
-
-    fun getArrayList(list: List<ItemEntiry>) {
-        mutableLiveDataArray.value = addArrayRepository.addArray(list)
-    }
-
-    fun getAdapter(listView: ListView, context: Context, array: Array<String>) {
-        val adapter = getListViewRepository.getAdapter(context, array)
-        listView.adapter = adapter
+        _questionListItem.value = dataRepository.getList().map { entity ->
+            QuestionListItem(text = "${entity.english} / ${entity.japanese}")
+        }.toTypedArray()
     }
 }

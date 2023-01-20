@@ -15,7 +15,7 @@ import com.example.a10wordapp.ui.questionlist.adapter.QuestionListAdapter
 
 class QuestionListActivity : AppCompatActivity() {
 
-    private val viewModel: QuestionListViewModel by viewModels { ViewModelFactory() }
+    private val viewModel: QuestionListViewModel by viewModels { ViewModelFactory(applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -5,8 +5,8 @@ import com.example.a10wordapp.data.ItemEntiry
 import com.example.a10wordapp.data.ItemRoomDatabase
 import kotlinx.coroutines.runBlocking
 
-class DataRepository() {
-    fun addNewItem(context: Context, id:Int, english:String, japanese:String) {
+class DataRepository(private val context: Context) {
+    fun addNewItem(id: Int, english: String, japanese: String) {
         val getDatabase = ItemRoomDatabase.getDatabase(context)
         val itemEntiry = ItemEntiry(id, english, japanese)
         val itemDao = getDatabase.itemDao()
@@ -20,7 +20,7 @@ class DataRepository() {
         }
     }
 
-    fun getList(context: Context): List<ItemEntiry>{
+    fun getList(): List<ItemEntiry> {
         val getDatabase = ItemRoomDatabase.getDatabase(context)
         val itemDao = getDatabase.itemDao()
 
