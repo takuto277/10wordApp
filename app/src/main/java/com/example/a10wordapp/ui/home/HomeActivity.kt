@@ -4,9 +4,8 @@ package com.example.a10wordapp.ui.home
 import android.os.Bundle
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.example.a10wordapp.ViewModelFactory
 import com.example.a10wordapp.databinding.ActivityHomeBinding
-import com.example.a10wordapp.ui.list.ListActivity
+import com.example.a10wordapp.ui.questionlist.QuestionListActivity
 import com.example.a10wordapp.ui.quiz.QuizActivity
 import com.example.a10wordapp.ui.add.AddActivity
 import com.example.a10wordapp.ui.delete.DeleteActivity
@@ -34,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.allButton.setOnClickListener {
-            val intent = Intent(this, ListActivity::class.java)
+            val intent = Intent(this, QuestionListActivity::class.java)
             startActivity(intent)
         }
     }

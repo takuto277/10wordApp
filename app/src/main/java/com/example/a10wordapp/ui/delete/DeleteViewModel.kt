@@ -17,6 +17,6 @@ class DeleteViewModel(
     val list: LiveData<List<ItemEntiry>> get() = _list
 
     fun getList(context: Context) {
-        _list.value = dataRepository.getList(context)
+        _list.value = dataRepository.getList()
     }
 }
