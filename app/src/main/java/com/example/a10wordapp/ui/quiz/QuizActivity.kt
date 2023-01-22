@@ -1,6 +1,7 @@
 package com.example.a10wordapp.ui.quiz
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import androidx.core.view.isVisible
 import android.widget.Toast
 import com.example.a10wordapp.databinding.ActivityQuizBinding
@@ -12,10 +13,13 @@ import com.example.a10wordapp.ViewModelFactory
 import com.example.a10wordapp.data.ItemEntiry
 import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.repository.QuizRepository
+import com.example.a10wordapp.ui.quiz.speechListener.SpeechListener
+import java.util.*
 
-class QuizActivity : AppCompatActivity() {
+class QuizActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private val viewModel: QuizViewModel by viewModels{ViewModelFactory(applicationContext)}
     private lateinit var binding: ActivityQuizBinding
+    private var textToSpeech: TextToSpeech? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +28,7 @@ class QuizActivity : AppCompatActivity() {
 
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        textToSpeech = TextToSpeech(this, this)
 
         // リストを取得する
         viewModel.getList(this)
@@ -31,7 +36,9 @@ class QuizActivity : AppCompatActivity() {
 
         viewModel.list.observe(this, Observer {
             getlayout(itemList, arrayFigure)
+            speakText(itemList, arrayFigure)
             binding.translateText.isVisible = false
+
         })
 
         binding.currentButton.setOnClickListener {
@@ -43,12 +50,14 @@ class QuizActivity : AppCompatActivity() {
             }
 
             getlayout(itemList, arrayFigure)
+            speakText(itemList, arrayFigure)
             binding.translateText.isVisible = false
         }
 
         binding.wrongButton.setOnClickListener {
             arrayFigure = 0
             getlayout(itemList, arrayFigure)
+            speakText(itemList, arrayFigure)
             binding.translateText.isVisible = false
         }
 
@@ -61,9 +70,19 @@ class QuizActivity : AppCompatActivity() {
         }
     }
 
+    override fun onInit(p0: Int) {
+        val listenter: SpeechListener = SpeechListener()
+        textToSpeech!!.setOnUtteranceProgressListener(listenter)
+    }
+
     private fun getlayout(list: List<ItemEntiry>, arrayFigure: Int) {
         binding.wordText.text = list[arrayFigure].english
         binding.translateText.text = list[arrayFigure].japanese
+    }
+
+    private fun speakText(list: List<ItemEntiry>, arrayFigure: Int) {
+        textToSpeech!!.setLanguage(Locale.ENGLISH)
+        textToSpeech!!.speak(list[arrayFigure].english,TextToSpeech.QUEUE_FLUSH, null, "Speech1")
     }
 }
 
