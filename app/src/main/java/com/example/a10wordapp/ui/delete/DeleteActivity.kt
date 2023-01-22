@@ -3,6 +3,7 @@ package com.example.a10wordapp.ui.delete
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.ViewModelFactory
@@ -29,7 +30,7 @@ class DeleteActivity : AppCompatActivity() {
         recyclerView.setHasFixedSize(true)
 
         val rLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = rLayoutManager
+        recyclerView.layoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
         recyclerView.adapter = RecyclerAdapter(itemList)
     }
 }

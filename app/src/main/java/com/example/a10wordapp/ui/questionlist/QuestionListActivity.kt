@@ -43,6 +43,7 @@ class QuestionListActivity : AppCompatActivity() {
             addItemDecoration(
                 DividerItemDecoration(
                     this@QuestionListActivity,
+
                     LinearLayoutManager(this@QuestionListActivity).orientation
                 )
             )

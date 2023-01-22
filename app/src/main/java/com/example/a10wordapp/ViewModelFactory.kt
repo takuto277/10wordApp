@@ -15,6 +15,7 @@ import com.example.a10wordapp.ui.delete.DeleteViewModel
 import com.example.a10wordapp.ui.home.HomeViewModel
 import com.example.a10wordapp.ui.questionlist.QuestionListViewModel
 import com.example.a10wordapp.ui.quiz.QuizViewModel
+import com.example.a10wordapp.ui.selectQuiz.QuizSelectViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInstanceFactory() {
 
@@ -32,6 +33,8 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
                     AddViewModel(DataRepository(context))
                 isAssignableFrom(HomeViewModel::class.java) ->
                     HomeViewModel()
+                isAssignableFrom(QuizSelectViewModel::class.java) ->
+                    QuizSelectViewModel(DataRepository(context))
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
