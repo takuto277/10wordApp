@@ -6,10 +6,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.example.a10wordapp.databinding.ActivityHomeBinding
 import com.example.a10wordapp.ui.questionlist.QuestionListActivity
-import com.example.a10wordapp.ui.quiz.QuizActivity
 import com.example.a10wordapp.ui.add.AddActivity
 import com.example.a10wordapp.ui.delete.DeleteActivity
-import com.example.a10wordapp.ui.selectQuiz.SelectQuizActivity
+import com.example.a10wordapp.ui.quizselect.QuizSelectActivity
 
 
 class HomeActivity : AppCompatActivity() {
@@ -22,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.learnButton.setOnClickListener {
-            val intent = Intent(this, SelectQuizActivity::class.java)
+            val intent = Intent(this, QuizSelectActivity::class.java)
             startActivity(intent)
         }
         binding.addButton.setOnClickListener {
