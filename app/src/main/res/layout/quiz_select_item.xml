@@ -9,11 +9,17 @@
     android:layout_marginRight="16dp"
     android:gravity="center_vertical">
 
+    <View
+        android:id="@+id/backgroundView"
+        android:layout_width="269dp"
+        android:layout_height="50dp"
+        android:background="#FFFF00" />
+
     <TextView
         android:id="@+id/textView"
-        android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="text"/>
+        android:layout_gravity="center|center_vertical"
+        tools:text="text" />
 
 </FrameLayout>

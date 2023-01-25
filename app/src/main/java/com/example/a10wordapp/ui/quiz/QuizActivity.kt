@@ -26,6 +26,8 @@ class QuizActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         var arrayFigure = 0
 
+        val item = intent.getStringExtra("Item")
+
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
         textToSpeech = TextToSpeech(this, this)
