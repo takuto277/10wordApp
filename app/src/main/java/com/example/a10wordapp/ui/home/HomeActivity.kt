@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.example.a10wordapp.databinding.ActivityHomeBinding
-import com.example.a10wordapp.ui.questionlist.QuestionListActivity
+import com.example.a10wordapp.ui.quizlist.QuizListActivity
 import com.example.a10wordapp.ui.add.AddActivity
 import com.example.a10wordapp.ui.delete.DeleteActivity
 import com.example.a10wordapp.ui.quizselect.QuizSelectActivity
@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.allButton.setOnClickListener {
-            val intent = Intent(this, QuestionListActivity::class.java)
+            val intent = Intent(this, QuizListActivity::class.java)
             startActivity(intent)
         }
     }

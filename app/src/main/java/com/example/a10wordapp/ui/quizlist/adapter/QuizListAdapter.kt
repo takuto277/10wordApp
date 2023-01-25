@@ -1,4 +1,4 @@
-package com.example.a10wordapp.ui.questionlist.adapter
+package com.example.a10wordapp.ui.quizlist.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.R
-import com.example.a10wordapp.domain.entity.QuestionListItem
+import com.example.a10wordapp.domain.entity.QuizListItem
 
-class QuestionListAdapter(private val dataSet: Array<QuestionListItem>) :
-    RecyclerView.Adapter<QuestionListAdapter.ViewHolder>() {
+class QuizListAdapter(private val dataSet: Array<QuizListItem>) :
+    RecyclerView.Adapter<QuizListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val rootView: View
@@ -22,14 +22,14 @@ class QuestionListAdapter(private val dataSet: Array<QuestionListItem>) :
     }
 
     interface OnItemClickListener {
-        fun onItemClick(item: QuestionListItem)
+        fun onItemClick(item: QuizListItem)
     }
 
     var itemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.questionlist_row_item, viewGroup, false)
+            .inflate(R.layout.quizlist_row_item, viewGroup, false)
         return ViewHolder(view)
     }
 
