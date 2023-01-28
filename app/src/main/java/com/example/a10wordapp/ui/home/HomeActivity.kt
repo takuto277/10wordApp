@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Query
+import com.example.a10wordapp.api.InitialDataAPI
 import com.example.a10wordapp.api.InitialDataResponse
 import com.example.a10wordapp.api.InitialDataService
 import com.example.a10wordapp.databinding.ActivityHomeBinding
@@ -55,19 +56,9 @@ class HomeActivity : AppCompatActivity() {
         }
      }
     private fun fetchApi() {
-        val moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://gist.githubusercontent.com/")
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
-
         thread {
             try {
-                val service: InitialDataService = retrofit.create(InitialDataService::class.java)
-                val apiResponse = service.fetchInitialData().execute().body()
+                val apiResponse = InitialDataAPI().service.fetchInitialData().execute().body()
 
                 Handler(Looper.getMainLooper()).post {
                     if (apiResponse != null) {
