@@ -7,14 +7,19 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.room.Query
+import com.example.a10wordapp.ViewModelFactory
+import com.example.a10wordapp.api.InitialDataAPI
 import com.example.a10wordapp.api.InitialDataResponse
 import com.example.a10wordapp.api.InitialDataService
 import com.example.a10wordapp.databinding.ActivityHomeBinding
 import com.example.a10wordapp.ui.quizlist.QuizListActivity
 import com.example.a10wordapp.ui.add.AddActivity
 import com.example.a10wordapp.ui.delete.DeleteActivity
+import com.example.a10wordapp.ui.quiz.QuizViewModel
 import com.example.a10wordapp.ui.quizselect.QuizSelectActivity
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -26,6 +31,7 @@ import kotlin.concurrent.thread
 
 
 class HomeActivity : AppCompatActivity() {
+    private val viewModel: HomeViewModel by viewModels { ViewModelFactory(applicationContext) }
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,35 +57,19 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.apiFetchButton.setOnClickListener {
-            fetchApi()
-        }
-     }
-    private fun fetchApi() {
-        val moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://gist.githubusercontent.com/")
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
-
-        thread {
-            try {
-                val service: InitialDataService = retrofit.create(InitialDataService::class.java)
-                val apiResponse = service.fetchInitialData().execute().body()
-
-                Handler(Looper.getMainLooper()).post {
-                    if (apiResponse != null) {
+            Thread {
+                try {
+                    val apiResponse = InitialDataAPI().service.fetchInitialData().execute().body()
+                    Handler(Looper.getMainLooper()).post {
                         Toast.makeText(
                             this@HomeActivity,
-                            "「${apiResponse.data[0].ID}」をクリックしました。",
+                            "「${apiResponse!!.data[0].english}」を表示します。",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
+                } catch (e: Exception) {
+                    Log.d("response-weather", "debug $e")
                 }
-            } catch (e: Exception) {
-                Log.d("response", "debug $e")
             }
         }
     }
