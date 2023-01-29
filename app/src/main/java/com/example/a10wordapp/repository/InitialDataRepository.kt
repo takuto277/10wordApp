@@ -6,26 +6,24 @@ import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import com.example.a10wordapp.api.InitialDataAPI
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 class InitialDataRepository(private val contect: Context) {
 
-    fun fetchInitialData(): String {
-        var string = ""
-        Thread {
+    suspend fun fetchInitialData(): String {
             try {
-                val apiResponse = InitialDataAPI().service.fetchInitialData().execute().body()
+                val apiResponse = InitialDataAPI().service.fetchInitialData().await()
+
                 Log.d("apiResponse", "$apiResponse")
 
                 if (apiResponse != null) {
-                    string =apiResponse.data[0].english
+                    return apiResponse.data[0].english
                 }
             } catch (e: Exception) {
                 Log.d("response", "debug $e")
-                string = "失敗"
+                return "失敗"
             }
-            string = ""
-        }
-        return string
+        return "エラー"
     }
-
 }

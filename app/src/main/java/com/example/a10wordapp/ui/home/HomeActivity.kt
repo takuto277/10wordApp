@@ -57,20 +57,15 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.apiFetchButton.setOnClickListener {
-            Thread {
-                try {
-                    val apiResponse = InitialDataAPI().service.fetchInitialData().execute().body()
-                    Handler(Looper.getMainLooper()).post {
-                        Toast.makeText(
-                            this@HomeActivity,
-                            "「${apiResponse!!.data[0].english}」を表示します。",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                } catch (e: Exception) {
-                    Log.d("response-weather", "debug $e")
-                }
-            }
+            viewModel.fetchAPI()
         }
+
+        viewModel.english.observe(this, Observer { english ->
+            Toast.makeText(
+                this@HomeActivity,
+                "「${english}」を表示します。",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
     }
 }
