@@ -7,6 +7,7 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.a10wordapp.repository.DataRepository
+import com.example.a10wordapp.repository.InitialDataRepository
 import com.example.a10wordapp.repository.QuizRepository
 import com.example.a10wordapp.ui.add.AddViewModel
 import com.example.a10wordapp.ui.delete.DeleteViewModel
@@ -30,7 +31,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
                 isAssignableFrom(AddViewModel::class.java) ->
                     AddViewModel(DataRepository(context))
                 isAssignableFrom(HomeViewModel::class.java) ->
-                    HomeViewModel()
+                    HomeViewModel(InitialDataRepository(context))
                 isAssignableFrom(QuizSelectViewModel::class.java) ->
                     QuizSelectViewModel(DataRepository(context))
                 else ->
