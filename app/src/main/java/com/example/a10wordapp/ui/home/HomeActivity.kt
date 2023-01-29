@@ -11,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.room.Query
+import com.example.a10wordapp.ViewModelFactory
 import com.example.a10wordapp.api.InitialDataAPI
 import com.example.a10wordapp.api.InitialDataResponse
 import com.example.a10wordapp.api.InitialDataService
@@ -58,5 +59,13 @@ class HomeActivity : AppCompatActivity() {
         binding.apiFetchButton.setOnClickListener {
             viewModel.fetchAPI()
         }
+
+        viewModel.english.observe(this, Observer { english ->
+            Toast.makeText(
+                this@HomeActivity,
+                "「${english}」を表示します。",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
     }
 }
