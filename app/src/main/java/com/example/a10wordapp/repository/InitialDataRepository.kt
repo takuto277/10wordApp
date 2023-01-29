@@ -13,7 +13,7 @@ class InitialDataRepository(private val contect: Context) {
 
     suspend fun fetchInitialData(): String {
             try {
-                val apiResponse = InitialDataAPI().service.fetchInitialData().await()
+                val apiResponse = InitialDataAPI().service.fetchInitialData()
 
                 Log.d("apiResponse", "$apiResponse")
 
