@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.a10wordapp.data.ItemEntiry
+import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.repository.QuizRepository
 import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.databinding.ActivityQuizBinding
@@ -14,8 +14,8 @@ class QuizViewModel(private val dataRepository: DataRepository ,
                     )
     : ViewModel() {
 
-    private val _list = MutableLiveData<List<ItemEntiry>>()
-    val list: LiveData<List<ItemEntiry>> get() = _list
+    private val _list = MutableLiveData<List<ItemEntity>>()
+    val list: LiveData<List<ItemEntity>> get() = _list
 
     private val _arrayFigure = MutableLiveData<Int>()
     val arrayFigure: LiveData<Int> get() = _arrayFigure

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.a10wordapp.ViewModelFactory
-import com.example.a10wordapp.data.ItemEntiry
+import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.repository.QuizRepository
 import com.example.a10wordapp.ui.quiz.speechListener.SpeechListener
@@ -77,12 +77,12 @@ class QuizActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         textToSpeech!!.setOnUtteranceProgressListener(listenter)
     }
 
-    private fun getlayout(list: List<ItemEntiry>, arrayFigure: Int) {
+    private fun getlayout(list: List<ItemEntity>, arrayFigure: Int) {
         binding.wordText.text = list[arrayFigure].english
         binding.translateText.text = list[arrayFigure].japanese
     }
 
-    private fun speakText(list: List<ItemEntiry>, arrayFigure: Int) {
+    private fun speakText(list: List<ItemEntity>, arrayFigure: Int) {
         textToSpeech!!.setLanguage(Locale.ENGLISH)
         textToSpeech!!.speak(list[arrayFigure].english,TextToSpeech.QUEUE_FLUSH, null, "Speech1")
     }

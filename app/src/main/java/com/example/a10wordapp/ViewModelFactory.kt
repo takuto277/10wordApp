@@ -31,7 +31,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
                 isAssignableFrom(AddViewModel::class.java) ->
                     AddViewModel(DataRepository(context))
                 isAssignableFrom(HomeViewModel::class.java) ->
-                    HomeViewModel(InitialDataRepository(context))
+                    HomeViewModel(DataRepository(context),InitialDataRepository(context))
                 isAssignableFrom(QuizSelectViewModel::class.java) ->
                     QuizSelectViewModel(DataRepository(context))
                 else ->

@@ -1,32 +1,59 @@
 package com.example.a10wordapp.repository
 
 import android.content.Context
-import com.example.a10wordapp.data.ItemEntiry
-import com.example.a10wordapp.data.ItemRoomDatabase
+import com.example.a10wordapp.api.Data
+import com.example.a10wordapp.data.ItemEntity
+import com.example.a10wordapp.data.AppRoomDatabase
+import com.example.a10wordapp.data.InitialDataEntity
 import kotlinx.coroutines.runBlocking
 
 class DataRepository(private val context: Context) {
     fun addNewItem(id: Int, english: String, japanese: String) {
-        val getDatabase = ItemRoomDatabase.getDatabase(context)
-        val itemEntiry = ItemEntiry(id, english, japanese)
+        val getDatabase = AppRoomDatabase.getDatabase(context)
+        val itemEntiry = ItemEntity(id, english, japanese)
         val itemDao = getDatabase.itemDao()
         runBlocking {
             itemDao.insert(itemEntiry)
         }
 
-        var list: List<ItemEntiry>
+        var list: List<ItemEntity>
         runBlocking {
             list = itemDao.getAll()
         }
     }
 
-    fun getList(): List<ItemEntiry> {
-        val getDatabase = ItemRoomDatabase.getDatabase(context)
+    suspend fun saveInitialData(data: Array<Data>) {
+        val getDatabase = AppRoomDatabase.getDatabase(context)
+        val initialDataDao = getDatabase.initialDataDao()
+        if (initialDataDao.getAll().isNotEmpty()) {
+            initialDataDao.deleteAll()
+        }
+        data.forEach {
+            val initialDataEntity = InitialDataEntity(it.ID, it.english, it.japanese)
+            runBlocking {
+                    initialDataDao.insert(initialDataEntity)
+            }
+        }
+    }
+
+    fun getList(): List<ItemEntity> {
+        val getDatabase = AppRoomDatabase.getDatabase(context)
         val itemDao = getDatabase.itemDao()
 
-        var list: List<ItemEntiry>
+        var list: List<ItemEntity>
         runBlocking {
             list = itemDao.getAll()
+        }
+        return list
+    }
+
+    fun getInitialDataList(): List<InitialDataEntity> {
+        val getDatabase = AppRoomDatabase.getDatabase(context)
+        val initialDataDao = getDatabase.initialDataDao()
+
+        var list: List<InitialDataEntity>
+        runBlocking {
+            list = initialDataDao.getAll()
         }
         return list
     }
