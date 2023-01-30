@@ -3,15 +3,16 @@ package com.example.a10wordapp.ui.delete.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.a10wordapp.data.InitialDataEntity
 import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.databinding.OneLayoutBinding
 
-class RecyclerAdapter(private val itemList: List<ItemEntity>):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(private val InitialDataList: List<InitialDataEntity>):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
         inner class ViewHolder(private val binding: OneLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
             fun bind(position: Int) {
                 binding.apply {
-                    val oneLayouts = itemList[position]
+                    val oneLayouts = InitialDataList[position]
 
                     primaryText.text = oneLayouts.english
                     secondaryText.text = oneLayouts.japanese
@@ -31,7 +32,7 @@ class RecyclerAdapter(private val itemList: List<ItemEntity>):RecyclerView.Adapt
 
         //６）データが何件あるかをカウントする
         override fun getItemCount(): Int {
-            return itemList.count()
+            return InitialDataList.count()
         }
 
     }

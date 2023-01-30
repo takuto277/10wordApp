@@ -23,7 +23,7 @@ class HomeViewModel(
         viewModelScope.launch {
             kotlin.runCatching { initialDataRepository.fetchInitialData() }
                 .onSuccess { result ->
-                    _english.value = result.data[0].english
+                    _english.value = result.data[2].english
                     dataRepository.saveInitialData(result.data)
                 }
                 .onFailure { result ->

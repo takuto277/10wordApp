@@ -20,8 +20,8 @@ class DeleteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.getList(this)
-        val itemList = viewModel.list.value ?: return
+        viewModel.getInitialDataList(this)
+        val initialDataList = viewModel.list.value ?: return
 
         binding = ActivityDeleteBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -31,6 +31,6 @@ class DeleteActivity : AppCompatActivity() {
 
         val rLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = RecyclerAdapter(itemList)
+        recyclerView.adapter = RecyclerAdapter(initialDataList)
     }
 }

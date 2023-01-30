@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.a10wordapp.api.Data
 import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.data.AppRoomDatabase
+import com.example.a10wordapp.data.InitialDataEntity
 import kotlinx.coroutines.runBlocking
 
 class DataRepository(private val context: Context) {
@@ -21,10 +22,18 @@ class DataRepository(private val context: Context) {
         }
     }
 
-    fun saveInitialData(data: Array<Data>) {
-    data.forEach {
-
-    }
+    suspend fun saveInitialData(data: Array<Data>) {
+        val getDatabase = AppRoomDatabase.getDatabase(context)
+        val initialDataDao = getDatabase.initialDataDao()
+        if (initialDataDao.getAll().isNotEmpty()) {
+            initialDataDao.deleteAll()
+        }
+        data.forEach {
+            val initialDataEntity = InitialDataEntity(it.ID, it.english, it.japanese)
+            runBlocking {
+                    initialDataDao.insert(initialDataEntity)
+            }
+        }
     }
 
     fun getList(): List<ItemEntity> {
@@ -34,6 +43,17 @@ class DataRepository(private val context: Context) {
         var list: List<ItemEntity>
         runBlocking {
             list = itemDao.getAll()
+        }
+        return list
+    }
+
+    fun getInitialDataList(): List<InitialDataEntity> {
+        val getDatabase = AppRoomDatabase.getDatabase(context)
+        val initialDataDao = getDatabase.initialDataDao()
+
+        var list: List<InitialDataEntity>
+        runBlocking {
+            list = initialDataDao.getAll()
         }
         return list
     }
