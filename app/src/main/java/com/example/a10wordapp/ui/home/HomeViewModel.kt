@@ -1,5 +1,6 @@
 package com.example.a10wordapp.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,7 +19,13 @@ class HomeViewModel(
 
      fun fetchAPI() {
         viewModelScope.launch {
-            _english.value = initialDataRepository.fetchInitialData()
+            kotlin.runCatching { initialDataRepository.fetchInitialData() }
+                .onSuccess { result ->
+                    _english.value = result.data[0].english
+                }
+                .onFailure { result ->
+                    Log.d("response", "debug ${result}")
+                }
         }
     }
 }
