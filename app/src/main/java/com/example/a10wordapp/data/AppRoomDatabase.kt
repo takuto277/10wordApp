@@ -8,23 +8,23 @@ import androidx.room.RoomDatabase
 /**
  * Database class with a singleton INSTANCE object.
  */
-@Database(entities = [ItemEntiry::class], version = 1, exportSchema = false)
-abstract class ItemRoomDatabase : RoomDatabase() {
+@Database(entities = [ItemEntity::class], version = 1, exportSchema = false)
+abstract class AppRoomDatabase : RoomDatabase() {
 
     abstract fun itemDao(): ItemDao
 
     companion object {
         @Volatile
 
-        private var INSTANCE: ItemRoomDatabase? = null
+        private var INSTANCE: AppRoomDatabase? = null
 
-        fun getDatabase(context: Context): ItemRoomDatabase {
+        fun getDatabase(context: Context): AppRoomDatabase {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    ItemRoomDatabase::class.java,
+                    AppRoomDatabase::class.java,
                     "item_database"
                 )
                     // Wipes and rebuilds instead of migrating if no Migration object.

@@ -3,10 +3,10 @@ package com.example.a10wordapp.ui.delete.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a10wordapp.data.ItemEntiry
+import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.databinding.OneLayoutBinding
 
-class RecyclerAdapter(private val itemList: List<ItemEntiry>):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(private val itemList: List<ItemEntity>):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
         inner class ViewHolder(private val binding: OneLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
             fun bind(position: Int) {

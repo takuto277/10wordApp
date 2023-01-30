@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.ViewModelFactory
-import com.example.a10wordapp.data.ItemEntiry
+import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.databinding.ActivityDeleteBinding
 import com.example.a10wordapp.ui.delete.adapter.RecyclerAdapter
 import com.example.a10wordapp.ui.delete.adapter.TestList

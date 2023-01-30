@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.ColumnInfo
 
 @Entity
-data class ItemEntiry(
+data class ItemEntity(
     @PrimaryKey
     val id: Int,
     @ColumnInfo(name = "english")
