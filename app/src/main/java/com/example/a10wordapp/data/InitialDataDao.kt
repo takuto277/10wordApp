@@ -1,8 +1,6 @@
 package com.example.a10wordapp.data
 
 import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.DeleteTable
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -12,7 +10,6 @@ import androidx.room.Update
  */
 @Dao
 interface InitialDataDao {
-
     @Query("SELECT * FROM InitialDataEntity")
     suspend fun getAll(): List<InitialDataEntity>
 
@@ -24,5 +21,4 @@ interface InitialDataDao {
 
     @Update
     suspend fun update(InitialDataEntity: InitialDataEntity)
-
 }

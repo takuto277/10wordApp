@@ -10,7 +10,6 @@ import androidx.room.Query
  */
 @Dao
 interface ItemDao {
-
     @Query("SELECT * FROM ItemEntity")
     suspend fun getAll(): List<ItemEntity>
 
@@ -19,5 +18,4 @@ interface ItemDao {
 
     @Delete
     suspend fun delete(itemEntiry: ItemEntity)
-
 }
