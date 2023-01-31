@@ -29,7 +29,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.delete.DeleteActivity"
+            android:name=".ui.quizdelete.QuizDeleteActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

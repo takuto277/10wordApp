@@ -1,4 +1,4 @@
-package com.example.a10wordapp.ui.delete.adapter
+package com.example.a10wordapp.ui.quizdelete.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

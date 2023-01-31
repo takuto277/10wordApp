@@ -1,4 +1,4 @@
-package com.example.a10wordapp.ui.delete
+package com.example.a10wordapp.ui.quizdelete
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.databinding.ActivityDeleteBinding
 import com.example.a10wordapp.ui.ViewModelFactory
-import com.example.a10wordapp.ui.delete.adapter.RecyclerAdapter
+import com.example.a10wordapp.ui.quizdelete.adapter.RecyclerAdapter
 
-class DeleteActivity : AppCompatActivity() {
+class QuizDeleteActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: ActivityDeleteBinding
-    private val viewModel: DeleteViewModel by viewModels { ViewModelFactory(applicationContext) }
+    private val viewModel: QuizDeleteViewModel by viewModels { ViewModelFactory(applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
