@@ -14,7 +14,7 @@ class QuizShowViewModel(
     private val _list = MutableLiveData<List<ItemEntity>>()
     val list: LiveData<List<ItemEntity>> get() = _list
 
-    fun getList(context: Context) {
+    fun getList() {
         _list.value = quizWordRepository.getList()
     }
 }
