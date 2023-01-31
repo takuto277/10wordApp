@@ -12,7 +12,7 @@ import com.example.a10wordapp.repository.QuizRepository
 import com.example.a10wordapp.ui.quizadd.QuizAddViewModel
 import com.example.a10wordapp.ui.quizdelete.QuizDeleteViewModel
 import com.example.a10wordapp.ui.home.HomeViewModel
-import com.example.a10wordapp.ui.quiz.QuizViewModel
+import com.example.a10wordapp.ui.quizshow.QuizShowViewModel
 import com.example.a10wordapp.ui.quizlist.QuizListViewModel
 import com.example.a10wordapp.ui.quizselect.QuizSelectViewModel
 
@@ -22,8 +22,8 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
     override fun <T : ViewModel> create(modelClass: Class<T>) =
         with(modelClass) {
             when {
-                isAssignableFrom(QuizViewModel::class.java) ->
-                    QuizViewModel(DataRepository(context), QuizRepository())
+                isAssignableFrom(QuizShowViewModel::class.java) ->
+                    QuizShowViewModel(DataRepository(context), QuizRepository())
                 isAssignableFrom(QuizListViewModel::class.java) ->
                     QuizListViewModel(DataRepository(context))
                 isAssignableFrom(QuizDeleteViewModel::class.java) ->
