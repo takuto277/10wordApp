@@ -2,12 +2,12 @@ package com.example.a10wordapp.ui.quizadd
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.example.a10wordapp.repository.DataRepository
+import com.example.a10wordapp.repository.QuizWordRepository
 
 class QuizAddViewModel(
-    private val dataRepository: DataRepository
+    private val quizWordRepository: QuizWordRepository
 ) : ViewModel() {
     fun saveButtonTapped(context: Context, id: Int, english: String, japanese: String) {
-        dataRepository.addNewItem(id, english, japanese)
+        quizWordRepository.addNewItem(id, english, japanese)
     }
 }

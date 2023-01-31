@@ -7,7 +7,7 @@ import com.example.a10wordapp.data.db.entity.InitialDataEntity
 import com.example.a10wordapp.data.db.entity.ItemEntity
 import kotlinx.coroutines.runBlocking
 
-class DataRepository(private val context: Context) {
+class QuizWordRepository(private val context: Context) {
     fun addNewItem(id: Int, english: String, japanese: String) {
         val getDatabase = AppRoomDatabase.getDatabase(context)
         val itemEntiry = ItemEntity(id, english, japanese)
