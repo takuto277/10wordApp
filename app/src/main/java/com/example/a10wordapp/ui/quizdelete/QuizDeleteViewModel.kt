@@ -1,4 +1,4 @@
-package com.example.a10wordapp.ui.delete
+package com.example.a10wordapp.ui.quizdelete
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.a10wordapp.data.InitialDataEntity
 import com.example.a10wordapp.repository.DataRepository
 
-class DeleteViewModel(
+class QuizDeleteViewModel(
     private val dataRepository: DataRepository
 ) : ViewModel() {
 
