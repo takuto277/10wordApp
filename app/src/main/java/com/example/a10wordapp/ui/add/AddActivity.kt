@@ -8,7 +8,7 @@ import com.example.a10wordapp.databinding.ActivityAddBinding
 
 class AddActivity : AppCompatActivity() {
 
-    private val viewModel: AddViewModel by viewModels{ViewModelFactory(applicationContext)}
+    private val viewModel: AddViewModel by viewModels { ViewModelFactory(applicationContext) }
     private lateinit var binding: ActivityAddBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

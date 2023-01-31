@@ -2,22 +2,19 @@ package com.example.a10wordapp.ui.quiz
 
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
-import androidx.core.view.isVisible
 import android.widget.Toast
-import com.example.a10wordapp.databinding.ActivityQuizBinding
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.a10wordapp.ViewModelFactory
 import com.example.a10wordapp.data.ItemEntity
-import com.example.a10wordapp.repository.DataRepository
-import com.example.a10wordapp.repository.QuizRepository
+import com.example.a10wordapp.databinding.ActivityQuizBinding
 import com.example.a10wordapp.ui.quiz.speechListener.SpeechListener
 import java.util.*
 
 class QuizActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
-    private val viewModel: QuizViewModel by viewModels{ViewModelFactory(applicationContext)}
+    private val viewModel: QuizViewModel by viewModels { ViewModelFactory(applicationContext) }
     private lateinit var binding: ActivityQuizBinding
     private var textToSpeech: TextToSpeech? = null
 
@@ -84,7 +81,7 @@ class QuizActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun speakText(list: List<ItemEntity>, arrayFigure: Int) {
         textToSpeech!!.setLanguage(Locale.ENGLISH)
-        textToSpeech!!.speak(list[arrayFigure].english,TextToSpeech.QUEUE_FLUSH, null, "Speech1")
+        textToSpeech!!.speak(list[arrayFigure].english, TextToSpeech.QUEUE_FLUSH, null, "Speech1")
     }
 }
 

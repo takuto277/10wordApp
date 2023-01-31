@@ -14,15 +14,15 @@ class QuizRepository {
         binding.translateText.isVisible = false
     }
 
-    fun rightAction(itemList: List<ItemEntity>, arrayFigure: Int): Int{
-        if (arrayFigure==itemList.count()-1){
-        return arrayFigure
-               } else {
+    fun rightAction(itemList: List<ItemEntity>, arrayFigure: Int): Int {
+        if (arrayFigure == itemList.count() - 1) {
+            return arrayFigure
+        } else {
             return +arrayFigure
         }
     }
 
     fun checkFinish(itemList: List<ItemEntity>, arrayFigure: Int): Boolean {
-        return arrayFigure==itemList.count()-1
+        return arrayFigure == itemList.count() - 1
     }
 }

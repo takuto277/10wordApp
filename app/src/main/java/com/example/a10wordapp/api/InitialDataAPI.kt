@@ -16,5 +16,4 @@ class InitialDataAPI {
         .build()
 
     val service: InitialDataService = retrofit.create(InitialDataService::class.java)
-
 }

@@ -8,14 +8,14 @@ import com.example.a10wordapp.repository.DataRepository
 
 class QuizSelectViewModel(
     private val dataRepository: DataRepository
-    ): ViewModel() {
+) : ViewModel() {
 
-        private val _quizSelectItem = MutableLiveData<Array<QuizSelectItem>>()
-        val quizSelectItem: LiveData<Array<QuizSelectItem>> get() = _quizSelectItem
+    private val _quizSelectItem = MutableLiveData<Array<QuizSelectItem>>()
+    val quizSelectItem: LiveData<Array<QuizSelectItem>> get() = _quizSelectItem
 
     fun fecthContent() {
         _quizSelectItem.value = dataRepository.getList().map { entey ->
             QuizSelectItem(text = "english:${entey.english}, japanese:${entey.japanese}")
         }.toTypedArray()
     }
-    }
+}

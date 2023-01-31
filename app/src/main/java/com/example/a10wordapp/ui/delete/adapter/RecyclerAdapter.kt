@@ -4,35 +4,35 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.data.InitialDataEntity
-import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.databinding.OneLayoutBinding
 
-class RecyclerAdapter(private val InitialDataList: List<InitialDataEntity>):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(private val InitialDataList: List<InitialDataEntity>) :
+    RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
-        inner class ViewHolder(private val binding: OneLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-            fun bind(position: Int) {
-                binding.apply {
-                    val oneLayouts = InitialDataList[position]
+    inner class ViewHolder(private val binding: OneLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(position: Int) {
+            binding.apply {
+                val oneLayouts = InitialDataList[position]
 
-                    primaryText.text = oneLayouts.english
-                    secondaryText.text = oneLayouts.japanese
-                }
+                primaryText.text = oneLayouts.english
+                secondaryText.text = oneLayouts.japanese
             }
         }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val infater = LayoutInflater.from(parent.context)
-                val binding = OneLayoutBinding.inflate(infater, parent, false)
+        val binding = OneLayoutBinding.inflate(infater, parent, false)
         return ViewHolder(binding)
     }
 
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.bind(position)
-
-        }
-
-        //６）データが何件あるかをカウントする
-        override fun getItemCount(): Int {
-            return InitialDataList.count()
-        }
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(position)
     }
+
+    //６）データが何件あるかをカウントする
+    override fun getItemCount(): Int {
+        return InitialDataList.count()
+    }
+}

@@ -7,15 +7,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.ViewModelFactory
-import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.databinding.ActivityDeleteBinding
 import com.example.a10wordapp.ui.delete.adapter.RecyclerAdapter
-import com.example.a10wordapp.ui.delete.adapter.TestList
 
 class DeleteActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: ActivityDeleteBinding
-    private val viewModel:DeleteViewModel by viewModels{ViewModelFactory(applicationContext)}
+    private val viewModel: DeleteViewModel by viewModels { ViewModelFactory(applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

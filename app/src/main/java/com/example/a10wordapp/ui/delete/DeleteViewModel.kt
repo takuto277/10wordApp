@@ -5,14 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.a10wordapp.data.InitialDataEntity
-import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.repository.DataRepository
-import com.example.a10wordapp.repository.QuizRepository
 
 class DeleteViewModel(
     private val dataRepository: DataRepository
-)
-: ViewModel() {
+) : ViewModel() {
 
     private val _list = MutableLiveData<List<InitialDataEntity>>()
     val list: LiveData<List<InitialDataEntity>> get() = _list

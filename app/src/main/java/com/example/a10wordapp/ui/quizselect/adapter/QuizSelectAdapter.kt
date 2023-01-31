@@ -10,17 +10,17 @@ import com.example.a10wordapp.domain.entity.QuizSelectItem
 
 class QuizSelectAdapter(
     private val dataSet: Array<QuizSelectItem>
-    ) : RecyclerView.Adapter<QuizSelectAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<QuizSelectAdapter.ViewHolder>() {
 
-        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val rootView: View
-            val textView: TextView
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val rootView: View
+        val textView: TextView
 
-            init {
-                rootView = view.findViewById(R.id.root)
-                textView = view.findViewById(R.id.textView)
-            }
+        init {
+            rootView = view.findViewById(R.id.root)
+            textView = view.findViewById(R.id.textView)
         }
+    }
 
     interface onItemClickListener {
         fun onItemClick(item: QuizSelectItem)
@@ -42,4 +42,4 @@ class QuizSelectAdapter(
     }
 
     override fun getItemCount() = dataSet.size
-    }
+}

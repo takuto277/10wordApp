@@ -6,8 +6,8 @@ import com.example.a10wordapp.repository.DataRepository
 
 class AddViewModel(
     private val dataRepository: DataRepository
-): ViewModel() {
-    fun saveButtonTapped(context: Context, id:Int, english: String, japanese: String) {
+) : ViewModel() {
+    fun saveButtonTapped(context: Context, id: Int, english: String, japanese: String) {
         dataRepository.addNewItem(id, english, japanese)
     }
 }

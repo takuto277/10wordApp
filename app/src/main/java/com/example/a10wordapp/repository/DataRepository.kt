@@ -2,9 +2,9 @@ package com.example.a10wordapp.repository
 
 import android.content.Context
 import com.example.a10wordapp.api.Data
-import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.data.AppRoomDatabase
 import com.example.a10wordapp.data.InitialDataEntity
+import com.example.a10wordapp.data.ItemEntity
 import kotlinx.coroutines.runBlocking
 
 class DataRepository(private val context: Context) {
@@ -31,7 +31,7 @@ class DataRepository(private val context: Context) {
         data.forEach {
             val initialDataEntity = InitialDataEntity(it.ID, it.english, it.japanese)
             runBlocking {
-                    initialDataDao.insert(initialDataEntity)
+                initialDataDao.insert(initialDataEntity)
             }
         }
     }
