@@ -1,4 +1,4 @@
-package com.example.a10wordapp.ui.quiz
+package com.example.a10wordapp.ui.quizshow
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -9,7 +9,7 @@ import com.example.a10wordapp.databinding.ActivityQuizBinding
 import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.repository.QuizRepository
 
-class QuizViewModel(
+class QuizShowViewModel(
     private val dataRepository: DataRepository,
     private val quizRepository: QuizRepository
 ) : ViewModel() {

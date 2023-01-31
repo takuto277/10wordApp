@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.databinding.ActivityQuizSelectBinding
 import com.example.a10wordapp.domain.entity.QuizSelectItem
 import com.example.a10wordapp.ui.ViewModelFactory
-import com.example.a10wordapp.ui.quiz.QuizActivity
+import com.example.a10wordapp.ui.quizshow.QuizShowActivity
 import com.example.a10wordapp.ui.quizselect.adapter.QuizSelectAdapter
 
 class QuizSelectActivity : AppCompatActivity() {
@@ -36,7 +36,7 @@ class QuizSelectActivity : AppCompatActivity() {
                     "「${item.text}」をクリックしました。",
                     Toast.LENGTH_SHORT
                 ).show()
-                val intent = Intent(this@QuizSelectActivity, QuizActivity::class.java)
+                val intent = Intent(this@QuizSelectActivity, QuizShowActivity::class.java)
                 intent.putExtra("Item", item.text)
                 startActivity(intent)
             }

@@ -1,4 +1,4 @@
-package com.example.a10wordapp.ui.quiz.speechListener
+package com.example.a10wordapp.ui.quizshow.speechListener
 
 import android.speech.tts.UtteranceProgressListener
 import android.util.Log

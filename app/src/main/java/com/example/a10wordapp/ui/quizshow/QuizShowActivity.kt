@@ -1,4 +1,4 @@
-package com.example.a10wordapp.ui.quiz
+package com.example.a10wordapp.ui.quizshow
 
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -10,11 +10,11 @@ import androidx.lifecycle.Observer
 import com.example.a10wordapp.data.ItemEntity
 import com.example.a10wordapp.databinding.ActivityQuizBinding
 import com.example.a10wordapp.ui.ViewModelFactory
-import com.example.a10wordapp.ui.quiz.speechListener.SpeechListener
+import com.example.a10wordapp.ui.quizshow.speechListener.SpeechListener
 import java.util.*
 
-class QuizActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
-    private val viewModel: QuizViewModel by viewModels { ViewModelFactory(applicationContext) }
+class QuizShowActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
+    private val viewModel: QuizShowViewModel by viewModels { ViewModelFactory(applicationContext) }
     private lateinit var binding: ActivityQuizBinding
     private var textToSpeech: TextToSpeech? = null
 
