@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.a10wordapp.repository.DataRepository
 import com.example.a10wordapp.repository.InitialDataRepository
-import com.example.a10wordapp.repository.QuizRepository
 import com.example.a10wordapp.ui.quizadd.QuizAddViewModel
 import com.example.a10wordapp.ui.quizdelete.QuizDeleteViewModel
 import com.example.a10wordapp.ui.home.HomeViewModel
@@ -23,7 +22,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
         with(modelClass) {
             when {
                 isAssignableFrom(QuizShowViewModel::class.java) ->
-                    QuizShowViewModel(DataRepository(context), QuizRepository())
+                    QuizShowViewModel(DataRepository(context))
                 isAssignableFrom(QuizListViewModel::class.java) ->
                     QuizListViewModel(DataRepository(context))
                 isAssignableFrom(QuizDeleteViewModel::class.java) ->
