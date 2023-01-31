@@ -1,4 +1,4 @@
-package com.example.a10wordapp.ui.add
+package com.example.a10wordapp.ui.quizadd
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.a10wordapp.databinding.ActivityAddBinding
 import com.example.a10wordapp.ui.ViewModelFactory
 
-class AddActivity : AppCompatActivity() {
+class QuizAddActivity : AppCompatActivity() {
 
-    private val viewModel: AddViewModel by viewModels { ViewModelFactory(applicationContext) }
+    private val viewModel: QuizAddViewModel by viewModels { ViewModelFactory(applicationContext) }
     private lateinit var binding: ActivityAddBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

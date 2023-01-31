@@ -49,7 +49,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".ui.quiz.QuizActivity" />
-        <activity android:name=".ui.add.AddActivity" />
+        <activity android:name=".ui.quizadd.QuizAddActivity" />
         <activity android:name=".ui.quizselect.QuizSelectActivity" />
         <activity android:name=".ui.quizlist.QuizListActivity" />
     </application>

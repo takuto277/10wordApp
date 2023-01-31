@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.a10wordapp.databinding.ActivityHomeBinding
 import com.example.a10wordapp.ui.ViewModelFactory
-import com.example.a10wordapp.ui.add.AddActivity
+import com.example.a10wordapp.ui.quizadd.QuizAddActivity
 import com.example.a10wordapp.ui.delete.DeleteActivity
 import com.example.a10wordapp.ui.quizlist.QuizListActivity
 import com.example.a10wordapp.ui.quizselect.QuizSelectActivity
@@ -30,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.addButton.setOnClickListener {
-            val intent = Intent(this, AddActivity::class.java)
+            val intent = Intent(this, QuizAddActivity::class.java)
             startActivity(intent)
         }
         binding.deleteButton.setOnClickListener {
