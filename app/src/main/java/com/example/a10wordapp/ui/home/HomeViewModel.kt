@@ -6,12 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.a10wordapp.repository.DataRepository
-import com.example.a10wordapp.repository.InitialDataRepository
+import com.example.a10wordapp.repository.InitialQuizWordRepository
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val dataRepository: DataRepository,
-    private val initialDataRepository: InitialDataRepository
+    private val initialQuizWordRepository: InitialQuizWordRepository
 ) : ViewModel() {
 
     private val _english = MutableLiveData<String>()
@@ -19,7 +19,7 @@ class HomeViewModel(
 
     fun fetchAPI() {
         viewModelScope.launch {
-            kotlin.runCatching { initialDataRepository.fetchInitialData() }
+            kotlin.runCatching { initialQuizWordRepository.fetchInitialData() }
                 .onSuccess { result ->
                     _english.value = result.data[2].english
                     dataRepository.saveInitialData(result.data)
