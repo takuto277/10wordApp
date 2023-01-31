@@ -1,6 +1,6 @@
 package com.example.a10wordapp.repository
 
-import com.example.a10wordapp.data.ItemEntity
+import com.example.a10wordapp.data.db.entity.ItemEntity
 
 class AddArrayRepository() {
     fun addArray(list: List<ItemEntity>): Array<String> {

@@ -4,6 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.a10wordapp.data.db.dao.InitialDataDao
+import com.example.a10wordapp.data.db.dao.ItemDao
+import com.example.a10wordapp.data.db.entity.InitialDataEntity
+import com.example.a10wordapp.data.db.entity.ItemEntity
 
 /**
  * Database class with a singleton INSTANCE object.

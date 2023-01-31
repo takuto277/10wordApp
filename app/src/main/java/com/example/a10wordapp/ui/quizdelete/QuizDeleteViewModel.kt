@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.a10wordapp.data.InitialDataEntity
+import com.example.a10wordapp.data.db.entity.InitialDataEntity
 import com.example.a10wordapp.repository.DataRepository
 
 class QuizDeleteViewModel(

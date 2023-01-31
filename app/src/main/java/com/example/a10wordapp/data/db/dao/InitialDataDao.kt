@@ -1,9 +1,10 @@
-package com.example.a10wordapp.data
+package com.example.a10wordapp.data.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.a10wordapp.data.db.entity.InitialDataEntity
 
 /**
  * Database access object to access the Inventory database

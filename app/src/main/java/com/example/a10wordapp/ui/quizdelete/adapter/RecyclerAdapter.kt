@@ -3,7 +3,7 @@ package com.example.a10wordapp.ui.quizdelete.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a10wordapp.data.InitialDataEntity
+import com.example.a10wordapp.data.db.entity.InitialDataEntity
 import com.example.a10wordapp.databinding.OneLayoutBinding
 
 class RecyclerAdapter(private val InitialDataList: List<InitialDataEntity>) :

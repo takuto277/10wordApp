@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import com.example.a10wordapp.data.ItemEntity
+import com.example.a10wordapp.data.db.entity.ItemEntity
 import com.example.a10wordapp.databinding.ActivityQuizBinding
 import com.example.a10wordapp.ui.ViewModelFactory
 import com.example.a10wordapp.ui.quizshow.speechListener.SpeechListener
