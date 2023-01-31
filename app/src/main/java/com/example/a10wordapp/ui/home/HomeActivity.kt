@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.example.a10wordapp.ViewModelFactory
 import com.example.a10wordapp.databinding.ActivityHomeBinding
+import com.example.a10wordapp.ui.ViewModelFactory
 import com.example.a10wordapp.ui.add.AddActivity
 import com.example.a10wordapp.ui.delete.DeleteActivity
 import com.example.a10wordapp.ui.quizlist.QuizListActivity

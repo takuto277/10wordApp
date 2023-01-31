@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a10wordapp.ViewModelFactory
 import com.example.a10wordapp.databinding.ActivityQuizlistBinding
 import com.example.a10wordapp.domain.entity.QuizListItem
+import com.example.a10wordapp.ui.ViewModelFactory
 import com.example.a10wordapp.ui.quizlist.adapter.QuizListAdapter
 
 class QuizListActivity : AppCompatActivity() {

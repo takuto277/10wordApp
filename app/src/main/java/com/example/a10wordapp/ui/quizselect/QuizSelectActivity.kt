@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a10wordapp.ViewModelFactory
 import com.example.a10wordapp.databinding.ActivityQuizSelectBinding
 import com.example.a10wordapp.domain.entity.QuizSelectItem
+import com.example.a10wordapp.ui.ViewModelFactory
 import com.example.a10wordapp.ui.quiz.QuizActivity
 import com.example.a10wordapp.ui.quizselect.adapter.QuizSelectAdapter
 

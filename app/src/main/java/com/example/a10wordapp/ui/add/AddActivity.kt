@@ -3,8 +3,8 @@ package com.example.a10wordapp.ui.add
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.a10wordapp.ViewModelFactory
 import com.example.a10wordapp.databinding.ActivityAddBinding
+import com.example.a10wordapp.ui.ViewModelFactory
 
 class AddActivity : AppCompatActivity() {
 
