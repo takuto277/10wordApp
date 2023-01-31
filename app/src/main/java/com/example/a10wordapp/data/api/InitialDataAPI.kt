@@ -1,4 +1,4 @@
-package com.example.a10wordapp.api
+package com.example.a10wordapp.data.api
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

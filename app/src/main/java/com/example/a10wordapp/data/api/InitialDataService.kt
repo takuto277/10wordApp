@@ -1,4 +1,4 @@
-package com.example.a10wordapp.api
+package com.example.a10wordapp.data.api
 
 import retrofit2.http.GET
 
