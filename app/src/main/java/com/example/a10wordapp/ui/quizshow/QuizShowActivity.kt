@@ -30,7 +30,7 @@ class QuizShowActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         textToSpeech = TextToSpeech(this, this)
 
         // リストを取得する
-        viewModel.getList(this)
+        viewModel.getList()
         val itemList = viewModel.list.value ?: return
 
         viewModel.list.observe(this, Observer {

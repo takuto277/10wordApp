@@ -18,7 +18,7 @@ class QuizDeleteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.getInitialDataList(this)
+        viewModel.getInitialDataList()
         val initialDataList = viewModel.list.value ?: return
 
         binding = ActivityDeleteBinding.inflate(layoutInflater)

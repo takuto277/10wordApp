@@ -1,6 +1,5 @@
 package com.example.a10wordapp.ui.quizdelete
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,7 +13,7 @@ class QuizDeleteViewModel(
     private val _list = MutableLiveData<List<InitialDataEntity>>()
     val list: LiveData<List<InitialDataEntity>> get() = _list
 
-    fun getInitialDataList(context: Context) {
+    fun getInitialDataList() {
         _list.value = quizWordRepository.getInitialDataList()
     }
 }

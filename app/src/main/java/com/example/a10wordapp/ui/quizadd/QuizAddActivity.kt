@@ -20,7 +20,7 @@ class QuizAddActivity : AppCompatActivity() {
             val id = binding.id.text.toString().toInt()
             val english = binding.english.text.toString()
             val japanese = binding.japanese.text.toString()
-            viewModel.saveButtonTapped(this, id, english, japanese)
+            viewModel.saveButtonTapped(id, english, japanese)
             finish()
         }
 
