@@ -1,4 +1,4 @@
-package com.example.a10wordapp
+package com.example.a10wordapp.ui
 
 import android.annotation.SuppressLint
 import android.app.Application
