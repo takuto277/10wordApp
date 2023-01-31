@@ -5,12 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.a10wordapp.repository.DataRepository
+import com.example.a10wordapp.repository.QuizWordRepository
 import com.example.a10wordapp.repository.InitialQuizWordRepository
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val dataRepository: DataRepository,
+    private val quizWordRepository: QuizWordRepository,
     private val initialQuizWordRepository: InitialQuizWordRepository
 ) : ViewModel() {
 
@@ -22,7 +22,7 @@ class HomeViewModel(
             kotlin.runCatching { initialQuizWordRepository.fetchInitialData() }
                 .onSuccess { result ->
                     _english.value = result.data[2].english
-                    dataRepository.saveInitialData(result.data)
+                    quizWordRepository.saveInitialData(result.data)
                 }
                 .onFailure { result ->
                     Log.d("response", "debug ${result}")
