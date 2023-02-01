@@ -9,15 +9,20 @@ import com.example.a10wordapp.repository.QuizWordRepository
 import com.example.a10wordapp.repository.InitialQuizWordRepository
 import kotlinx.coroutines.launch
 
-class HomeViewModel(
+interface HomeViewModel {
+    val english: LiveData<String>
+    fun fetchAPI()
+}
+
+class HomeViewModelImpl(
     private val quizWordRepository: QuizWordRepository,
     private val initialQuizWordRepository: InitialQuizWordRepository
-) : ViewModel() {
+) : ViewModel(),HomeViewModel {
 
     private val _english = MutableLiveData<String>()
-    val english: LiveData<String> get() = _english
+    override val english: LiveData<String> get() = _english
 
-    fun fetchAPI() {
+    override fun fetchAPI() {
         viewModelScope.launch {
             kotlin.runCatching { initialQuizWordRepository.fetchInitialData() }
                 .onSuccess { result ->

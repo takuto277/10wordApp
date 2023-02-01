@@ -1,6 +1,5 @@
 package com.example.a10wordapp.ui.home
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -15,8 +14,9 @@ import com.example.a10wordapp.ui.quizlist.QuizListActivity
 import com.example.a10wordapp.ui.quizselect.QuizSelectActivity
 
 
+
 class HomeActivity : AppCompatActivity() {
-    private val viewModel: HomeViewModel by viewModels { ViewModelFactory(applicationContext) }
+    private val viewModel: HomeViewModelImpl by viewModels { ViewModelFactory(applicationContext) }
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
