@@ -41,5 +41,6 @@ class QuizSelectAdapter(
         }
     }
 
-    override fun getItemCount() = dataSet.size
+    // TODO:10をどうにかしたい
+    override fun getItemCount() = dataSet.size / 10
 }
