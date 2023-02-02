@@ -11,7 +11,7 @@ interface InitialDataAPI {
     val service: InitialDataService
 }
 
-class InitialDataAPIImpl: InitialDataAPI {
+class InitialDataAPIImpl : InitialDataAPI {
     override val moshi: Moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()

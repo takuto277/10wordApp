@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.example.a10wordapp.data.db.entity.InitialDataEntity
-import com.example.a10wordapp.data.db.entity.ItemEntity
 import com.example.a10wordapp.databinding.ActivityQuizBinding
 import com.example.a10wordapp.ui.ViewModelFactory
 import com.example.a10wordapp.ui.quizshow.speechListener.SpeechListener
@@ -24,7 +23,7 @@ class QuizShowActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         var arrayFigure = 0
 
-        val item = intent.getIntExtra("ItemId",1)
+        val item = intent.getIntExtra("ItemId", 1)
 
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -36,7 +35,7 @@ class QuizShowActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         viewModel.list.observe(this, Observer { list ->
             // 選択された番号から10個単語を絞る
-            fileterList = list.filter { it.id in "${item}0".toInt()-9.."${item}0".toInt() }
+            fileterList = list.filter { it.id in "${item}0".toInt() - 9.."${item}0".toInt() }
             getlayout(fileterList, arrayFigure)
             speakText(fileterList, arrayFigure)
             binding.translateText.isVisible = false

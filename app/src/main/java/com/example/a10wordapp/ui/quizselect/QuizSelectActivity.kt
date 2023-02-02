@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.databinding.ActivityQuizSelectBinding
 import com.example.a10wordapp.domain.entity.QuizSelectItem
 import com.example.a10wordapp.ui.ViewModelFactory
-import com.example.a10wordapp.ui.quizshow.QuizShowActivity
 import com.example.a10wordapp.ui.quizselect.adapter.QuizSelectAdapter
+import com.example.a10wordapp.ui.quizshow.QuizShowActivity
 
 class QuizSelectActivity : AppCompatActivity() {
     private val viewModel: QuizSelectViewModel by viewModels { ViewModelFactory(applicationContext) }
@@ -36,7 +35,6 @@ class QuizSelectActivity : AppCompatActivity() {
                     "「${item.text}」をクリックしました。",
                     Toast.LENGTH_SHORT
                 ).show()
-                val filterData = dataSet.filter { item.id in "${it.id}0".toInt()-9.."${it.id}0".toInt() }
                 val intent = Intent(this@QuizSelectActivity, QuizShowActivity::class.java)
                 //TODO: QuizSelectItemのIDで番号を決めている実装を見直す
                 intent.putExtra("ItemId", item.id)
@@ -45,7 +43,7 @@ class QuizSelectActivity : AppCompatActivity() {
         }
         recyclerView.apply {
             adapter = quizSelectAdapter
-            layoutManager = GridLayoutManager(this@QuizSelectActivity,4)
+            layoutManager = GridLayoutManager(this@QuizSelectActivity, 4)
         }
     }
 }
