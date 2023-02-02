@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.a10wordapp.repository.QuizWordRepository
 import com.example.a10wordapp.repository.InitialQuizWordRepository
+import com.example.a10wordapp.repository.InitialQuizWordRepositoryImpl
 import com.example.a10wordapp.repository.QuizWordRepositoryImpl
 import com.example.a10wordapp.ui.quizadd.QuizAddViewModel
 import com.example.a10wordapp.ui.quizdelete.QuizDeleteViewModel
@@ -31,7 +32,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
                 isAssignableFrom(QuizAddViewModel::class.java) ->
                     QuizAddViewModel(QuizWordRepositoryImpl(context))
                 isAssignableFrom(HomeViewModel::class.java) ->
-                    HomeViewModel(QuizWordRepositoryImpl(context), InitialQuizWordRepository(context))
+                    HomeViewModel(QuizWordRepositoryImpl(context), InitialQuizWordRepositoryImpl(context))
                 isAssignableFrom(QuizSelectViewModel::class.java) ->
                     QuizSelectViewModel(QuizWordRepositoryImpl(context))
                 else ->

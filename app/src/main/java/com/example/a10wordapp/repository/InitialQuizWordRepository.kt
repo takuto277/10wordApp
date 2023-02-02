@@ -4,9 +4,13 @@ import android.content.Context
 import com.example.a10wordapp.data.api.InitialDataAPI
 import com.example.a10wordapp.data.api.InitialDataResponse
 
-class InitialQuizWordRepository(private val contect: Context) {
+interface InitialQuizWordRepository {
+    suspend fun fetchInitialData(): InitialDataResponse
+}
 
-    suspend fun fetchInitialData(): InitialDataResponse {
+class InitialQuizWordRepositoryImpl(private val contect: Context): InitialQuizWordRepository {
+
+    override suspend fun fetchInitialData(): InitialDataResponse {
         return InitialDataAPI().service.fetchInitialData()
     }
 }
