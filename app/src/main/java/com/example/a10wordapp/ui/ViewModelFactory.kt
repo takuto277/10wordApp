@@ -6,8 +6,11 @@ import android.content.Context
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.a10wordapp.data.api.InitialDataAPIImpl
 import com.example.a10wordapp.repository.QuizWordRepository
 import com.example.a10wordapp.repository.InitialQuizWordRepository
+import com.example.a10wordapp.repository.InitialQuizWordRepositoryImpl
+import com.example.a10wordapp.repository.QuizWordRepositoryImpl
 import com.example.a10wordapp.ui.quizadd.QuizAddViewModel
 import com.example.a10wordapp.ui.quizdelete.QuizDeleteViewModel
 import com.example.a10wordapp.ui.home.HomeViewModel
@@ -22,17 +25,17 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
         with(modelClass) {
             when {
                 isAssignableFrom(QuizShowViewModel::class.java) ->
-                    QuizShowViewModel(QuizWordRepository(context))
+                    QuizShowViewModel(QuizWordRepositoryImpl(context))
                 isAssignableFrom(QuizListViewModel::class.java) ->
-                    QuizListViewModel(QuizWordRepository(context))
+                    QuizListViewModel(QuizWordRepositoryImpl(context))
                 isAssignableFrom(QuizDeleteViewModel::class.java) ->
-                    QuizDeleteViewModel(QuizWordRepository(context))
+                    QuizDeleteViewModel(QuizWordRepositoryImpl(context))
                 isAssignableFrom(QuizAddViewModel::class.java) ->
-                    QuizAddViewModel(QuizWordRepository(context))
+                    QuizAddViewModel(QuizWordRepositoryImpl(context))
                 isAssignableFrom(HomeViewModel::class.java) ->
-                    HomeViewModel(QuizWordRepository(context), InitialQuizWordRepository(context))
+                    HomeViewModel(QuizWordRepositoryImpl(context), InitialQuizWordRepositoryImpl(context, InitialDataAPIImpl()))
                 isAssignableFrom(QuizSelectViewModel::class.java) ->
-                    QuizSelectViewModel(QuizWordRepository(context))
+                    QuizSelectViewModel(QuizWordRepositoryImpl(context))
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
