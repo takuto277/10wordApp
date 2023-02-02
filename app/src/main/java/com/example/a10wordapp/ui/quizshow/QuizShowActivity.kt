@@ -33,9 +33,9 @@ class QuizShowActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         // リストを取得する
         viewModel.getInitialDataList()
         var fileterList: List<InitialDataEntity> = viewModel.list.value ?: return
-   //     fileterList = fileterList.filter { it.id in "${item}0".toInt()-9.."${item}0".toInt() }
 
         viewModel.list.observe(this, Observer { list ->
+            // 選択された番号から10個単語を絞る
             fileterList = list.filter { it.id in "${item}0".toInt()-9.."${item}0".toInt() }
             getlayout(fileterList, arrayFigure)
             speakText(fileterList, arrayFigure)
