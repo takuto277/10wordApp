@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import com.example.a10wordapp.data.db.entity.InitialDataEntity
 import com.example.a10wordapp.data.db.entity.ItemEntity
 import com.example.a10wordapp.databinding.ActivityQuizBinding
 import com.example.a10wordapp.ui.ViewModelFactory
@@ -23,40 +24,41 @@ class QuizShowActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         var arrayFigure = 0
 
-        val item = intent.getStringExtra("Item")
+        val item = intent.getIntExtra("ItemId",1)
 
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
         textToSpeech = TextToSpeech(this, this)
 
         // リストを取得する
-        viewModel.getList()
-        val itemList = viewModel.list.value ?: return
+        viewModel.getInitialDataList()
+        var fileterList: List<InitialDataEntity> = viewModel.list.value ?: return
 
-        viewModel.list.observe(this, Observer {
-            getlayout(itemList, arrayFigure)
-            speakText(itemList, arrayFigure)
+        viewModel.list.observe(this, Observer { list ->
+            fileterList = list.filter { item in "${item}0".toInt()-9.."${item}0".toInt() }
+            getlayout(fileterList, arrayFigure)
+            speakText(fileterList, arrayFigure)
             binding.translateText.isVisible = false
 
         })
 
         binding.currentButton.setOnClickListener {
-            if (arrayFigure == itemList.count() - 1) {
+            if (arrayFigure == fileterList.count() - 1) {
                 finish()
                 Toast.makeText(this, "問題終了！", Toast.LENGTH_SHORT).show()
             } else {
                 ++arrayFigure
             }
 
-            getlayout(itemList, arrayFigure)
-            speakText(itemList, arrayFigure)
+            getlayout(fileterList, arrayFigure)
+            speakText(fileterList, arrayFigure)
             binding.translateText.isVisible = false
         }
 
         binding.wrongButton.setOnClickListener {
             arrayFigure = 0
-            getlayout(itemList, arrayFigure)
-            speakText(itemList, arrayFigure)
+            getlayout(fileterList, arrayFigure)
+            speakText(fileterList, arrayFigure)
             binding.translateText.isVisible = false
         }
 
@@ -74,12 +76,12 @@ class QuizShowActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         textToSpeech!!.setOnUtteranceProgressListener(listenter)
     }
 
-    private fun getlayout(list: List<ItemEntity>, arrayFigure: Int) {
+    private fun getlayout(list: List<InitialDataEntity>, arrayFigure: Int) {
         binding.wordText.text = list[arrayFigure].english
         binding.translateText.text = list[arrayFigure].japanese
     }
 
-    private fun speakText(list: List<ItemEntity>, arrayFigure: Int) {
+    private fun speakText(list: List<InitialDataEntity>, arrayFigure: Int) {
         textToSpeech!!.setLanguage(Locale.ENGLISH)
         textToSpeech!!.speak(list[arrayFigure].english, TextToSpeech.QUEUE_FLUSH, null, "Speech1")
     }
