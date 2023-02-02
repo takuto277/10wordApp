@@ -14,8 +14,13 @@ class QuizSelectViewModel(
     val quizSelectItem: LiveData<Array<QuizSelectItem>> get() = _quizSelectItem
 
     fun fecthContent() {
-        _quizSelectItem.value = quizWordRepository.getList().map { entey ->
-            QuizSelectItem(text = "english:${entey.english}, japanese:${entey.japanese}")
+        _quizSelectItem.value = quizWordRepository.getInitialDataList().map { entey ->
+            QuizSelectItem(
+                text = "${entey.id}",
+                id = entey.id,
+                english = entey.english,
+                japanese = entey.japanese
+            )
         }.toTypedArray()
     }
 }

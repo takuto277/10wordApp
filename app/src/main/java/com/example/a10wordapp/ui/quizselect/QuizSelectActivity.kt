@@ -36,20 +36,16 @@ class QuizSelectActivity : AppCompatActivity() {
                     "「${item.text}」をクリックしました。",
                     Toast.LENGTH_SHORT
                 ).show()
+                val filterData = dataSet.filter { item.id in "${it.id}0".toInt()-9.."${it.id}0".toInt() }
                 val intent = Intent(this@QuizSelectActivity, QuizShowActivity::class.java)
-                intent.putExtra("Item", item.text)
+                //TODO: QuizSelectItemのIDで番号を決めている実装を見直す
+                intent.putExtra("ItemId", item.id)
                 startActivity(intent)
             }
         }
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
         recyclerView.apply {
             adapter = quizSelectAdapter
-            addItemDecoration(
-                DividerItemDecoration(
-                    this@QuizSelectActivity,
-                    GridLayoutManager(this@QuizSelectActivity, 3).orientation
-                )
-            )
+            layoutManager = GridLayoutManager(this@QuizSelectActivity,4)
         }
     }
 }
