@@ -7,16 +7,14 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.a10wordapp.data.api.InitialDataAPIImpl
-import com.example.a10wordapp.repository.QuizWordRepository
-import com.example.a10wordapp.repository.InitialQuizWordRepository
 import com.example.a10wordapp.repository.InitialQuizWordRepositoryImpl
 import com.example.a10wordapp.repository.QuizWordRepositoryImpl
+import com.example.a10wordapp.ui.home.HomeViewModel
 import com.example.a10wordapp.ui.quizadd.QuizAddViewModel
 import com.example.a10wordapp.ui.quizdelete.QuizDeleteViewModel
-import com.example.a10wordapp.ui.home.HomeViewModel
-import com.example.a10wordapp.ui.quizshow.QuizShowViewModel
 import com.example.a10wordapp.ui.quizlist.QuizListViewModel
 import com.example.a10wordapp.ui.quizselect.QuizSelectViewModel
+import com.example.a10wordapp.ui.quizshow.QuizShowViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInstanceFactory() {
 
@@ -33,9 +31,14 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
                 isAssignableFrom(QuizAddViewModel::class.java) ->
                     QuizAddViewModel(QuizWordRepositoryImpl(context))
                 isAssignableFrom(HomeViewModel::class.java) ->
-                    HomeViewModel(QuizWordRepositoryImpl(context), InitialQuizWordRepositoryImpl(context, InitialDataAPIImpl()))
+                    HomeViewModel(
+                        QuizWordRepositoryImpl(context),
+                        InitialQuizWordRepositoryImpl(context, InitialDataAPIImpl())
+                    )
                 isAssignableFrom(QuizSelectViewModel::class.java) ->
                     QuizSelectViewModel(QuizWordRepositoryImpl(context))
+                isAssignableFrom(ShareQuizShowViewModel::class.java) ->
+                    ShareQuizShowViewModel()
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
