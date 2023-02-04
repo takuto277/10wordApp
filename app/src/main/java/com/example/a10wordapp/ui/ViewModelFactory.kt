@@ -37,8 +37,6 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
                     )
                 isAssignableFrom(QuizSelectViewModel::class.java) ->
                     QuizSelectViewModel(QuizWordRepositoryImpl(context))
-                isAssignableFrom(ShareQuizShowViewModel::class.java) ->
-                    ShareQuizShowViewModel()
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
