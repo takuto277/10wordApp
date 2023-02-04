@@ -29,10 +29,10 @@ class QuizAddActivity : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.saveButton.setOnClickListener {
-            val id = binding.id.text.toString().toInt()
+            //    val id = binding.id.text.toString().toInt()
             val english = binding.english.text.toString()
             val japanese = binding.japanese.text.toString()
-            viewModel.saveButtonTapped(id, english, japanese)
+            viewModel.saveButtonTapped(english, japanese)
             backScreen()
         }
 

@@ -1,24 +1,24 @@
 package com.example.a10wordapp.repository
 
 import android.content.Context
-import com.example.a10wordapp.data.api.Data
 import com.example.a10wordapp.data.AppRoomDatabase
+import com.example.a10wordapp.data.api.Data
 import com.example.a10wordapp.data.db.entity.InitialDataEntity
 import com.example.a10wordapp.data.db.entity.ItemEntity
 import kotlinx.coroutines.runBlocking
 
 interface QuizWordRepository {
-    fun addNewItem(id: Int, english: String, japanese: String)
+    fun addNewItem(english: String, japanese: String)
     suspend fun saveInitialData(data: Array<Data>)
     fun getList(): List<ItemEntity>
     fun getInitialDataList(): List<InitialDataEntity>
 
 }
 
-class QuizWordRepositoryImpl(private val context: Context): QuizWordRepository {
-    override fun addNewItem(id: Int, english: String, japanese: String) {
+class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository {
+    override fun addNewItem(english: String, japanese: String) {
         val getDatabase = AppRoomDatabase.getDatabase(context)
-        val itemEntiry = ItemEntity(id, english, japanese)
+        val itemEntiry = ItemEntity(0, english, japanese)
         val itemDao = getDatabase.itemDao()
         runBlocking {
             itemDao.insert(itemEntiry)
