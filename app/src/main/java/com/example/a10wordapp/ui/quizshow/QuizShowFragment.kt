@@ -20,6 +20,7 @@ import com.example.a10wordapp.ui.quizshow.speechListener.SpeechListener
 import java.util.*
 
 class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
+    
     private val viewModel: QuizShowViewModel by viewModels { ViewModelFactory(requireContext()) }
     private lateinit var binding: QuizShowFragmentBinding
     private var textToSpeech: TextToSpeech? = null
