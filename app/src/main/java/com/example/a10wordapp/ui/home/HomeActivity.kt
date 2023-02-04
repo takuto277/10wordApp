@@ -6,26 +6,44 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.viewModels
 import com.example.a10wordapp.R
+import com.example.a10wordapp.databinding.ActivityHomeBinding
+import com.example.a10wordapp.ui.ViewModelFactory
+import com.example.a10wordapp.ui.quizadd.QuizAddActivity
 
 
 class HomeActivity : Fragment() {
+
+    private lateinit var binding: ActivityHomeBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = ActivityHomeBinding.inflate(inflater, container, false)
+        return binding.root
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_home, container, false)
+        // return inflater.inflate(R.layout.activity_home, container, false)
     }
-//    private val viewModel: HomeViewModel by viewModels { ViewModelFactory(applicationContext) }
-//    private lateinit var binding: ActivityHomeBinding
-//
+
+    private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.addButton.setOnClickListener {
+            val fragment = QuizAddActivity()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment, fragment)
+            transaction.addToBackStack(null);
+            transaction.commit()
+        }
+    }
+
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
-//
-//        binding = ActivityHomeBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
 //
 //        binding.learnButton.setOnClickListener {
 //            val intent = Intent(this, QuizSelectActivity::class.java)
