@@ -12,22 +12,22 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.R
-import com.example.a10wordapp.databinding.ActivityQuizSelectBinding
+import com.example.a10wordapp.databinding.QuizSelectFragmentBinding
 import com.example.a10wordapp.domain.entity.QuizSelectItem
 import com.example.a10wordapp.ui.ViewModelFactory
 import com.example.a10wordapp.ui.quizselect.adapter.QuizSelectAdapter
-import com.example.a10wordapp.ui.quizshow.QuizShowActivity
+import com.example.a10wordapp.ui.quizshow.QuizShowFragment
 
-class QuizSelectActivity : Fragment() {
+class QuizSelectFragment : Fragment() {
     private val viewModel: QuizSelectViewModel by viewModels { ViewModelFactory(requireContext()) }
-    private lateinit var binding: ActivityQuizSelectBinding
+    private lateinit var binding: QuizSelectFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ActivityQuizSelectBinding.inflate(inflater, container, false)
+        binding = QuizSelectFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -53,7 +53,7 @@ class QuizSelectActivity : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                val fragment = QuizShowActivity()
+                val fragment = QuizShowFragment()
                 val bundle = Bundle()
                 bundle.putInt("ItemId", item.id)
                 fragment.arguments = bundle

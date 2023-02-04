@@ -36,14 +36,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.quizdelete.QuizDeleteActivity"
+            android:name=".ui.quizdelete.QuizDeleteFragment"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.home.HomeFragment"
             android:exported="true">
 
             <meta-data
@@ -60,10 +60,10 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".ui.quizshow.QuizShowActivity" />
-        <activity android:name=".ui.quizadd.QuizAddActivity" />
-        <activity android:name=".ui.quizselect.QuizSelectActivity" />
-        <activity android:name=".ui.quizlist.QuizListActivity" />
+        <activity android:name=".ui.quizshow.QuizShowFragment" />
+        <activity android:name=".ui.quizadd.QuizAddFragment" />
+        <activity android:name=".ui.quizselect.QuizSelectFragment" />
+        <activity android:name=".ui.quizlist.QuizListFragment" />
     </application>
 
 </manifest>

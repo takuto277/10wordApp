@@ -8,21 +8,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import com.example.a10wordapp.R
-import com.example.a10wordapp.databinding.ActivityAddBinding
+import com.example.a10wordapp.databinding.QuizAddFragmentBinding
 import com.example.a10wordapp.ui.ViewModelFactory
-import com.example.a10wordapp.ui.home.HomeActivity
+import com.example.a10wordapp.ui.home.HomeFragment
 
-class QuizAddActivity : Fragment() {
+class QuizAddFragment : Fragment() {
 
     private val viewModel: QuizAddViewModel by viewModels { ViewModelFactory(requireContext()) }
-    private lateinit var binding: ActivityAddBinding
+    private lateinit var binding: QuizAddFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ActivityAddBinding.inflate(inflater, container, false)
+        binding = QuizAddFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -42,7 +42,7 @@ class QuizAddActivity : Fragment() {
     }
 
     private fun backScreen() {
-        val fragment = HomeActivity()
+        val fragment = HomeFragment()
         val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment, fragment)
         transaction.commit()

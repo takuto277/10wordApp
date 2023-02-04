@@ -13,15 +13,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.a10wordapp.R
 import com.example.a10wordapp.data.db.entity.InitialDataEntity
-import com.example.a10wordapp.databinding.ActivityQuizBinding
+import com.example.a10wordapp.databinding.QuizShowFragmentBinding
 import com.example.a10wordapp.ui.ViewModelFactory
-import com.example.a10wordapp.ui.home.HomeActivity
+import com.example.a10wordapp.ui.home.HomeFragment
 import com.example.a10wordapp.ui.quizshow.speechListener.SpeechListener
 import java.util.*
 
-class QuizShowActivity : Fragment(), TextToSpeech.OnInitListener {
+class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
     private val viewModel: QuizShowViewModel by viewModels { ViewModelFactory(requireContext()) }
-    private lateinit var binding: ActivityQuizBinding
+    private lateinit var binding: QuizShowFragmentBinding
     private var textToSpeech: TextToSpeech? = null
 
     override fun onCreateView(
@@ -29,7 +29,7 @@ class QuizShowActivity : Fragment(), TextToSpeech.OnInitListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ActivityQuizBinding.inflate(inflater, container, false)
+        binding = QuizShowFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -101,7 +101,7 @@ class QuizShowActivity : Fragment(), TextToSpeech.OnInitListener {
     }
 
     private fun backScreen() {
-        val fragment = HomeActivity()
+        val fragment = HomeFragment()
         val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment, fragment)
         transaction.commit()

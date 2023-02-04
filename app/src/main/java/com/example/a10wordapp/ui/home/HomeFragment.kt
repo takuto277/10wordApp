@@ -10,17 +10,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import com.example.a10wordapp.R
-import com.example.a10wordapp.databinding.ActivityHomeBinding
+import com.example.a10wordapp.databinding.HomeFragmentBinding
 import com.example.a10wordapp.ui.ViewModelFactory
-import com.example.a10wordapp.ui.quizadd.QuizAddActivity
-import com.example.a10wordapp.ui.quizdelete.QuizDeleteActivity
-import com.example.a10wordapp.ui.quizlist.QuizListActivity
-import com.example.a10wordapp.ui.quizselect.QuizSelectActivity
+import com.example.a10wordapp.ui.quizadd.QuizAddFragment
+import com.example.a10wordapp.ui.quizdelete.QuizDeleteFragment
+import com.example.a10wordapp.ui.quizlist.QuizListFragment
+import com.example.a10wordapp.ui.quizselect.QuizSelectFragment
 
 
-class HomeActivity : Fragment() {
+class HomeFragment : Fragment() {
 
-    private lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: HomeFragmentBinding
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class HomeActivity : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ActivityHomeBinding.inflate(inflater, container, false)
+        binding = HomeFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,19 +36,19 @@ class HomeActivity : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.learnButton.setOnClickListener {
-            clickButton(QuizSelectActivity())
+            clickButton(QuizSelectFragment())
         }
 
         binding.addButton.setOnClickListener {
-            clickButton(QuizAddActivity())
+            clickButton(QuizAddFragment())
         }
 
         binding.deleteButton.setOnClickListener {
-            clickButton(QuizDeleteActivity())
+            clickButton(QuizDeleteFragment())
         }
 
         binding.allButton.setOnClickListener {
-            clickButton(QuizListActivity())
+            clickButton(QuizListFragment())
         }
 
         binding.apiFetchButton.setOnClickListener {

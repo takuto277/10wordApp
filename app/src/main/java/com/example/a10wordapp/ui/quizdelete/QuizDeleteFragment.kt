@@ -8,15 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a10wordapp.databinding.ActivityDeleteBinding
+import com.example.a10wordapp.databinding.QuizDeleteFragmentBinding
 import com.example.a10wordapp.ui.ViewModelFactory
 import com.example.a10wordapp.ui.quizdelete.adapter.RecyclerAdapter
 
-class QuizDeleteActivity : Fragment() {
+class QuizDeleteFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var binding: ActivityDeleteBinding
-
-    // private val requireContext = requireContext()
+    private lateinit var binding: QuizDeleteFragmentBinding
     private val viewModel: QuizDeleteViewModel by viewModels { ViewModelFactory(requireContext()) }
 
     override fun onCreateView(
@@ -24,7 +22,7 @@ class QuizDeleteActivity : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ActivityDeleteBinding.inflate(inflater, container, false)
+        binding = QuizDeleteFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
