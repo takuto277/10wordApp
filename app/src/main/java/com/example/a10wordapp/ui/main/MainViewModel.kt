@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ShareViewModel : ViewModel() {
+class MainViewModel : ViewModel() {
     private var _plan = MutableLiveData<Boolean>()
     val plan: LiveData<Boolean> = _plan
 

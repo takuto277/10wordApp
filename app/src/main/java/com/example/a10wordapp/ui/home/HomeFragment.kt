@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import com.example.a10wordapp.R
 import com.example.a10wordapp.databinding.HomeFragmentBinding
 import com.example.a10wordapp.ui.ViewModelFactory
-import com.example.a10wordapp.ui.main.ShareViewModel
+import com.example.a10wordapp.ui.main.MainViewModel
 import com.example.a10wordapp.ui.quizadd.QuizAddFragment
 import com.example.a10wordapp.ui.quizdelete.QuizDeleteFragment
 import com.example.a10wordapp.ui.quizlist.QuizListFragment
@@ -20,7 +20,7 @@ import com.example.a10wordapp.ui.quizselect.QuizSelectFragment
 
 class HomeFragment : Fragment() {
 
-    private val shareViewModel: ShareViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var binding: HomeFragmentBinding
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
 
@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
-            shareViewModel.changePlan(isChecked)
+            mainViewModel.changePlan(isChecked)
             if (isChecked) {
                 binding.addButton.visibility = View.INVISIBLE
                 binding.apiFetchButton.visibility = View.VISIBLE

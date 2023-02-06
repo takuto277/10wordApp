@@ -16,13 +16,13 @@ import com.example.a10wordapp.R
 import com.example.a10wordapp.databinding.QuizSelectFragmentBinding
 import com.example.a10wordapp.domain.entity.QuizSelectItem
 import com.example.a10wordapp.ui.ViewModelFactory
-import com.example.a10wordapp.ui.main.ShareViewModel
+import com.example.a10wordapp.ui.main.MainViewModel
 import com.example.a10wordapp.ui.quizselect.adapter.QuizSelectAdapter
 import com.example.a10wordapp.ui.quizshow.QuizShowFragment
 
 class QuizSelectFragment : Fragment() {
 
-    private val shareViewModel: ShareViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
     private val viewModel: QuizSelectViewModel by viewModels { ViewModelFactory(requireContext()) }
     private lateinit var binding: QuizSelectFragmentBinding
 
@@ -40,7 +40,7 @@ class QuizSelectFragment : Fragment() {
         viewModel.quizSelectItem.observe(viewLifecycleOwner, Observer { listItems ->
             initListAdapter(binding.recyclerView, listItems)
         })
-        viewModel.fecthContent(shareViewModel.plan.value!!)
+        viewModel.fecthContent(mainViewModel.plan.value!!)
     }
 
     private fun initListAdapter(recyclerView: RecyclerView, dataSet: Array<QuizSelectItem>) {
