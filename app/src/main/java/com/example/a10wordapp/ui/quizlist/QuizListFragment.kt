@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,10 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.databinding.QuizListFragmentBinding
 import com.example.a10wordapp.domain.entity.QuizListItem
 import com.example.a10wordapp.ui.ViewModelFactory
+import com.example.a10wordapp.ui.main.MainViewModel
 import com.example.a10wordapp.ui.quizlist.adapter.QuizListAdapter
 
 class QuizListFragment : Fragment() {
-    // private val requireContext = requireContext()
+
+    private val mainViewModel: MainViewModel by activityViewModels { ViewModelFactory(requireContext()) }
     private val viewModel: QuizListViewModel by viewModels { ViewModelFactory(requireContext()) }
     private lateinit var binding: QuizListFragmentBinding
 
@@ -35,7 +38,7 @@ class QuizListFragment : Fragment() {
         viewModel.quizListItem.observe(viewLifecycleOwner) { listItems ->
             initListAdapter(binding.mainList, listItems)
         }
-        viewModel.fetchContent()
+        viewModel.fetchContent(mainViewModel.plan.value ?: return)
     }
 
     private fun initListAdapter(recyclerView: RecyclerView, dataSet: Array<QuizListItem>) {

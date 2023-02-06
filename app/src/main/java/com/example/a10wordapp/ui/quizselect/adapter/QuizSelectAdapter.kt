@@ -35,7 +35,7 @@ class QuizSelectAdapter(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.textView.text = dataSet[position].text
+        viewHolder.textView.text = "${dataSet[position].id}"
         viewHolder.rootView.setOnClickListener {
             itemClickListener?.onItemClick(dataSet[position])
         }

@@ -22,7 +22,7 @@ import com.example.a10wordapp.ui.quizshow.QuizShowFragment
 
 class QuizSelectFragment : Fragment() {
 
-    private val mainViewModel: MainViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels { ViewModelFactory(requireContext()) }
     private val viewModel: QuizSelectViewModel by viewModels { ViewModelFactory(requireContext()) }
     private lateinit var binding: QuizSelectFragmentBinding
 
@@ -49,17 +49,15 @@ class QuizSelectFragment : Fragment() {
             override fun onItemClick(item: QuizSelectItem) {
                 Toast.makeText(
                     requireContext(),
-                    "「${item.text}」をクリックしました。",
+                    "「${item.id}」をクリックしました。",
                     Toast.LENGTH_SHORT
                 ).show()
 
+                mainViewModel.registerQuizWords(mainViewModel.plan.value!!, item.id)
                 val fragment = QuizShowFragment()
-                val bundle = Bundle()
-                bundle.putInt("ItemId", item.id)
-                fragment.arguments = bundle
-
                 val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
                 transaction.replace(R.id.fragment, fragment)
+                transaction.addToBackStack(null);
                 transaction.commit()
             }
         }

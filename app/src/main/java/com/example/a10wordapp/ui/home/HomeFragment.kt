@@ -20,9 +20,9 @@ import com.example.a10wordapp.ui.quizselect.QuizSelectFragment
 
 class HomeFragment : Fragment() {
 
-    private val mainViewModel: MainViewModel by activityViewModels()
-    private lateinit var binding: HomeFragmentBinding
+    private val mainViewModel: MainViewModel by activityViewModels { ViewModelFactory(requireContext()) }
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
+    private lateinit var binding: HomeFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

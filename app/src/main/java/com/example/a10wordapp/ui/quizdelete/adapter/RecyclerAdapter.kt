@@ -3,17 +3,17 @@ package com.example.a10wordapp.ui.quizdelete.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a10wordapp.data.db.entity.InitialDataEntity
 import com.example.a10wordapp.databinding.OneLayoutBinding
+import com.example.a10wordapp.domain.entity.QuizDeleteEntity
 
-class RecyclerAdapter(private val InitialDataList: List<InitialDataEntity>) :
+class RecyclerAdapter(private val array: Array<QuizDeleteEntity>) :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: OneLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             binding.apply {
-                val oneLayouts = InitialDataList[position]
+                val oneLayouts = array[position]
 
                 primaryText.text = oneLayouts.english
                 secondaryText.text = oneLayouts.japanese
@@ -33,6 +33,6 @@ class RecyclerAdapter(private val InitialDataList: List<InitialDataEntity>) :
 
     //６）データが何件あるかをカウントする
     override fun getItemCount(): Int {
-        return InitialDataList.count()
+        return array.count()
     }
 }

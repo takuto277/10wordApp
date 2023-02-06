@@ -29,7 +29,6 @@ class QuizAddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.saveButton.setOnClickListener {
-            //    val id = binding.id.text.toString().toInt()
             val english = binding.english.text.toString()
             val japanese = binding.japanese.text.toString()
             viewModel.saveButtonTapped(english, japanese)
@@ -45,6 +44,7 @@ class QuizAddFragment : Fragment() {
         val fragment = HomeFragment()
         val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment, fragment)
+        transaction.addToBackStack(null);
         transaction.commit()
     }
 }
