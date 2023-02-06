@@ -10,6 +10,7 @@ import com.example.a10wordapp.data.api.InitialDataAPIImpl
 import com.example.a10wordapp.repository.InitialQuizWordRepositoryImpl
 import com.example.a10wordapp.repository.QuizWordRepositoryImpl
 import com.example.a10wordapp.ui.home.HomeViewModel
+import com.example.a10wordapp.ui.main.MainViewModel
 import com.example.a10wordapp.ui.quizadd.QuizAddViewModel
 import com.example.a10wordapp.ui.quizdelete.QuizDeleteViewModel
 import com.example.a10wordapp.ui.quizlist.QuizListViewModel
@@ -37,6 +38,8 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
                     )
                 isAssignableFrom(QuizSelectViewModel::class.java) ->
                     QuizSelectViewModel(QuizWordRepositoryImpl(context))
+                isAssignableFrom(MainViewModel::class.java) ->
+                    MainViewModel(QuizWordRepositoryImpl(context))
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
