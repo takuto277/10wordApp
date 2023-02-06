@@ -25,7 +25,7 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
     private val mainViewModel: MainViewModel by activityViewModels { ViewModelFactory(requireContext()) }
     private val viewModel: QuizShowViewModel by viewModels { ViewModelFactory(requireContext()) }
     private lateinit var binding: QuizShowFragmentBinding
-    private var textToSpeech: TextToSpeech? = null
+    private lateinit var textToSpeech: TextToSpeech
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +41,7 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
 
         var arrayFigure = 0
 
-        textToSpeech = TextToSpeech(requireContext(), this)
+        textToSpeech = TextToSpeech(requireContext(), this) ?: return
 
         // リストを取得する
         val fileterQuizArray = mainViewModel.quizShowWords.value ?: return
@@ -80,7 +80,7 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
 
     override fun onInit(p0: Int) {
         val listenter: SpeechListener = SpeechListener()
-        textToSpeech!!.setOnUtteranceProgressListener(listenter)
+        textToSpeech.setOnUtteranceProgressListener(listenter)
     }
 
     private fun getlayout(array: Array<QuizShowEntity>, arrayFigure: Int) {
@@ -89,8 +89,8 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
     }
 
     private fun speakText(array: Array<QuizShowEntity>, arrayFigure: Int) {
-        textToSpeech!!.setLanguage(Locale.ENGLISH)
-        textToSpeech!!.speak(array[arrayFigure].english, TextToSpeech.QUEUE_FLUSH, null, "Speech1")
+        textToSpeech.setLanguage(Locale.ENGLISH)
+        textToSpeech.speak(array[arrayFigure].english, TextToSpeech.QUEUE_FLUSH, null, "Speech1")
     }
 
     private fun backScreen() {
