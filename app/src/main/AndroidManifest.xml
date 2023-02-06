@@ -15,6 +15,13 @@
         android:theme="@style/Theme.10wordApp"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".QuizSelectActivity"
             android:exported="false">
             <meta-data
@@ -29,14 +36,22 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.quizdelete.QuizDeleteActivity"
+            android:name=".ui.quizdelete.QuizDeleteFragment"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.home.HomeFragment"
+            android:exported="true">
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,14 +59,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
-        <activity android:name=".ui.quizshow.QuizShowActivity" />
-        <activity android:name=".ui.quizadd.QuizAddActivity" />
-        <activity android:name=".ui.quizselect.QuizSelectActivity" />
-        <activity android:name=".ui.quizlist.QuizListActivity" />
+        <activity android:name=".ui.quizshow.QuizShowFragment" />
+        <activity android:name=".ui.quizadd.QuizAddFragment" />
+        <activity android:name=".ui.quizselect.QuizSelectFragment" />
+        <activity android:name=".ui.quizlist.QuizListFragment" />
     </application>
 
 </manifest>

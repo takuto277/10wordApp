@@ -19,7 +19,7 @@ class HomeViewModel(
 
     fun fetchAPI() {
         viewModelScope.launch {
-            kotlin.runCatching { initialQuizWordRepository.fetchInitialData() }
+            runCatching { initialQuizWordRepository.fetchInitialData() }
                 .onSuccess { result ->
                     _english.value = result.data[2].english
                     quizWordRepository.saveInitialData(result.data)

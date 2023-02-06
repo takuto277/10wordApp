@@ -1,10 +1,14 @@
 package com.example.a10wordapp.ui.quizdelete
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.a10wordapp.data.db.entity.InitialDataEntity
+import com.example.a10wordapp.domain.entity.QuizDeleteEntity
 import com.example.a10wordapp.repository.QuizWordRepository
+import kotlinx.coroutines.launch
 
 class QuizDeleteViewModel(
     private val quizWordRepository: QuizWordRepository
@@ -13,7 +17,24 @@ class QuizDeleteViewModel(
     private val _list = MutableLiveData<List<InitialDataEntity>>()
     val list: LiveData<List<InitialDataEntity>> get() = _list
 
-    fun getInitialDataList() {
-        _list.value = quizWordRepository.getInitialDataList()
+    private val _quizDeleteArray = MutableLiveData<Array<QuizDeleteEntity>>()
+    val quizDeleteArray: LiveData<Array<QuizDeleteEntity>> get() = _quizDeleteArray
+
+    fun getArray(planSwitch: Boolean) {
+        viewModelScope.launch {
+            runCatching { quizWordRepository.getList(planSwitch) }
+                .onSuccess { result ->
+                    _quizDeleteArray.value = result.map { entity ->
+                        QuizDeleteEntity(
+                            id = entity.id,
+                            english = entity.english,
+                            japanese = entity.japanese
+                        )
+                    }.toTypedArray()
+                }
+                .onFailure { result ->
+                    Log.d("response", "debug ${result}")
+                }
+        }
     }
 }
