@@ -16,17 +16,15 @@ class QuizListViewModel(
     private val _quizListItem = MutableLiveData<Array<QuizListItem>>()
     val quizListItem: LiveData<Array<QuizListItem>> get() = _quizListItem
 
-    fun fetchContent(planSwitch: Boolean) {
-        viewModelScope.launch {
-            runCatching { quizWordRepository.getList(planSwitch) }
-                .onSuccess { result ->
-                    _quizListItem.value = result.map { entity ->
-                        QuizListItem(text = "${entity.english} / ${entity.japanese}")
-                    }.toTypedArray()
-                }
-                .onFailure { result ->
-                    Log.d("response", "debug ${result}")
-                }
-        }
+    fun fetchContent(planSwitch: Boolean) = viewModelScope.launch {
+        runCatching { quizWordRepository.getQuizList(planSwitch) }
+            .onSuccess { result ->
+                _quizListItem.value = result.map { entity ->
+                    QuizListItem(text = "${entity.english} / ${entity.japanese}")
+                }.toTypedArray()
+            }
+            .onFailure { result ->
+                Log.d("response", "debug ${result}")
+            }
     }
 }

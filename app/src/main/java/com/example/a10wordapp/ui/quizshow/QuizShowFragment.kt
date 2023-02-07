@@ -25,7 +25,7 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
     private val mainViewModel: MainViewModel by activityViewModels { ViewModelFactory(requireContext()) }
     private val viewModel: QuizShowViewModel by viewModels { ViewModelFactory(requireContext()) }
     private lateinit var binding: QuizShowFragmentBinding
-    private lateinit var textToSpeech: TextToSpeech
+    private val textToSpeech: TextToSpeech by lazy { TextToSpeech(requireContext(), this) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,8 +40,6 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
         super.onViewCreated(view, savedInstanceState)
 
         var arrayFigure = 0
-
-        textToSpeech = TextToSpeech(requireContext(), this) ?: return
 
         // リストを取得する
         val fileterQuizArray = mainViewModel.quizItemArray.value ?: return

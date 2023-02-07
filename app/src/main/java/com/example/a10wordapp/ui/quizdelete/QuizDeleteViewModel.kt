@@ -20,15 +20,13 @@ class QuizDeleteViewModel(
     private val _quizItemArray = MutableLiveData<Array<QuizItem>>()
     val quizItemArray: LiveData<Array<QuizItem>> get() = _quizItemArray
 
-    fun getArray(planSwitch: Boolean) {
-        viewModelScope.launch {
-            runCatching { quizWordRepository.getList(planSwitch) }
-                .onSuccess { result ->
-                    _quizItemArray.value = result.toTypedArray()
-                }
-                .onFailure { result ->
-                    Log.d("response", "debug ${result}")
-                }
-        }
+    fun getArray(planSwitch: Boolean) = viewModelScope.launch {
+        runCatching { quizWordRepository.getQuizList(planSwitch) }
+            .onSuccess { result ->
+                _quizItemArray.value = result.toTypedArray()
+            }
+            .onFailure { result ->
+                Log.d("response", "debug ${result}")
+            }
     }
 }

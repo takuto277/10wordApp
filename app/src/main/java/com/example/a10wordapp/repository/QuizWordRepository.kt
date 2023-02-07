@@ -11,7 +11,7 @@ import kotlinx.coroutines.runBlocking
 interface QuizWordRepository {
     fun addNewItem(english: String, japanese: String)
     suspend fun saveInitialData(data: Array<Data>)
-    suspend fun getList(planSwitch: Boolean): List<QuizItem>
+    suspend fun getQuizList(planSwitch: Boolean): List<QuizItem>
 }
 
 class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository {
@@ -38,7 +38,7 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
         }
     }
 
-    override suspend fun getList(planSwitch: Boolean): List<QuizItem> {
+    override suspend fun getQuizList(planSwitch: Boolean): List<QuizItem> {
         val getDatabase = AppRoomDatabase.getDatabase(context)
         val initialDataDao = getDatabase.initialDataDao()
         val itemDao = getDatabase.itemDao()

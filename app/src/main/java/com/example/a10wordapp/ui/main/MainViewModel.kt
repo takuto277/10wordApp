@@ -22,17 +22,15 @@ class MainViewModel(
         _plan.value = isCheck
     }
 
-    fun registerQuizWords(planSwitch: Boolean, selectItem: Int) {
-        viewModelScope.launch {
-            runCatching { quizWordRepository.getList(planSwitch) }
-                .onSuccess { entity ->
-                    _quizItemArray.value =
-                        entity.filter { it.id in "${selectItem}0".toInt() - 9.."${selectItem}0".toInt() }
-                            .toTypedArray()
-                }
-                .onFailure { result ->
-                    Log.d("response", "debug ${result}")
-                }
-        }
+    fun registerQuizWords(planSwitch: Boolean, selectItem: Int) = viewModelScope.launch {
+        runCatching { quizWordRepository.getQuizList(planSwitch) }
+            .onSuccess { entity ->
+                _quizItemArray.value =
+                    entity.filter { it.id in "${selectItem}0".toInt() - 9.."${selectItem}0".toInt() }
+                        .toTypedArray()
+            }
+            .onFailure { result ->
+                Log.d("response", "debug ${result}")
+            }
     }
 }

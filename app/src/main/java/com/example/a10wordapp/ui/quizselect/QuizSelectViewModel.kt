@@ -16,19 +16,17 @@ class QuizSelectViewModel(
     private val _quizSelectItem = MutableLiveData<Array<QuizSelectItem>>()
     val quizSelectItem: LiveData<Array<QuizSelectItem>> get() = _quizSelectItem
 
-    fun fecthContent(planSwitch: Boolean) {
-        viewModelScope.launch {
-            runCatching { quizWordRepository.getList(planSwitch) }
-                .onSuccess { entity ->
-                    _quizSelectItem.value = entity.map { entity ->
-                        QuizSelectItem(
-                            id = entity.id,
-                        )
-                    }.toTypedArray()
-                }
-                .onFailure { result ->
-                    Log.d("response", "debug ${result}")
-                }
-        }
+    fun fecthContent(planSwitch: Boolean) = viewModelScope.launch {
+        runCatching { quizWordRepository.getQuizList(planSwitch) }
+            .onSuccess { entity ->
+                _quizSelectItem.value = entity.map { entity ->
+                    QuizSelectItem(
+                        id = entity.id,
+                    )
+                }.toTypedArray()
+            }
+            .onFailure { result ->
+                Log.d("response", "debug ${result}")
+            }
     }
 }
