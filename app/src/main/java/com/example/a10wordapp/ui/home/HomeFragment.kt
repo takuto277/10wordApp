@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
         binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
             mainViewModel.changePlan(isChecked)
             binding.addButton.isVisible = !isChecked
-            binding.apiFetchButton.isVisible = isChecked
+            binding.FetchInitialWordsButton.isVisible = isChecked
         }
 
         binding.learnButton.setOnClickListener {
@@ -59,7 +59,7 @@ class HomeFragment : Fragment() {
             changeFragment(QuizListFragment())
         }
 
-        binding.apiFetchButton.setOnClickListener {
+        binding.FetchInitialWordsButton.setOnClickListener {
             viewModel.fetchInitialWords()
 
         }
