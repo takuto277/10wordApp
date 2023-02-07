@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class ItemEntity(
+data class UserEditQuizDataEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     @ColumnInfo(name = "english")

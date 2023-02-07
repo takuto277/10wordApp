@@ -3,8 +3,8 @@ package com.example.a10wordapp.repository
 import android.content.Context
 import com.example.a10wordapp.data.AppRoomDatabase
 import com.example.a10wordapp.data.api.Data
-import com.example.a10wordapp.data.db.entity.InitialDataEntity
-import com.example.a10wordapp.data.db.entity.ItemEntity
+import com.example.a10wordapp.data.db.entity.InitialQuizDataEntity
+import com.example.a10wordapp.data.db.entity.UserEditQuizDataEntity
 import com.example.a10wordapp.domain.item.QuizItem
 import kotlinx.coroutines.runBlocking
 
@@ -17,7 +17,7 @@ interface QuizWordRepository {
 class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository {
     override fun addNewItem(english: String, japanese: String) {
         val getDatabase = AppRoomDatabase.getDatabase(context)
-        val itemEntiry = ItemEntity(0, english, japanese)
+        val itemEntiry = UserEditQuizDataEntity(0, english, japanese)
         val itemDao = getDatabase.itemDao()
         runBlocking {
             itemDao.insert(itemEntiry)
@@ -31,9 +31,9 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
             initialDataDao.deleteAll()
         }
         data.forEach {
-            val initialDataEntity = InitialDataEntity(it.ID, it.english, it.japanese)
+            val initialQuizDataEntity = InitialQuizDataEntity(it.ID, it.english, it.japanese)
             runBlocking {
-                initialDataDao.insert(initialDataEntity)
+                initialDataDao.insert(initialQuizDataEntity)
             }
         }
     }

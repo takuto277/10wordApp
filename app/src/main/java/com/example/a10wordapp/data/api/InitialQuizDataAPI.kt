@@ -5,11 +5,11 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-interface InitialDataAPI {
-    val service: InitialDataService
+interface InitialQuizDataAPI {
+    val service: InitialQuizDataService
 }
 
-class InitialDataAPIImpl : InitialDataAPI {
+class InitialQuizDataAPIImpl : InitialQuizDataAPI {
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://gist.githubusercontent.com/")
         .addConverterFactory(
@@ -21,5 +21,6 @@ class InitialDataAPIImpl : InitialDataAPI {
         )
         .build()
 
-    override val service: InitialDataService = retrofit.create(InitialDataService::class.java)
+    override val service: InitialQuizDataService =
+        retrofit.create(InitialQuizDataService::class.java)
 }

@@ -4,23 +4,23 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.a10wordapp.data.db.dao.InitialDataDao
-import com.example.a10wordapp.data.db.dao.ItemDao
-import com.example.a10wordapp.data.db.entity.InitialDataEntity
-import com.example.a10wordapp.data.db.entity.ItemEntity
+import com.example.a10wordapp.data.db.dao.InitialQuizDataDao
+import com.example.a10wordapp.data.db.dao.UserEditQuizDataDao
+import com.example.a10wordapp.data.db.entity.InitialQuizDataEntity
+import com.example.a10wordapp.data.db.entity.UserEditQuizDataEntity
 
 /**
  * Database class with a singleton INSTANCE object.
  */
 @Database(
-    entities = [ItemEntity::class, InitialDataEntity::class],
+    entities = [UserEditQuizDataEntity::class, InitialQuizDataEntity::class],
     version = 1,
     exportSchema = false
 )
 abstract class AppRoomDatabase : RoomDatabase() {
 
-    abstract fun itemDao(): ItemDao
-    abstract fun initialDataDao(): InitialDataDao
+    abstract fun itemDao(): UserEditQuizDataDao
+    abstract fun initialDataDao(): InitialQuizDataDao
 
     companion object {
         @Volatile
