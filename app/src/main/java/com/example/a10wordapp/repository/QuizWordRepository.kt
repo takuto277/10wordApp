@@ -18,7 +18,8 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
     override fun addNewItem(english: String, japanese: String) {
         val getDatabase = AppRoomDatabase.getDatabase(context)
         val itemEntiry = UserEditQuizDataEntity(0, english, japanese)
-        val itemDao = getDatabase.itemDao()
+        val itemDao = getDatabase.userEditQuizDataDao()
+        //TODO: suspendに置き換え
         runBlocking {
             itemDao.insert(itemEntiry)
         }
@@ -26,40 +27,45 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
 
     override suspend fun saveInitialData(data: Array<Data>) {
         val getDatabase = AppRoomDatabase.getDatabase(context)
-        val initialDataDao = getDatabase.initialDataDao()
+        val initialDataDao = getDatabase.initialQuizDataDao()
         if (initialDataDao.getAll().isNotEmpty()) {
             initialDataDao.deleteAll()
         }
         data.forEach {
             val initialQuizDataEntity = InitialQuizDataEntity(it.ID, it.english, it.japanese)
+            //TODO: suspendに置き換え
             runBlocking {
                 initialDataDao.insert(initialQuizDataEntity)
             }
         }
     }
 
-    override suspend fun getQuizList(planSwitch: Boolean): List<QuizItem> {
-        val getDatabase = AppRoomDatabase.getDatabase(context)
-        val initialDataDao = getDatabase.initialDataDao()
-        val itemDao = getDatabase.itemDao()
-        var list: List<QuizItem>
-        if (planSwitch) {
-            list = initialDataDao.getAll().map { entity ->
-                QuizItem(
-                    id = entity.id,
-                    english = entity.english,
-                    japanese = entity.japanese
-                )
-            }
-        } else {
-            list = itemDao.getAll().map { entity ->
-                QuizItem(
-                    id = entity.id,
-                    english = entity.english,
-                    japanese = entity.japanese
-                )
-            }
+    private suspend fun fetchInitialQuizValues(): List<QuizItem> {
+        val dao = AppRoomDatabase.getDatabase(context).initialQuizDataDao()
+        return dao.getAll().map { entity ->
+            QuizItem(
+                id = entity.id,
+                english = entity.english,
+                japanese = entity.japanese
+            )
         }
-        return list
+    }
+
+    private suspend fun fetchUserEditQuizValues(): List<QuizItem> {
+        val dao = AppRoomDatabase.getDatabase(context).userEditQuizDataDao()
+        return dao.getAll().map { entity ->
+            QuizItem(
+                id = entity.id,
+                english = entity.english,
+                japanese = entity.japanese
+            )
+        }
+    }
+
+    override suspend fun getQuizList(planSwitch: Boolean): List<QuizItem> {
+        return when (planSwitch) {
+            true -> fetchInitialQuizValues()
+            false -> fetchUserEditQuizValues()
+        }
     }
 }

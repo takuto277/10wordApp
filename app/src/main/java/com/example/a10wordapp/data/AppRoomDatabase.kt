@@ -19,8 +19,8 @@ import com.example.a10wordapp.data.db.entity.UserEditQuizDataEntity
 )
 abstract class AppRoomDatabase : RoomDatabase() {
 
-    abstract fun itemDao(): UserEditQuizDataDao
-    abstract fun initialDataDao(): InitialQuizDataDao
+    abstract fun userEditQuizDataDao(): UserEditQuizDataDao
+    abstract fun initialQuizDataDao(): InitialQuizDataDao
 
     companion object {
         @Volatile
