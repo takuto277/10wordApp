@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
@@ -38,33 +39,28 @@ class HomeFragment : Fragment() {
 
         binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
             mainViewModel.changePlan(isChecked)
-            if (isChecked) {
-                binding.addButton.visibility = View.INVISIBLE
-                binding.apiFetchButton.visibility = View.VISIBLE
-            } else {
-                binding.addButton.visibility = View.VISIBLE
-                binding.apiFetchButton.visibility = View.INVISIBLE
-            }
+            binding.addButton.isVisible = !isChecked
+            binding.FetchInitialWordsButton.isVisible = isChecked
         }
 
         binding.learnButton.setOnClickListener {
-            clickButton(QuizSelectFragment())
+            changeFragment(QuizSelectFragment())
         }
 
         binding.addButton.setOnClickListener {
-            clickButton(QuizAddFragment())
+            changeFragment(QuizAddFragment())
         }
 
         binding.deleteButton.setOnClickListener {
-            clickButton(QuizDeleteFragment())
+            changeFragment(QuizDeleteFragment())
         }
 
         binding.allButton.setOnClickListener {
-            clickButton(QuizListFragment())
+            changeFragment(QuizListFragment())
         }
 
-        binding.apiFetchButton.setOnClickListener {
-            viewModel.fetchAPI()
+        binding.FetchInitialWordsButton.setOnClickListener {
+            viewModel.fetchInitialWords()
 
         }
 
@@ -77,7 +73,7 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun clickButton(fragment: Fragment) {
+    private fun changeFragment(fragment: Fragment) {
         val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment, fragment)
         transaction.addToBackStack(null);

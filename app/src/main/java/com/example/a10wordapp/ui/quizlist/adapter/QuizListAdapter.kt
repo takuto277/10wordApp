@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.R
-import com.example.a10wordapp.domain.entity.QuizListItem
+import com.example.a10wordapp.domain.item.QuizListItem
 
 class QuizListAdapter(private val dataSet: Array<QuizListItem>) :
     RecyclerView.Adapter<QuizListAdapter.ViewHolder>() {

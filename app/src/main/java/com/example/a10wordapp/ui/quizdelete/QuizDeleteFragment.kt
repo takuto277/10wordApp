@@ -32,9 +32,12 @@ class QuizDeleteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
+        mainViewModel.plan.observe(viewLifecycleOwner, Observer { plan ->
+            viewModel.getArray(plan)
+        })
 
-        viewModel.getArray(mainViewModel.plan.value ?: return)
-        viewModel.quizDeleteArray.observe(viewLifecycleOwner, Observer { array ->
+        viewModel.quizItemArray.observe(viewLifecycleOwner, Observer { array ->
             recyclerView = binding.recyclerView
             recyclerView.setHasFixedSize(true)
 

@@ -17,16 +17,14 @@ class HomeViewModel(
     private val _english = MutableLiveData<String>()
     val english: LiveData<String> get() = _english
 
-    fun fetchAPI() {
-        viewModelScope.launch {
-            runCatching { initialQuizWordRepository.fetchInitialData() }
-                .onSuccess { result ->
-                    _english.value = result.data[2].english
-                    quizWordRepository.saveInitialData(result.data)
-                }
-                .onFailure { result ->
-                    Log.d("response", "debug ${result}")
-                }
-        }
+    fun fetchInitialWords() = viewModelScope.launch {
+        runCatching { initialQuizWordRepository.fetchInitialData() }
+            .onSuccess { result ->
+                _english.value = result.data[2].english
+                quizWordRepository.saveInitialData(result.data)
+            }
+            .onFailure { result ->
+                Log.d("response", "debug ${result}")
+            }
     }
 }

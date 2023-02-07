@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.a10wordapp.domain.entity.QuizListItem
+import com.example.a10wordapp.domain.item.QuizListItem
 import com.example.a10wordapp.repository.QuizWordRepository
 import kotlinx.coroutines.launch
 
@@ -16,17 +16,15 @@ class QuizListViewModel(
     private val _quizListItem = MutableLiveData<Array<QuizListItem>>()
     val quizListItem: LiveData<Array<QuizListItem>> get() = _quizListItem
 
-    fun fetchContent(planSwitch: Boolean) {
-        viewModelScope.launch {
-            runCatching { quizWordRepository.getList(planSwitch) }
-                .onSuccess { result ->
-                    _quizListItem.value = result.map { entity ->
-                        QuizListItem(text = "${entity.english} / ${entity.japanese}")
-                    }.toTypedArray()
-                }
-                .onFailure { result ->
-                    Log.d("response", "debug ${result}")
-                }
-        }
+    fun fetchContent(planSwitch: Boolean) = viewModelScope.launch {
+        runCatching { quizWordRepository.getQuizList(planSwitch) }
+            .onSuccess { result ->
+                _quizListItem.value = result.map { entity ->
+                    QuizListItem(text = "${entity.english} / ${entity.japanese}")
+                }.toTypedArray()
+            }
+            .onFailure { result ->
+                Log.d("response", "debug ${result}")
+            }
     }
 }
