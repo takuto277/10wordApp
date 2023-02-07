@@ -13,7 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.a10wordapp.R
 import com.example.a10wordapp.databinding.QuizShowFragmentBinding
-import com.example.a10wordapp.domain.entity.QuizShowEntity
+import com.example.a10wordapp.domain.item.QuizItem
 import com.example.a10wordapp.ui.ViewModelFactory
 import com.example.a10wordapp.ui.home.HomeFragment
 import com.example.a10wordapp.ui.main.MainViewModel
@@ -44,7 +44,7 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
         textToSpeech = TextToSpeech(requireContext(), this) ?: return
 
         // リストを取得する
-        val fileterQuizArray = mainViewModel.quizShowWords.value ?: return
+        val fileterQuizArray = mainViewModel.quizItemArray.value ?: return
         getlayout(fileterQuizArray, arrayFigure)
         speakText(fileterQuizArray, arrayFigure)
         binding.translateText.isVisible = false
@@ -83,12 +83,12 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
         textToSpeech.setOnUtteranceProgressListener(listenter)
     }
 
-    private fun getlayout(array: Array<QuizShowEntity>, arrayFigure: Int) {
+    private fun getlayout(array: Array<QuizItem>, arrayFigure: Int) {
         binding.wordText.text = array[arrayFigure].english
         binding.translateText.text = array[arrayFigure].japanese
     }
 
-    private fun speakText(array: Array<QuizShowEntity>, arrayFigure: Int) {
+    private fun speakText(array: Array<QuizItem>, arrayFigure: Int) {
         textToSpeech.setLanguage(Locale.ENGLISH)
         textToSpeech.speak(array[arrayFigure].english, TextToSpeech.QUEUE_FLUSH, null, "Speech1")
     }

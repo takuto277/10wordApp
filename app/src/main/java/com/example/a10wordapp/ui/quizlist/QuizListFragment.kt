@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.databinding.QuizListFragmentBinding
-import com.example.a10wordapp.domain.entity.QuizListItem
+import com.example.a10wordapp.domain.item.QuizListItem
 import com.example.a10wordapp.ui.ViewModelFactory
 import com.example.a10wordapp.ui.main.MainViewModel
 import com.example.a10wordapp.ui.quizlist.adapter.QuizListAdapter

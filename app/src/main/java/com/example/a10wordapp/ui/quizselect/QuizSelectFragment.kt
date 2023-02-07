@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.R
 import com.example.a10wordapp.databinding.QuizSelectFragmentBinding
-import com.example.a10wordapp.domain.entity.QuizSelectItem
+import com.example.a10wordapp.domain.item.QuizSelectItem
 import com.example.a10wordapp.ui.ViewModelFactory
 import com.example.a10wordapp.ui.main.MainViewModel
 import com.example.a10wordapp.ui.quizselect.adapter.QuizSelectAdapter

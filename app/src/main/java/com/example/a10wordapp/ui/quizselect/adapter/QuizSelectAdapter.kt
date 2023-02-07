@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.R
-import com.example.a10wordapp.domain.entity.QuizSelectItem
+import com.example.a10wordapp.domain.item.QuizSelectItem
 
 class QuizSelectAdapter(
     private val dataSet: Array<QuizSelectItem>

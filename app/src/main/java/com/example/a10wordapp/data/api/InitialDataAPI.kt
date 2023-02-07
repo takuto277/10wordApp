@@ -6,19 +6,19 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 interface InitialDataAPI {
-    val moshi: Moshi
-    val retrofit: Retrofit
     val service: InitialDataService
 }
 
 class InitialDataAPIImpl : InitialDataAPI {
-    override val moshi: Moshi = Moshi.Builder()
-        .add(KotlinJsonAdapterFactory())
-        .build()
-
-    override val retrofit: Retrofit = Retrofit.Builder()
+    private val retrofit = Retrofit.Builder()
         .baseUrl("https://gist.githubusercontent.com/")
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addConverterFactory(
+            MoshiConverterFactory.create(
+                Moshi.Builder()
+                    .add(KotlinJsonAdapterFactory())
+                    .build()
+            )
+        )
         .build()
 
     override val service: InitialDataService = retrofit.create(InitialDataService::class.java)

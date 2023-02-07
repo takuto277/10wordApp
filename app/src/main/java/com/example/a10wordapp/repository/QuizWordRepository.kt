@@ -5,13 +5,13 @@ import com.example.a10wordapp.data.AppRoomDatabase
 import com.example.a10wordapp.data.api.Data
 import com.example.a10wordapp.data.db.entity.InitialDataEntity
 import com.example.a10wordapp.data.db.entity.ItemEntity
-import com.example.a10wordapp.domain.entity.GetListEntity
+import com.example.a10wordapp.domain.item.QuizItem
 import kotlinx.coroutines.runBlocking
 
 interface QuizWordRepository {
     fun addNewItem(english: String, japanese: String)
     suspend fun saveInitialData(data: Array<Data>)
-    suspend fun getList(planSwitch: Boolean): List<GetListEntity>
+    suspend fun getList(planSwitch: Boolean): List<QuizItem>
 }
 
 class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository {
@@ -38,14 +38,14 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
         }
     }
 
-    override suspend fun getList(planSwitch: Boolean): List<GetListEntity> {
+    override suspend fun getList(planSwitch: Boolean): List<QuizItem> {
         val getDatabase = AppRoomDatabase.getDatabase(context)
         val initialDataDao = getDatabase.initialDataDao()
         val itemDao = getDatabase.itemDao()
-        var list: List<GetListEntity>
+        var list: List<QuizItem>
         if (planSwitch) {
             list = initialDataDao.getAll().map { entity ->
-                GetListEntity(
+                QuizItem(
                     id = entity.id,
                     english = entity.english,
                     japanese = entity.japanese
@@ -53,7 +53,7 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
             }
         } else {
             list = itemDao.getAll().map { entity ->
-                GetListEntity(
+                QuizItem(
                     id = entity.id,
                     english = entity.english,
                     japanese = entity.japanese

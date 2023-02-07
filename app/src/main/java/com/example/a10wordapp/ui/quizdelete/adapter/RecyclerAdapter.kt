@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a10wordapp.databinding.OneLayoutBinding
-import com.example.a10wordapp.domain.entity.QuizDeleteEntity
+import com.example.a10wordapp.domain.item.QuizItem
 
-class RecyclerAdapter(private val array: Array<QuizDeleteEntity>) :
+class RecyclerAdapter(private val array: Array<QuizItem>) :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: OneLayoutBinding) :

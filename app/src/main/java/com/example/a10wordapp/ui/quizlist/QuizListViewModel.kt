@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.a10wordapp.domain.entity.QuizListItem
+import com.example.a10wordapp.domain.item.QuizListItem
 import com.example.a10wordapp.repository.QuizWordRepository
 import kotlinx.coroutines.launch
 
