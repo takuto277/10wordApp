@@ -1,6 +1,5 @@
 package com.example.a10wordapp.repository
 
-import android.content.Context
 import com.example.a10wordapp.data.api.InitialQuizDataAPI
 import com.example.a10wordapp.data.api.InitialQuizDataResponse
 
@@ -9,7 +8,6 @@ interface InitialQuizWordRepository {
 }
 
 class InitialQuizWordRepositoryImpl(
-    private val contect: Context,
     private val initialQuizDataAPI: InitialQuizDataAPI
 ) : InitialQuizWordRepository {
 

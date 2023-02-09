@@ -1,7 +1,7 @@
 package com.example.a10wordapp.data.api
 
 data class InitialQuizDataResponse(
-    val data: Array<Data>
+    val data: List<Data>
 )
 
 data class Data(

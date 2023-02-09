@@ -6,26 +6,22 @@ import com.example.a10wordapp.data.api.Data
 import com.example.a10wordapp.data.db.entity.InitialQuizDataEntity
 import com.example.a10wordapp.data.db.entity.UserEditQuizDataEntity
 import com.example.a10wordapp.domain.item.QuizItem
-import kotlinx.coroutines.runBlocking
 
 interface QuizWordRepository {
-    fun addNewItem(english: String, japanese: String)
-    suspend fun saveInitialData(data: Array<Data>)
+    suspend fun addNewItem(english: String, japanese: String)
+    suspend fun saveInitialData(data: List<Data>)
     suspend fun getQuizList(planSwitch: Boolean): List<QuizItem>
 }
 
 class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository {
-    override fun addNewItem(english: String, japanese: String) {
+    override suspend fun addNewItem(english: String, japanese: String) {
         val getDatabase = AppRoomDatabase.getDatabase(context)
         val itemEntiry = UserEditQuizDataEntity(0, english, japanese)
         val itemDao = getDatabase.userEditQuizDataDao()
-        //TODO: suspendに置き換え
-        runBlocking {
-            itemDao.insert(itemEntiry)
-        }
+        itemDao.insert(itemEntiry)
     }
 
-    override suspend fun saveInitialData(data: Array<Data>) {
+    override suspend fun saveInitialData(data: List<Data>) {
         val getDatabase = AppRoomDatabase.getDatabase(context)
         val initialDataDao = getDatabase.initialQuizDataDao()
         if (initialDataDao.getAll().isNotEmpty()) {
@@ -33,10 +29,7 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
         }
         data.forEach {
             val initialQuizDataEntity = InitialQuizDataEntity(it.ID, it.english, it.japanese)
-            //TODO: suspendに置き換え
-            runBlocking {
-                initialDataDao.insert(initialQuizDataEntity)
-            }
+            initialDataDao.insert(initialQuizDataEntity)
         }
     }
 

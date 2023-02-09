@@ -34,7 +34,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
                 isAssignableFrom(HomeViewModel::class.java) ->
                     HomeViewModel(
                         QuizWordRepositoryImpl(context),
-                        InitialQuizWordRepositoryImpl(context, InitialQuizDataAPIImpl())
+                        InitialQuizWordRepositoryImpl(InitialQuizDataAPIImpl())
                     )
                 isAssignableFrom(QuizSelectViewModel::class.java) ->
                     QuizSelectViewModel(QuizWordRepositoryImpl(context))
