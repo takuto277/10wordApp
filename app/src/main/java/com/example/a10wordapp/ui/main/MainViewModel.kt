@@ -25,12 +25,18 @@ class MainViewModel(
     fun registerQuizWords(planSwitch: Boolean, selectItem: Int) = viewModelScope.launch {
         runCatching { quizWordRepository.getQuizList(planSwitch) }
             .onSuccess { entity ->
-                _quizItemArray.value =
-                    entity.filter { it.id in "${selectItem}0".toInt() - 9.."${selectItem}0".toInt() }
-                        .toTypedArray()
+                _quizItemArray.value = ListFiliter(entity, selectItem)
+                    .toTypedArray()
             }
             .onFailure { result ->
                 Log.d("response", "debug ${result}")
             }
+    }
+
+    private fun ListFiliter(entity: List<QuizItem>, index: Int): List<QuizItem> {
+        val max = index * 10
+        val min = max - 9
+        return entity.filter { min <= it.id }
+            .filter { it.id <= max }
     }
 }

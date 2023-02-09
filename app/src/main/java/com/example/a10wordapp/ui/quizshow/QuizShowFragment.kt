@@ -47,10 +47,10 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
             viewLifecycleOwner,
             androidx.lifecycle.Observer { filterQuiz ->
                 filterQuizArray = filterQuiz
+                getlayout(filterQuizArray, arrayFigure)
+                speakText(filterQuizArray, arrayFigure)
+                binding.translateText.isVisible = false
             })
-        getlayout(filterQuizArray, arrayFigure)
-        speakText(filterQuizArray, arrayFigure)
-        binding.translateText.isVisible = false
 
         binding.currentButton.setOnClickListener {
             if (arrayFigure == filterQuizArray.count() - 1) {
