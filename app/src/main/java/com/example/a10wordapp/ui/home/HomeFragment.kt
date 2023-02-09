@@ -61,16 +61,12 @@ class HomeFragment : Fragment() {
 
         binding.FetchInitialWordsButton.setOnClickListener {
             viewModel.fetchInitialWords()
-
-        }
-
-        viewModel.english.observe(viewLifecycleOwner, androidx.lifecycle.Observer { english ->
             Toast.makeText(
                 requireContext(),
                 "初期単語を取得しました。",
                 Toast.LENGTH_SHORT
             ).show()
-        })
+        }
     }
 
     private fun changeFragment(fragment: Fragment) {
