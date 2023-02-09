@@ -6,7 +6,7 @@ import android.content.Context
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.a10wordapp.data.api.InitialQuizDataAPIImpl
+import com.example.a10wordapp.data.api.InitialQuizAPIImpl
 import com.example.a10wordapp.repository.InitialQuizWordRepositoryImpl
 import com.example.a10wordapp.repository.QuizWordRepositoryImpl
 import com.example.a10wordapp.ui.home.HomeViewModel
@@ -34,7 +34,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.NewInst
                 isAssignableFrom(HomeViewModel::class.java) ->
                     HomeViewModel(
                         QuizWordRepositoryImpl(context),
-                        InitialQuizWordRepositoryImpl(InitialQuizDataAPIImpl())
+                        InitialQuizWordRepositoryImpl(InitialQuizAPIImpl())
                     )
                 isAssignableFrom(QuizSelectViewModel::class.java) ->
                     QuizSelectViewModel(QuizWordRepositoryImpl(context))

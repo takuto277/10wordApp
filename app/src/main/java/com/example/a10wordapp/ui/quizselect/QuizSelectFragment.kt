@@ -40,7 +40,9 @@ class QuizSelectFragment : Fragment() {
         viewModel.quizSelectItem.observe(viewLifecycleOwner, Observer { listItems ->
             initListAdapter(binding.recyclerView, listItems)
         })
-        viewModel.fecthContent(mainViewModel.plan.value!!)
+        mainViewModel.plan.observe(viewLifecycleOwner, Observer { plan ->
+            viewModel.fecthContent(plan)
+        })
     }
 
     private fun initListAdapter(recyclerView: RecyclerView, dataSet: Array<QuizSelectItem>) {
@@ -53,7 +55,9 @@ class QuizSelectFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                mainViewModel.registerQuizWords(mainViewModel.plan.value!!, item.id)
+                mainViewModel.plan.observe(viewLifecycleOwner, Observer { plan ->
+                    mainViewModel.registerQuizWords(plan, item.id)
+                })
                 val fragment = QuizShowFragment()
                 val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
                 transaction.replace(R.id.fragment, fragment)

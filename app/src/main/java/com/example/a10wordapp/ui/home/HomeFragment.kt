@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
         viewModel.english.observe(viewLifecycleOwner, androidx.lifecycle.Observer { english ->
             Toast.makeText(
                 requireContext(),
-                "「${english}」を表示します。",
+                "初期単語を取得しました。",
                 Toast.LENGTH_SHORT
             ).show()
         })

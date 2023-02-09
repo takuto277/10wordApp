@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class InitialQuizDataEntity(
+data class InitialQuizEntity(
     @PrimaryKey
     val id: Int,
     @ColumnInfo(name = "english")

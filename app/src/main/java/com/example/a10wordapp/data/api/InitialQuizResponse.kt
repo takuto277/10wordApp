@@ -1,6 +1,6 @@
 package com.example.a10wordapp.data.api
 
-data class InitialQuizDataResponse(
+data class InitialQuizResponse(
     val data: List<Data>
 )
 

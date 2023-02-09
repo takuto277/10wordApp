@@ -25,6 +25,7 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
     private val mainViewModel: MainViewModel by activityViewModels { ViewModelFactory(requireContext()) }
     private val viewModel: QuizShowViewModel by viewModels { ViewModelFactory(requireContext()) }
     private lateinit var binding: QuizShowFragmentBinding
+    private lateinit var filterQuizArray: Array<QuizItem>
     private val textToSpeech: TextToSpeech by lazy { TextToSpeech(requireContext(), this) }
 
     override fun onCreateView(
@@ -42,28 +43,32 @@ class QuizShowFragment : Fragment(), TextToSpeech.OnInitListener {
         var arrayFigure = 0
 
         // リストを取得する
-        val fileterQuizArray = mainViewModel.quizItemArray.value ?: return
-        getlayout(fileterQuizArray, arrayFigure)
-        speakText(fileterQuizArray, arrayFigure)
+        mainViewModel.quizItemArray.observe(
+            viewLifecycleOwner,
+            androidx.lifecycle.Observer { filterQuiz ->
+                filterQuizArray = filterQuiz
+            })
+        getlayout(filterQuizArray, arrayFigure)
+        speakText(filterQuizArray, arrayFigure)
         binding.translateText.isVisible = false
 
         binding.currentButton.setOnClickListener {
-            if (arrayFigure == fileterQuizArray.count() - 1) {
+            if (arrayFigure == filterQuizArray.count() - 1) {
                 backScreen()
                 Toast.makeText(requireContext(), "問題終了！", Toast.LENGTH_SHORT).show()
             } else {
                 ++arrayFigure
             }
 
-            getlayout(fileterQuizArray, arrayFigure)
-            speakText(fileterQuizArray, arrayFigure)
+            getlayout(filterQuizArray, arrayFigure)
+            speakText(filterQuizArray, arrayFigure)
             binding.translateText.isVisible = false
         }
 
         binding.wrongButton.setOnClickListener {
             arrayFigure = 0
-            getlayout(fileterQuizArray, arrayFigure)
-            speakText(fileterQuizArray, arrayFigure)
+            getlayout(filterQuizArray, arrayFigure)
+            speakText(filterQuizArray, arrayFigure)
             binding.translateText.isVisible = false
         }
 
