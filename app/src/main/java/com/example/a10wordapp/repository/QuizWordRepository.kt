@@ -33,6 +33,13 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
         }
     }
 
+    override suspend fun getQuizList(planSwitch: Boolean): List<QuizItem> {
+        return when (planSwitch) {
+            true -> fetchInitialQuizValues()
+            false -> fetchUserEditQuizValues()
+        }
+    }
+
     private suspend fun fetchInitialQuizValues(): List<QuizItem> {
         val dao = AppRoomDatabase.getDatabase(context).initialQuizDataDao()
         return dao.getAll().map { entity ->
@@ -52,13 +59,6 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
                 english = entity.english,
                 japanese = entity.japanese
             )
-        }
-    }
-
-    override suspend fun getQuizList(planSwitch: Boolean): List<QuizItem> {
-        return when (planSwitch) {
-            true -> fetchInitialQuizValues()
-            false -> fetchUserEditQuizValues()
         }
     }
 }
