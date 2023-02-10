@@ -23,14 +23,12 @@ class MainViewModel(
     private val _quizItemArray = MutableLiveData<Array<QuizItem>>()
     val quizItemArray: LiveData<Array<QuizItem>> get() = _quizItemArray
 
-
     fun changePlan(isCheck: Boolean) {
         when (isCheck) {
             true -> _plan.value = QuizPlan.InitialQuizPlan
             false -> _plan.value = QuizPlan.UserEditQuizPlan
         }
     }
-
 
     fun registerQuizWords(quizPlan: QuizPlan, selectItem: Int) = viewModelScope.launch {
         runCatching { quizWordRepository.getQuizList(quizPlan) }

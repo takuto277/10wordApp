@@ -38,7 +38,9 @@ class QuizListFragment : Fragment() {
         viewModel.quizListItem.observe(viewLifecycleOwner) { listItems ->
             initListAdapter(binding.mainList, listItems)
         }
-        viewModel.fetchContent(mainViewModel.plan.value ?: return)
+        mainViewModel.plan.observe(viewLifecycleOwner) { quizPlan ->
+            viewModel.fetchContent(quizPlan)
+        }
     }
 
     private fun initListAdapter(recyclerView: RecyclerView, dataSet: Array<QuizListItem>) {
