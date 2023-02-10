@@ -16,7 +16,6 @@ class HomeViewModel(
         runCatching { initialQuizWordRepository.fetchInitialData() }
             .onSuccess { result ->
                 quizWordRepository.saveInitialData(result.data)
-
             }
             .onFailure { result ->
                 Log.d("response", "debug ${result}")
