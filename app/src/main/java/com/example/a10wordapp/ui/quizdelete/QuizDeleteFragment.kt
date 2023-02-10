@@ -33,8 +33,8 @@ class QuizDeleteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainViewModel.plan.observe(viewLifecycleOwner, Observer { plan ->
-            viewModel.getQuiz(plan)
+        mainViewModel.plan.observe(viewLifecycleOwner, Observer { quizPlan ->
+            viewModel.getQuiz(quizPlan)
         })
 
         viewModel.quizItemArray.observe(viewLifecycleOwner, Observer { array ->

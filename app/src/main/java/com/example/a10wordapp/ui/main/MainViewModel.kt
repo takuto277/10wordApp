@@ -9,21 +9,31 @@ import com.example.a10wordapp.domain.item.QuizItem
 import com.example.a10wordapp.repository.QuizWordRepository
 import kotlinx.coroutines.launch
 
+sealed class QuizPlan {
+    object InitialQuizPlan : QuizPlan()
+    object UserEditQuizPlan : QuizPlan()
+}
+
 class MainViewModel(
     private val quizWordRepository: QuizWordRepository
 ) : ViewModel() {
-    private var _plan = MutableLiveData<Boolean>(true)
-    val plan: LiveData<Boolean> = _plan
+    private var _plan = MutableLiveData<QuizPlan>(QuizPlan.InitialQuizPlan)
+    val plan: LiveData<QuizPlan> = _plan
 
     private val _quizItemArray = MutableLiveData<Array<QuizItem>>()
     val quizItemArray: LiveData<Array<QuizItem>> get() = _quizItemArray
 
+
     fun changePlan(isCheck: Boolean) {
-        _plan.value = isCheck
+        when (isCheck) {
+            true -> _plan.value = QuizPlan.InitialQuizPlan
+            false -> _plan.value = QuizPlan.UserEditQuizPlan
+        }
     }
 
-    fun registerQuizWords(planSwitch: Boolean, selectItem: Int) = viewModelScope.launch {
-        runCatching { quizWordRepository.getQuizList(planSwitch) }
+
+    fun registerQuizWords(quizPlan: QuizPlan, selectItem: Int) = viewModelScope.launch {
+        runCatching { quizWordRepository.getQuizList(quizPlan) }
             .onSuccess { entity ->
                 _quizItemArray.value = ListFiliter(entity, selectItem)
                     .toTypedArray()

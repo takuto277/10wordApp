@@ -6,11 +6,12 @@ import com.example.a10wordapp.data.db.AppRoomDatabase
 import com.example.a10wordapp.data.db.entity.InitialQuizEntity
 import com.example.a10wordapp.data.db.entity.UserEditQuizEntity
 import com.example.a10wordapp.domain.item.QuizItem
+import com.example.a10wordapp.ui.main.QuizPlan
 
 interface QuizWordRepository {
     suspend fun addNewItem(english: String, japanese: String)
     suspend fun saveInitialData(data: List<InitialQuiz>)
-    suspend fun getQuizList(planSwitch: Boolean): List<QuizItem>
+    suspend fun getQuizList(quizPlan: QuizPlan): List<QuizItem>
 }
 
 class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository {
@@ -33,10 +34,14 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
         }
     }
 
-    override suspend fun getQuizList(planSwitch: Boolean): List<QuizItem> {
-        return when (planSwitch) {
-            true -> fetchInitialQuizValues()
-            false -> fetchUserEditQuizValues()
+    override suspend fun getQuizList(quizPlan: QuizPlan): List<QuizItem> {
+        return when (quizPlan) {
+            is QuizPlan.InitialQuizPlan -> {
+                fetchInitialQuizValues()
+            }
+            is QuizPlan.UserEditQuizPlan -> {
+                fetchUserEditQuizValues()
+            }
         }
     }
 

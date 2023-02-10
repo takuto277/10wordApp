@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.a10wordapp.domain.item.QuizSelectItem
 import com.example.a10wordapp.repository.QuizWordRepository
+import com.example.a10wordapp.ui.main.QuizPlan
 import kotlinx.coroutines.launch
 
 class QuizSelectViewModel(
@@ -16,8 +17,8 @@ class QuizSelectViewModel(
     private val _quizSelectItem = MutableLiveData<Array<QuizSelectItem>>()
     val quizSelectItem: LiveData<Array<QuizSelectItem>> get() = _quizSelectItem
 
-    fun fecthContent(planSwitch: Boolean) = viewModelScope.launch {
-        runCatching { quizWordRepository.getQuizList(planSwitch) }
+    fun fecthContent(quizPlan: QuizPlan) = viewModelScope.launch {
+        runCatching { quizWordRepository.getQuizList(quizPlan) }
             .onSuccess { entity ->
                 _quizSelectItem.value = entity.map { entity ->
                     QuizSelectItem(

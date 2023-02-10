@@ -40,8 +40,8 @@ class QuizSelectFragment : Fragment() {
         viewModel.quizSelectItem.observe(viewLifecycleOwner, Observer { listItems ->
             initListAdapter(binding.recyclerView, listItems)
         })
-        mainViewModel.plan.observe(viewLifecycleOwner, Observer { plan ->
-            viewModel.fecthContent(plan)
+        mainViewModel.plan.observe(viewLifecycleOwner, Observer { quizPlan ->
+            viewModel.fecthContent(quizPlan)
         })
     }
 
