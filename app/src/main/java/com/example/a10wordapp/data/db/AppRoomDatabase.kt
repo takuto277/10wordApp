@@ -1,4 +1,4 @@
-package com.example.a10wordapp.data
+package com.example.a10wordapp.data.db
 
 import android.content.Context
 import androidx.room.Database

@@ -1,15 +1,15 @@
 package com.example.a10wordapp.repository
 
 import android.content.Context
-import com.example.a10wordapp.data.AppRoomDatabase
-import com.example.a10wordapp.data.api.Data
+import com.example.a10wordapp.data.api.InitialQuiz
+import com.example.a10wordapp.data.db.AppRoomDatabase
 import com.example.a10wordapp.data.db.entity.InitialQuizEntity
 import com.example.a10wordapp.data.db.entity.UserEditQuizEntity
 import com.example.a10wordapp.domain.item.QuizItem
 
 interface QuizWordRepository {
     suspend fun addNewItem(english: String, japanese: String)
-    suspend fun saveInitialData(data: List<Data>)
+    suspend fun saveInitialData(data: List<InitialQuiz>)
     suspend fun getQuizList(planSwitch: Boolean): List<QuizItem>
 }
 
@@ -21,14 +21,14 @@ class QuizWordRepositoryImpl(private val context: Context) : QuizWordRepository 
         itemDao.insert(itemEntiry)
     }
 
-    override suspend fun saveInitialData(data: List<Data>) {
+    override suspend fun saveInitialData(data: List<InitialQuiz>) {
         val getDatabase = AppRoomDatabase.getDatabase(context)
         val initialDataDao = getDatabase.initialQuizDataDao()
         if (initialDataDao.getAll().isNotEmpty()) {
             initialDataDao.deleteAll()
         }
         data.forEach {
-            val initialQuizEntity = InitialQuizEntity(it.ID, it.english, it.japanese)
+            val initialQuizEntity = InitialQuizEntity(it.id, it.english, it.japanese)
             initialDataDao.insert(initialQuizEntity)
         }
     }
